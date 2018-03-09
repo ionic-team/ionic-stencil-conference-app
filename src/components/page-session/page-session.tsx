@@ -57,6 +57,20 @@ export class PageSession {
         </div>
 
         <ion-list>
+          <ion-list-header>
+            Speakers
+          </ion-list-header>
+          {this.session.speakers.map(speaker =>
+            <ion-item detail-none href={`/speaker-list/speaker/${speaker.id}`}>
+              <ion-avatar item-start>
+                <img src={speaker.profilePic}></img>
+              </ion-avatar>
+              <h3>{speaker.name}</h3>
+            </ion-item>
+          )}
+        </ion-list>
+
+        <ion-list>
           <ion-item onClick={() => this.sessionClick('watch')}>
             <ion-label color="primary">Watch</ion-label>
           </ion-item>
