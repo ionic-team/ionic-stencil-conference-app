@@ -1,5 +1,6 @@
 import { Component, Prop } from '@stencil/core';
 import { ConferenceData } from '../../providers/conference-data';
+import { NavControllerBase } from '@ionic/core';
 
 @Component({
   tag: 'page-session',
@@ -11,12 +12,20 @@ export class PageSession {
   @Prop() sessionId: string;
   @Prop() goback = '/';
 
+  @Prop({ connect: 'ion-nav' })
+  nav: NavControllerBase;
+
   async componentWillLoad() {
     this.session = await ConferenceData.getSession(this.sessionId);
   }
 
   sessionClick(item: string) {
     console.log('Clicked', item);
+  }
+
+  async navigateToSpeaker(speaker) {
+    const nav: NavControllerBase = await (this.nav as any).componentOnReady();
+    nav.push('page-speaker-detail', {speakerId: speaker.id}, { animate: true, direction: 'forward' });
   }
 
   render() {
@@ -61,7 +70,7 @@ export class PageSession {
             Speakers
           </ion-list-header>
           {this.session.speakers.map(speaker =>
-            <ion-item detail-none href={`/speaker-list/speaker/${speaker.id}`}>
+            <ion-item detail-none onClick={() => this.navigateToSpeaker(speaker)}>
               <ion-avatar item-start>
                 <img src={speaker.profilePic}></img>
               </ion-avatar>
