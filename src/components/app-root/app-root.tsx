@@ -1,7 +1,7 @@
 import '@ionic/core';
 import '@stencil/core';
 
-import { Component, Element } from '@stencil/core';
+import { Component, Element, Listen, State } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserData } from '../../providers/user-data';
   styleUrl: 'app-root.css'
 })
 export class AppRoot {
-  loggedIn = false;
+  @State() loggedIn = false;
 
   @Element() el: HTMLElement;
 
@@ -39,38 +39,44 @@ export class AppRoot {
     this.el.querySelector('ion-nav').push(component);
   }
 
-  logout() {
-    UserData.logout();
+  @Listen('userDidLogin')
+  onLogIn() {
+    this.loggedIn = true;
+  }
+
+  async logout() {
+    await UserData.logout();
+    this.loggedIn = false;
   }
 
   renderRouter() {
     return (
-    <ion-router useHash={false}>
-      <ion-route component="page-tabs">
-        <ion-route path="/schedule" component="tab-schedule">
-          <ion-route component="page-schedule"/>
-          <ion-route path="/session/:sessionId" component="page-session" />
+      <ion-router useHash={false}>
+        <ion-route component="page-tabs">
+          <ion-route path="/schedule" component="tab-schedule">
+            <ion-route component="page-schedule" />
+            <ion-route path="/session/:sessionId" component="page-session" />
+          </ion-route>
+
+          <ion-route path="/speaker-list" component="tab-speaker">
+            <ion-route component="page-speaker-list" />
+            <ion-route path="/session/:sessionId" component="page-session" params={{ goback: 'speaker-list' }} />
+            <ion-route path="/speaker/:speakerId" component="page-speaker-detail" params={{ goback: 'speaker-list' }} />
+          </ion-route>
+
+          <ion-route path="/map" component="page-map" />
+
+          <ion-route path="/about" component="page-about" />
         </ion-route>
 
-        <ion-route path="/speaker-list" component="tab-speaker">
-          <ion-route component="page-speaker-list"/>
-          <ion-route path="/session/:sessionId" component="page-session" params={{goback: 'speaker-list'}} />
-          <ion-route path="/speaker/:speakerId" component="page-speaker-detail" params={{goback: 'speaker-list'}} />
-        </ion-route>
+        <ion-route path="/tutorial" component="page-tutorial" />
 
-        <ion-route path="/map" component="page-map"/>
+        <ion-route path="/login" component="page-login" />
 
-        <ion-route path="/about" component="page-about"/>
-      </ion-route>
+        <ion-route path="/signup" component="page-signup" />
 
-      <ion-route path="/tutorial" component="page-tutorial"/>
-
-      <ion-route path="/login" component="page-login"/>
-
-      <ion-route path="/signup" component="page-signup"/>
-
-      <ion-route path="/support" component="page-support"/>
-    </ion-router>
+        <ion-route path="/support" component="page-support" />
+      </ion-router>
     );
   }
 
@@ -102,57 +108,57 @@ export class AppRoot {
                     </ion-item>
                   </ion-menu-toggle>
                 )}
-                </ion-list>
+              </ion-list>
 
-                <ion-list>
-                  <ion-list-header>
-                    Account
+              <ion-list>
+                <ion-list-header>
+                  Account
                   </ion-list-header>
 
-                  <ion-menu-toggle autoHide={false}>
-                    {this.loggedIn
-                      ? <ion-item href="account">
-                          <ion-icon slot="start" name="person"></ion-icon>
-                          <ion-label>
-                            Account
-                          </ion-label>
-                        </ion-item>
-
-                      : <ion-item href="login">
-                          <ion-icon slot="start" name="log-in"></ion-icon>
-                          <ion-label>
-                            Login
-                          </ion-label>
-                        </ion-item>
-                    }
-                  </ion-menu-toggle>
-
-                  <ion-menu-toggle autoHide={false}>
-                    <ion-item href="support" tappable>
-                      <ion-icon slot="start" name="help"></ion-icon>
+                <ion-menu-toggle autoHide={false}>
+                  {this.loggedIn
+                    ? <ion-item href="account">
+                      <ion-icon slot="start" name="person"></ion-icon>
                       <ion-label>
-                        Support
-                      </ion-label>
+                        Account
+                          </ion-label>
                     </ion-item>
-                  </ion-menu-toggle>
 
-                  <ion-menu-toggle autoHide={false}>
-                    {this.loggedIn
-                      ? <ion-item onClick={() => this.logout()} tappable>
-                          <ion-icon slot="start" name="log-out"></ion-icon>
-                          <ion-label>
-                            Logout
+                    : <ion-item href="login">
+                      <ion-icon slot="start" name="log-in"></ion-icon>
+                      <ion-label>
+                        Login
                           </ion-label>
-                        </ion-item>
+                    </ion-item>
+                  }
+                </ion-menu-toggle>
 
-                      : <ion-item href="signup" tappable>
-                          <ion-icon slot="start" name="person-add"></ion-icon>
-                          <ion-label>
-                            Signup
+                <ion-menu-toggle autoHide={false}>
+                  <ion-item href="support" tappable>
+                    <ion-icon slot="start" name="help"></ion-icon>
+                    <ion-label>
+                      Support
+                      </ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle autoHide={false}>
+                  {this.loggedIn
+                    ? <ion-item onClick={() => this.logout()} tappable>
+                      <ion-icon slot="start" name="log-out"></ion-icon>
+                      <ion-label>
+                        Logout
                           </ion-label>
-                        </ion-item>
-                      }
-                  </ion-menu-toggle>
+                    </ion-item>
+
+                    : <ion-item href="signup" tappable>
+                      <ion-icon slot="start" name="person-add"></ion-icon>
+                      <ion-label>
+                        Signup
+                          </ion-label>
+                    </ion-item>
+                  }
+                </ion-menu-toggle>
               </ion-list>
 
               <ion-list>
@@ -169,7 +175,7 @@ export class AppRoot {
             </ion-content>
           </ion-menu>
 
-          <ion-nav swipeBackEnabled={false} main/>
+          <ion-nav swipeBackEnabled={false} main />
         </ion-split-pane>
       </ion-app>
     );
