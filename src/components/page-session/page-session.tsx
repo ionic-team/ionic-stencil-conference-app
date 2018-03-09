@@ -10,12 +10,14 @@ export class PageSession {
 
   private session: any;
   @State() isWatched: boolean;
+  @State() isFavorite: boolean;
   @Prop() sessionId: string;
   @Prop() goback = '/';
 
   async componentWillLoad() {
     this.session = await ConferenceData.getSession(this.sessionId);
     this.isWatched = UserData.hasWatch(this.session.name);
+    this.isFavorite = UserData.hasFavorite(this.session.name);
   }
 
   toggleWatch() {
@@ -32,6 +34,16 @@ export class PageSession {
     console.log('Clicked', item);
   }
 
+  toggleFavorite() {
+    if (UserData.hasFavorite(this.session.name)) {
+      UserData.removeFavorite(this.session.name);
+      this.isFavorite = false;
+    } else {
+      UserData.addFavorite(this.session.name);
+      this.isFavorite = true;
+    }
+  }
+
   render() {
     return [
       <ion-header>
@@ -39,25 +51,26 @@ export class PageSession {
           <ion-buttons slot="start">
             <ion-back-button defaultHref={this.goback}/>
           </ion-buttons>
-          <ion-buttons slot="end">
-            <ion-button>
-              <ion-icon slot="icon-only" name="star"></ion-icon>
-            </ion-button>
-            <ion-button>
-              <ion-icon slot="icon-only" name="share"></ion-icon>
-            </ion-button>
-          </ion-buttons>
         </ion-toolbar>
       </ion-header>,
 
       <ion-content>
         <div padding>
-          {this.session.tracks.map(track =>
-            <span class={{[`session-track-${track.toLowerCase()}`]: true}}>
-              { track }
-            </span>
-          )}
-          <div>Session {this.sessionId}</div>
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col col-6>
+                {this.session.tracks.map(track =>
+                  <span class={{[`session-track-${track.toLowerCase()}`]: true}}>
+                    { track }
+                  </span>
+                )}
+                <div>Session {this.sessionId}</div>
+              </ion-col>
+              <ion-col col-6 text-right>
+                <ion-icon onClick={() => this.toggleFavorite()} name={this.isFavorite ? 'heart' : 'heart-empty'} color={this.isFavorite ? 'danger' : ''} size="large"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
           <h1>{this.session.name}</h1>
 
