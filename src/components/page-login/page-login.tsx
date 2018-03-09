@@ -1,7 +1,9 @@
 import '@ionic/core';
 import '@stencil/core';
 
-import { Component } from '@stencil/core';
+import { Component, State } from '@stencil/core';
+
+import { UserData } from '../../providers/user-data';
 
 
 @Component({
@@ -9,16 +11,22 @@ import { Component } from '@stencil/core';
   styleUrl: 'page-login.css',
 })
 export class PageLogin {
-  username = {
-    valid: false
+  @State() username = {
+    valid: false,
+    value: null
   };
   password = {
     valid: false
   };
   submitted = false;
 
+  handleUsername(ev) {
+    this.username.value = ev.target.value;
+  }
+
   onLogin() {
     console.log('Clicked login');
+    UserData.login(this.username.value);
   }
 
   onSignup() {
@@ -46,7 +54,7 @@ export class PageLogin {
           <ion-list no-lines>
             <ion-item>
               <ion-label stacked color="primary">Username</ion-label>
-              <ion-input name="username" type="text" spellcheck={false} autocapitalize="off" required></ion-input>
+              <ion-input name="username" type="text" value={this.username.value} onInput={(ev) => this.handleUsername(ev)} spellcheck={false} autocapitalize="off" required></ion-input>
             </ion-item>
 
             <ion-text color="danger">
