@@ -16,8 +16,18 @@ export class PageSession {
 
   async componentWillLoad() {
     this.session = await ConferenceData.getSession(this.sessionId);
-    this.isWatched = UserData.hasWatch(this.session.name);
     this.isFavorite = UserData.hasFavorite(this.session.name);
+    this.isWatched = UserData.hasWatch(this.session.name);
+  }
+
+  toggleFavorite() {
+    if (UserData.hasFavorite(this.session.name)) {
+      UserData.removeFavorite(this.session.name);
+      this.isFavorite = false;
+    } else {
+      UserData.addFavorite(this.session.name);
+      this.isFavorite = true;
+    }
   }
 
   toggleWatch() {
@@ -32,16 +42,6 @@ export class PageSession {
 
   sessionClick(item: string) {
     console.log('Clicked', item);
-  }
-
-  toggleFavorite() {
-    if (UserData.hasFavorite(this.session.name)) {
-      UserData.removeFavorite(this.session.name);
-      this.isFavorite = false;
-    } else {
-      UserData.addFavorite(this.session.name);
-      this.isFavorite = true;
-    }
   }
 
   render() {
