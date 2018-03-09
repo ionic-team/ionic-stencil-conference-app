@@ -1,6 +1,7 @@
 import { Component, Prop, State } from '@stencil/core';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
+import { NavControllerBase } from '@ionic/core';
 
 @Component({
   tag: 'page-session',
@@ -13,6 +14,9 @@ export class PageSession {
   @Prop() sessionId: string;
   @Prop() goback = '/';
 
+  @Prop({ connect: 'ion-nav' })
+  nav: NavControllerBase;
+
   async componentWillLoad() {
     this.session = await ConferenceData.getSession(this.sessionId);
     this.isFavorite = UserData.hasFavorite(this.session.name);
@@ -22,6 +26,11 @@ export class PageSession {
     console.log('Clicked', item);
   }
 
+  async navigateToSpeaker(speaker) {
+    const nav: NavControllerBase = await (this.nav as any).componentOnReady();
+    nav.push('page-speaker-detail', {speakerId: speaker.id}, { animate: true, direction: 'forward' });
+  }
+  
   toggleFavorite() {
     if (UserData.hasFavorite(this.session.name)) {
       UserData.removeFavorite(this.session.name);
@@ -69,6 +78,20 @@ export class PageSession {
             {this.session.location}
           </ion-text>
         </div>
+
+        <ion-list>
+          <ion-list-header>
+            Speakers
+          </ion-list-header>
+          {this.session.speakers.map(speaker =>
+            <ion-item detail-none onClick={() => this.navigateToSpeaker(speaker)}>
+              <ion-avatar item-start>
+                <img src={speaker.profilePic}></img>
+              </ion-avatar>
+              <h3>{speaker.name}</h3>
+            </ion-item>
+          )}
+        </ion-list>
 
         <ion-list>
           <ion-item onClick={() => this.sessionClick('watch')}>
