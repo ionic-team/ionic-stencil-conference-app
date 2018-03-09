@@ -10,11 +10,13 @@ export class PageSession {
 
   private session: any;
   @State() isWatched: boolean;
+  @State() isFavorite: boolean;
   @Prop() sessionId: string;
   @Prop() goback = '/';
 
   async componentWillLoad() {
     this.session = await ConferenceData.getSession(this.sessionId);
+    this.isFavorite = UserData.hasFavorite(this.session.name);
     this.isWatched = UserData.hasWatch(this.session.name);
   }
 
@@ -32,6 +34,16 @@ export class PageSession {
     console.log('Clicked', item);
   }
 
+  toggleFavorite() {
+    if (UserData.hasFavorite(this.session.name)) {
+      UserData.removeFavorite(this.session.name);
+      this.isFavorite = false;
+    } else {
+      UserData.addFavorite(this.session.name);
+      this.isFavorite = true;
+    }
+  }
+
   render() {
     return [
       <ion-header>
@@ -40,8 +52,8 @@ export class PageSession {
             <ion-back-button defaultHref={this.goback}/>
           </ion-buttons>
           <ion-buttons slot="end">
-            <ion-button>
-              <ion-icon slot="icon-only" name="star"></ion-icon>
+            <ion-button onClick={() => this.toggleFavorite()}>
+              <ion-icon slot="icon-only" name="star" class={this.isFavorite ? 'session-is-favorite' : ''}></ion-icon>
             </ion-button>
             <ion-button>
               <ion-icon slot="icon-only" name="share"></ion-icon>
