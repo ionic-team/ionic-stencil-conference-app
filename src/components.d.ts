@@ -20,7 +20,6 @@ declare global {
 
 import 'ionicons';
 import '@ionic/core';
-import '@stencil/router';
 
 
 import {
