@@ -15,22 +15,78 @@ export class PageLogin {
     valid: false,
     value: null
   };
-  password = {
-    valid: false
+  @State() password = {
+    valid: false,
+    value: null
   };
-  submitted = false;
+  @State() submitted = false;
 
   handleUsername(ev) {
-    this.username.value = ev.target.value;
+    this.validateUsername();
+    this.username = {
+      ...this.username,
+      value: ev.target.value
+    };
+  }
+
+  handlePassword(ev) {
+    this.validatePassword();
+    this.password.value = ev.target.value;
+    this.password = {
+      ...this.password,
+      value: ev.target.value
+    };
+  }
+
+  validateUsername() {
+    if (this.username.value && this.username.value.length > 0) {
+      this.username = {
+        ...this.username,
+        valid: true
+      };
+
+      return;
+    }
+
+    this.username = {
+      ...this.username,
+      valid: false
+    };
+  }
+
+  validatePassword() {
+    if (this.password.value && this.password.value.length > 0) {
+      this.password.valid = true;
+
+      this.password = {
+        ...this.password,
+        valid: true
+      };
+
+      return;
+    }
+
+    this.password = {
+      ...this.password,
+      valid: false
+    };
   }
 
   onLogin() {
     console.log('Clicked login');
-    UserData.login(this.username.value);
+    this.validatePassword();
+    this.validateUsername();
+
+    this.submitted = true;
+
+    if (this.password.valid && this.username.valid) {
+      UserData.login(this.username.value);
+    }
   }
 
   onSignup() {
     console.log('Clicked signup');
+    document.querySelector('ion-nav').push('page-signup');
   }
 
   render() {
@@ -45,9 +101,9 @@ export class PageLogin {
         </ion-toolbar>
       </ion-header>,
 
-      <ion-content>
+      <ion-content padding>
         <div class="login-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic logo"/>
+          <img src="assets/img/appicon.svg" alt="Ionic logo" />
         </div>
 
         <form novalidate>
@@ -65,7 +121,7 @@ export class PageLogin {
 
             <ion-item>
               <ion-label stacked color="primary">Password</ion-label>
-              <ion-input name="password" type="password" required></ion-input>
+              <ion-input name="password" type="password" value={this.password.value} onInput={(ev) => this.handlePassword(ev)} required></ion-input>
             </ion-item>
 
             <ion-text color="danger">
@@ -77,7 +133,7 @@ export class PageLogin {
 
           <ion-row responsive-sm>
             <ion-col>
-              <ion-button onClick={() => this.onLogin()} type="submit" expand="block">Login</ion-button>
+              <ion-button disabled={!this.username.valid || !this.password.valid} onClick={() => this.onLogin()} type="submit" expand="block">Login</ion-button>
             </ion-col>
             <ion-col>
               <ion-button onClick={() => this.onSignup()} color="light" expand="block">Signup</ion-button>
