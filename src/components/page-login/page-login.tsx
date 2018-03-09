@@ -133,7 +133,7 @@ export class PageLogin {
 
           <ion-row responsive-sm>
             <ion-col>
-              <ion-button disabled={!this.username.valid || !this.password.valid} onClick={() => this.onLogin()} type="submit" expand="block">Login</ion-button>
+              <ion-button onClick={() => this.onLogin()} type="submit" expand="block">Login</ion-button>
             </ion-col>
             <ion-col>
               <ion-button onClick={() => this.onSignup()} color="light" expand="block">Signup</ion-button>
