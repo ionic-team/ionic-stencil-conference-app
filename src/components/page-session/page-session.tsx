@@ -1,5 +1,6 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, State } from '@stencil/core';
 import { ConferenceData } from '../../providers/conference-data';
+import { UserData } from '../../providers/user-data';
 
 @Component({
   tag: 'page-session',
@@ -8,11 +9,23 @@ import { ConferenceData } from '../../providers/conference-data';
 export class PageSession {
 
   private session: any;
+  @State() isWatched: boolean;
   @Prop() sessionId: string;
   @Prop() goback = '/';
 
   async componentWillLoad() {
     this.session = await ConferenceData.getSession(this.sessionId);
+    this.isWatched = UserData.hasWatch(this.session.name);
+  }
+
+  toggleWatch() {
+    if (UserData.hasWatch(this.session.name)) {
+      UserData.removeWatch(this.session.name);
+      this.isWatched = false;
+    } else {
+      UserData.addWatch(this.session.name);
+      this.isWatched = true;
+    }
   }
 
   sessionClick(item: string) {
@@ -57,14 +70,19 @@ export class PageSession {
         </div>
 
         <ion-list>
-          <ion-item onClick={() => this.sessionClick('watch')}>
-            <ion-label color="primary">Watch</ion-label>
-          </ion-item>
+          {
+            this.isWatched ?
+            <ion-item onClick={() => this.toggleWatch()}>
+              <ion-label color="primary">Mark as Unwatched</ion-label>
+            </ion-item>
+            :
+            <ion-item onClick={() => this.toggleWatch()}>
+              <ion-label color="primary">Watch</ion-label>
+            </ion-item>
+          }
+
           <ion-item onClick={() => this.sessionClick('add to calendar')}>
             <ion-label color="primary">Add to Calendar</ion-label>
-          </ion-item>
-          <ion-item onClick={() => this.sessionClick('mark as unwatched')}>
-            <ion-label color="primary">Mark as Unwatched</ion-label>
           </ion-item>
           <ion-item onClick={() => this.sessionClick('download video')}>
             <ion-label color="primary">Download Video</ion-label>
