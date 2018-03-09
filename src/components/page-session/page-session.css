@@ -1,3 +1,7 @@
+.session-is-favorite {
+  color: var(--ion-color-secondary);
+}
+
 .session-track-ionic {
   color: var(--ion-color-primary);
 }
