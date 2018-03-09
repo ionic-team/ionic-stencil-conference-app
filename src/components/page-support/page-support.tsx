@@ -43,6 +43,11 @@ export class PageSupport {
     }
   }
 
+  handleSupportQuestion(ev) {
+    this.supportMessage = ev.target.value;
+    this.supportQuestion.valid = this.supportMessage.trim().length > 0;
+  }
+
   // If the user enters text in the support question and then navigates
   // without submitting first, ask if they meant to leave the page
   ionViewCanLeave() {
@@ -85,7 +90,7 @@ export class PageSupport {
           <ion-list no-lines>
             <ion-item>
               <ion-label stacked color="primary">Enter your support message below</ion-label>
-              <ion-textarea name="supportQuestion" rows={6} required></ion-textarea>
+              <ion-textarea name="supportQuestion" rows={6} required onInput={(e) => this.handleSupportQuestion(e)}></ion-textarea>
             </ion-item>
           </ion-list>
 
