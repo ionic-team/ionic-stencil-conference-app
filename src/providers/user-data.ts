@@ -5,6 +5,7 @@ const HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
 
 export class UserDataController {
   private favorites: string[] = [];
+  private watches: string[] = [];
 
   hasFavorite(sessionName: string): boolean {
     return (this.favorites.indexOf(sessionName) > -1);
@@ -18,6 +19,21 @@ export class UserDataController {
     const index = this.favorites.indexOf(sessionName);
     if (index > -1) {
       this.favorites.splice(index, 1);
+    }
+  }
+
+  hasWatch(sessionName: string): boolean {
+    return (this.watches.indexOf(sessionName) > -1);
+  }
+
+  addWatch(sessionName: string): void {
+    this.watches.push(sessionName);
+  }
+
+  removeWatch(sessionName: string): void {
+    const index = this.watches.indexOf(sessionName);
+    if (index > -1) {
+      this.watches.splice(index, 1);
     }
   }
 
