@@ -27,7 +27,8 @@ export class PageSupport {
     toast.present();
   }
 
-  async submit() {
+  async handleSubmit(e) {
+    e.preventDefault();
     this.submitted = true;
 
     if (this.supportQuestion.valid) {
@@ -80,7 +81,7 @@ export class PageSupport {
           <img src="assets/img/appicon.svg" alt="Ionic Logo"/>
         </div>
 
-        <form novalidate>
+        <form novalidate onSubmit={(e) => this.handleSubmit(e)}>
           <ion-list no-lines>
             <ion-item>
               <ion-label stacked color="primary">Enter your support message below</ion-label>
