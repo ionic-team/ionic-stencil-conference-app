@@ -27,7 +27,8 @@ export class PageSupport {
     toast.present();
   }
 
-  async submit() {
+  async handleSubmit(e) {
+    e.preventDefault();
     this.submitted = true;
 
     if (this.supportQuestion.valid) {
@@ -40,6 +41,11 @@ export class PageSupport {
       });
       toast.present();
     }
+  }
+
+  handleSupportQuestion(ev) {
+    this.supportMessage = ev.target.value;
+    this.supportQuestion.valid = this.supportMessage.trim().length > 0;
   }
 
   // If the user enters text in the support question and then navigates
@@ -81,11 +87,11 @@ export class PageSupport {
           <img src="assets/img/appicon.svg" alt="Ionic Logo"/>
         </div>
 
-        <form novalidate>
+        <form novalidate onSubmit={(e) => this.handleSubmit(e)}>
           <ion-list no-lines>
             <ion-item>
               <ion-label stacked color="primary">Enter your support message below</ion-label>
-              <ion-textarea name="supportQuestion" rows={6} required></ion-textarea>
+              <ion-textarea name="supportQuestion" rows={6} required onInput={(e) => this.handleSupportQuestion(e)}></ion-textarea>
             </ion-item>
           </ion-list>
 
