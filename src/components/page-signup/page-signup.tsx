@@ -1,7 +1,9 @@
 import '@ionic/core';
 import '@stencil/core';
 
-import { Component } from '@stencil/core';
+import { Component, State } from '@stencil/core';
+
+import { UserData } from '../../providers/user-data';
 
 
 @Component({
@@ -9,16 +11,77 @@ import { Component } from '@stencil/core';
   styleUrl: 'page-signup.css',
 })
 export class PageSignup {
-  username = {
-    valid: false
+  @State() username = {
+    valid: false,
+    value: null
   };
-  password = {
-    valid: false
+  @State() password = {
+    valid: false,
+    value: null
   };
-  submitted = false;
+  @State() submitted = false;
+
+  handleUsername(ev) {
+    this.validateUsername();
+    this.username = {
+      ...this.username,
+      value: ev.target.value
+    };
+  }
+
+  handlePassword(ev) {
+    this.validatePassword();
+    this.password.value = ev.target.value;
+    this.password = {
+      ...this.password,
+      value: ev.target.value
+    };
+  }
+
+  validateUsername() {
+    if (this.username.value && this.username.value.length > 0) {
+      this.username = {
+        ...this.username,
+        valid: true
+      };
+
+      return;
+    }
+
+    this.username = {
+      ...this.username,
+      valid: false
+    };
+  }
+
+  validatePassword() {
+    if (this.password.value && this.password.value.length > 0) {
+      this.password.valid = true;
+
+      this.password = {
+        ...this.password,
+        valid: true
+      };
+
+      return;
+    }
+
+    this.password = {
+      ...this.password,
+      valid: false
+    };
+  }
 
   onSignup() {
     console.log('clicked signup');
+    this.validatePassword();
+    this.validateUsername();
+
+    this.submitted = true;
+
+    if (this.password.valid && this.username.valid) {
+      UserData.signup(this.username.value);
+    }
   }
 
   render() {
@@ -32,7 +95,7 @@ export class PageSignup {
         </ion-toolbar>
       </ion-header>,
 
-      <ion-content>
+      <ion-content padding>
 
         <div class="signup-logo">
           <img src="assets/img/appicon.svg" alt="Ionic Logo"/>
