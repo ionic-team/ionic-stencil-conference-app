@@ -105,7 +105,7 @@ export class PageSignup {
           <ion-list no-lines>
             <ion-item>
               <ion-label stacked color="primary">Username</ion-label>
-              <ion-input name="username" type="text" required>
+              <ion-input name="username" type="text" value={this.username.value} onInput={(ev) => this.handleUsername(ev)} required>
               </ion-input>
             </ion-item>
             <ion-text color="danger">
@@ -116,7 +116,7 @@ export class PageSignup {
 
             <ion-item>
               <ion-label stacked color="primary">Password</ion-label>
-              <ion-input name="password" type="password" required>
+              <ion-input name="password" type="password" value={this.password.value} onInput={(ev) => this.handlePassword(ev)} required>
               </ion-input>
             </ion-item>
             <ion-text color="danger">
