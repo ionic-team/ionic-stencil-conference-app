@@ -1,7 +1,8 @@
 import '@ionic/core';
 import '@stencil/core';
 
-import { Component, Element, Listen, State } from '@stencil/core';
+import { Config } from '@ionic/core';
+import { Component, Element, Listen, Prop, State } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 
@@ -11,9 +12,11 @@ import { ConferenceData } from '../../providers/conference-data';
   styleUrl: 'page-schedule-filter.css',
 })
 export class PageScheduleFilter {
-  @Element() el: HTMLElement;
+  @Element() el: any;
 
   @State() tracks: Array<{name: string, isChecked: boolean}> = [];
+
+  @Prop({ context: 'config' }) config: Config;
 
   async componentWillLoad() {
     // passed in array of track names that should be excluded (unchecked)
@@ -46,7 +49,7 @@ export class PageScheduleFilter {
     this.tracks.forEach(track => {
       track.isChecked = true;
     });
-    (this.el as any).forceUpdate();
+    this.el.forceUpdate();
   }
 
   @Listen('ionChange')
@@ -56,16 +59,20 @@ export class PageScheduleFilter {
   }
 
   render() {
+    const mode = this.config.get('mode');
+
     return [
       <ion-header>
         <ion-toolbar color="primary">
+          <ion-buttons slot={mode === 'md' ? 'end' : 'start'}>
+            <ion-button onClick={() => this.dismiss()}>Cancel</ion-button>
+          </ion-buttons>
 
           <ion-title>
             Filter Sessions
           </ion-title>
 
           <ion-buttons slot="end">
-            <ion-button onClick={() => this.dismiss()}>Cancel</ion-button>
             <ion-button onClick={() => this.applyFilters()} strong>Done</ion-button>
           </ion-buttons>
         </ion-toolbar>
