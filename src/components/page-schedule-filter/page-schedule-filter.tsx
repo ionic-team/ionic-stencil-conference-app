@@ -58,16 +58,14 @@ export class PageScheduleFilter {
   render() {
     return [
       <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button onClick={() => this.dismiss()}>Cancel</ion-button>
-          </ion-buttons>
+        <ion-toolbar color="primary">
 
           <ion-title>
             Filter Sessions
           </ion-title>
 
           <ion-buttons slot="end">
+            <ion-button onClick={() => this.dismiss()}>Cancel</ion-button>
             <ion-button onClick={() => this.applyFilters()} strong>Done</ion-button>
           </ion-buttons>
         </ion-toolbar>
