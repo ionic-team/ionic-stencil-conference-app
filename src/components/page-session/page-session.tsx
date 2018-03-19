@@ -54,8 +54,9 @@ export class PageSession {
                 )}
                 <div>Session {this.sessionId}</div>
               </ion-col>
-              <ion-col col-6 text-right>
-                <ion-icon onClick={() => this.toggleFavorite()} name={this.isFavorite ? 'heart' : 'heart-empty'} color={this.isFavorite ? 'danger' : ''} size="large"></ion-icon>
+              <ion-col col-6 text-right class={this.isFavorite ? 'show-favorite' : ''}>
+                <ion-icon name="heart-empty" size="large" class="icon-heart-empty" onClick={() => this.toggleFavorite()}></ion-icon>
+                <ion-icon name="heart" color="danger" size="large" class="icon-heart" onClick={() => this.toggleFavorite()}></ion-icon>
               </ion-col>
             </ion-row>
           </ion-grid>

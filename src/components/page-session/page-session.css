@@ -37,3 +37,45 @@
 .session-track-navigation {
   color: var(--ion-color-navigation);
 }
+
+.show-favorite {
+  position: relative;
+}
+
+.icon-heart-empty {
+  transform: scale(1);
+}
+
+.icon-heart {
+  display: none;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  transform: scale(0);
+  animation: scaleIn .3s;
+}
+
+.show-favorite .icon-heart {
+  display: block;
+
+  transform: scale(1);
+}
+
+.show-favorite .icon-heart-empty {
+  transform: scale(0);
+
+  animation: scaleOut .3s;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes scaleOut {
+  from { transform: scale(1); }
+    to { transform: scale(0); }
+}
