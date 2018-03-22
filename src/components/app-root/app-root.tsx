@@ -1,6 +1,6 @@
 import '@ionic/core';
 
-import { Component, Element, Listen, State } from '@stencil/core';
+import { Component, Element, Listen, Prop, State } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 
 import { Plugins } from '@capacitor/core';
@@ -15,6 +15,9 @@ export class AppRoot {
   hasSeenTutorial = false;
 
   @Element() el: HTMLElement;
+
+  @Prop({context: 'isServer'}) isServer: boolean;
+
 
   appPages = [
     {
@@ -37,7 +40,9 @@ export class AppRoot {
   ];
 
   async componentWillLoad() {
-    this.hasSeenTutorial = await UserData.checkHasSeenTutorial();
+    this.hasSeenTutorial = this.isServer
+      ? true
+      : await UserData.checkHasSeenTutorial();
   }
 
   async componentDidLoad() {
