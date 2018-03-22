@@ -1,6 +1,3 @@
-import '@ionic/core';
-import '@stencil/core';
-
 import { Config } from '@ionic/core';
 import { Component, Element, Listen, Prop, State } from '@stencil/core';
 

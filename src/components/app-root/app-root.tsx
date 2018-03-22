@@ -1,8 +1,10 @@
 import '@ionic/core';
-import '@stencil/core';
 
 import { Component, Element, Listen, State } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
+
+import { Plugins } from '@capacitor/core';
+const { SplashScreen } = Plugins;
 
 @Component({
   tag: 'app-root',
@@ -40,6 +42,7 @@ export class AppRoot {
 
   async componentDidLoad() {
     this.checkLoginStatus();
+    SplashScreen.hide();
   }
 
   async checkLoginStatus() {

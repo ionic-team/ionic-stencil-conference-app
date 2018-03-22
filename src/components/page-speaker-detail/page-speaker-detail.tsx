@@ -1,6 +1,3 @@
-import '@ionic/core';
-import '@stencil/core';
-
 import { Component, Prop } from '@stencil/core';
 import { ConferenceData } from '../../providers/conference-data';
 

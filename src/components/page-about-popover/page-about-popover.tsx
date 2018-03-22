@@ -1,6 +1,3 @@
-import '@ionic/core';
-import '@stencil/core';
-
 import { Component, Element, Prop } from '@stencil/core';
 import { NavControllerBase } from '@ionic/core';
 

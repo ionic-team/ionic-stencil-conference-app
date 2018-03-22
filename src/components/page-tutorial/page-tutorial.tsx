@@ -1,6 +1,3 @@
-import '@ionic/core';
-import '@stencil/core';
-
 import { Component } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 

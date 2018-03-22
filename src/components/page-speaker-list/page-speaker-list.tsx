@@ -1,5 +1,3 @@
-import '@ionic/core';
-import '@stencil/core';
 import { ActionSheetController, Config } from '@ionic/core';
 import { Component, Prop } from '@stencil/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -16,8 +14,6 @@ export class PageSpeakerList {
   @Prop({ connect: 'ion-action-sheet-controller' }) actionSheetCtrl: ActionSheetController;
 
   @Prop({ context: 'config' }) config: Config;
-
-  @Prop({ context: 'router' }) router: Config;
 
   async componentWillLoad() {
     this.speakers = await ConferenceData.getSpeakers();

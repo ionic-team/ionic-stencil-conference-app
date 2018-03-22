@@ -1,8 +1,4 @@
-import '@ionic/core';
-import '@stencil/core';
-
 import { Component, Prop } from '@stencil/core';
-
 import { PopoverController } from '@ionic/core';
 
 @Component({

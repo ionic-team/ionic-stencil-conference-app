@@ -1,6 +1,3 @@
-import '@ionic/core';
-import '@stencil/core';
-
 import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
 import { AlertController, NavControllerBase } from '@ionic/core';
 import { UserData } from '../../providers/user-data';
