@@ -49,6 +49,7 @@ declare global {
   namespace JSXElements {
     export interface AppRootAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -78,6 +79,7 @@ declare global {
   }
   namespace JSXElements {
     export interface PageAboutPopoverAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -109,6 +111,7 @@ declare global {
   namespace JSXElements {
     export interface PageAboutAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -139,6 +142,7 @@ declare global {
   namespace JSXElements {
     export interface PageAccountAttributes extends HTMLAttributes {
       
+      onUserDidLogOut?: (event: CustomEvent) => void;
     }
   }
 }
@@ -169,6 +173,7 @@ declare global {
   namespace JSXElements {
     export interface PageLoginAttributes extends HTMLAttributes {
       
+      onUserDidLogIn?: (event: CustomEvent) => void;
     }
   }
 }
@@ -198,6 +203,7 @@ declare global {
   }
   namespace JSXElements {
     export interface PageMapAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -229,6 +235,7 @@ declare global {
   namespace JSXElements {
     export interface PageScheduleFilterAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -258,6 +265,7 @@ declare global {
   }
   namespace JSXElements {
     export interface PageScheduleAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -290,6 +298,7 @@ declare global {
     export interface PageSessionAttributes extends HTMLAttributes {
       goback?: string;
       sessionId?: string;
+      
     }
   }
 }
@@ -319,6 +328,7 @@ declare global {
   }
   namespace JSXElements {
     export interface PageSignupAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -350,6 +360,7 @@ declare global {
   namespace JSXElements {
     export interface PageSpeakerDetailAttributes extends HTMLAttributes {
       speakerId?: string;
+      
     }
   }
 }
@@ -379,6 +390,7 @@ declare global {
   }
   namespace JSXElements {
     export interface PageSpeakerListAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -410,6 +422,7 @@ declare global {
   namespace JSXElements {
     export interface PageSupportAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -440,6 +453,7 @@ declare global {
   namespace JSXElements {
     export interface PageTabsAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -469,6 +483,7 @@ declare global {
   }
   namespace JSXElements {
     export interface PageTutorialAttributes extends HTMLAttributes {
+      
       
     }
   }

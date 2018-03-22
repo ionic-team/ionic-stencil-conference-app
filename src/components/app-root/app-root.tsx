@@ -184,7 +184,7 @@ export class AppRoot {
             </ion-content>
           </ion-menu>
 
-          <ion-nav swipeBackEnabled={false} main></ion-nav>
+          <ion-router-outlet animated={false} main></ion-router-outlet>
         </ion-split-pane>
       </ion-app>
     );
