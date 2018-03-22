@@ -104,7 +104,7 @@ export class AppRoot {
                 <ion-title>Menu</ion-title>
               </ion-toolbar>
             </ion-header>
-            <ion-content>
+            <ion-content forceOverscroll={false}>
               <ion-list>
                 <ion-list-header>
                   Navigate
