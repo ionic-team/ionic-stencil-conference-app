@@ -58,7 +58,7 @@ export class UserDataController {
 
   async checkHasSeenTutorial(): Promise<boolean> {
     const value = await get(HAS_SEEN_TUTORIAL);
-    return !value;
+    return !!value;
   }
 }
 
