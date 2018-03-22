@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.conferenceapp",
+  "appName": "ConferenceApp",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
