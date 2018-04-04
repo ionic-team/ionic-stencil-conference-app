@@ -1,5 +1,4 @@
 import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
-import { NavControllerBase } from '@ionic/core';
 import { UserData } from '../../providers/user-data';
 
 
@@ -72,7 +71,7 @@ export class PageLogin {
 
   async onLogin(e) {
     e.preventDefault();
-    const navCtrl: NavControllerBase = await (this.nav as any).componentOnReady();
+    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
 
     console.log('Clicked login');
     this.validatePassword();
@@ -90,7 +89,7 @@ export class PageLogin {
 
   async onSignup(e) {
     e.preventDefault();
-    const navCtrl: NavControllerBase = await (this.nav as any).componentOnReady();
+    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
     console.log('Clicked signup');
     navCtrl.push('page-signup');
   }

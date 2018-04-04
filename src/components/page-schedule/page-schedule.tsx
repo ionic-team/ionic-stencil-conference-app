@@ -85,7 +85,7 @@ export class PageSchedule {
   async presentFilter() {
     const modal = await this.modalCtrl.create({
       component: 'page-schedule-filter',
-      data: { excludedTracks: this.excludeTracks }
+      componentProps: { excludedTracks: this.excludeTracks }
     });
     await modal.present();
   }
@@ -100,7 +100,7 @@ export class PageSchedule {
 
       // create an alert instance
       const alert = await this.alertCtrl.create({
-        title: 'Favorite Added',
+        header: 'Favorite Added',
         buttons: [{
           text: 'OK',
           handler: () => {
@@ -118,7 +118,7 @@ export class PageSchedule {
 
   async removeFavorite(session: any, title: string) {
     const alert = await this.alertCtrl.create({
-      title: title,
+      header: title,
       message: 'Would you like to remove this session from your favorites?',
       buttons: [
         {

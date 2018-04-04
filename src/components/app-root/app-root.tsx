@@ -2,8 +2,8 @@ import '@ionic/core';
 
 import { Component, Element, Listen, Prop, State } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
-
 import { Plugins } from '@capacitor/core';
+
 const { SplashScreen } = Plugins;
 
 @Component({
@@ -47,7 +47,11 @@ export class AppRoot {
 
   async componentDidLoad() {
     this.checkLoginStatus();
-    SplashScreen.hide();
+    try {
+      await SplashScreen.hide();
+    } catch {
+      return;
+    }
   }
 
   async checkLoginStatus() {
@@ -151,7 +155,7 @@ export class AppRoot {
                 </ion-menu-toggle>
 
                 <ion-menu-toggle autoHide={false}>
-                  <ion-item href="support" tappable>
+                  <ion-item href="support" button>
                     <ion-icon slot="start" name="help"></ion-icon>
                     <ion-label>
                       Support
@@ -161,14 +165,14 @@ export class AppRoot {
 
                 <ion-menu-toggle autoHide={false}>
                   {this.loggedIn
-                    ? <ion-item onClick={() => this.logout()} tappable>
+                    ? <ion-item onClick={() => this.logout()} button>
                       <ion-icon slot="start" name="log-out"></ion-icon>
                       <ion-label>
                         Logout
                           </ion-label>
                     </ion-item>
 
-                    : <ion-item href="signup" tappable>
+                    : <ion-item href="signup" button>
                       <ion-icon slot="start" name="person-add"></ion-icon>
                       <ion-label>
                         Signup

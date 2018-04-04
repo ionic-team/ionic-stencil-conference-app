@@ -1,5 +1,4 @@
 import { Component, Element, Prop } from '@stencil/core';
-import { NavControllerBase } from '@ionic/core';
 
 @Component({
   tag: 'page-about-popover',
@@ -9,7 +8,7 @@ export class PageAboutPopover {
   @Element() el: HTMLElement;
 
   @Prop({ connect: 'ion-nav' })
-  nav: NavControllerBase;
+  nav: HTMLIonNavElement;
 
   close(url: string) {
     window.open(url, '_blank');
@@ -17,7 +16,7 @@ export class PageAboutPopover {
   }
 
   async support() {
-    const nav: NavControllerBase = await (this.nav as any).componentOnReady();
+    const nav: HTMLIonNavElement = await (this.nav as any).componentOnReady();
     nav.setRoot('page-support', null, { animate: true, direction: 'forward' });
     this.dismiss();
   }

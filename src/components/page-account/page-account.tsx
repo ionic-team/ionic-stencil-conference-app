@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
-import { AlertController, NavControllerBase } from '@ionic/core';
+import { AlertController } from '@ionic/core';
 import { UserData } from '../../providers/user-data';
 
 
@@ -9,7 +9,7 @@ import { UserData } from '../../providers/user-data';
 export class PageAccount {
 
   @State() user;
-  @Prop({ connect: 'ion-nav' }) nav: NavControllerBase;
+  @Prop({ connect: 'ion-nav' }) nav: HTMLIonNavElement;
   @Prop({ connect: 'ion-alert-controller' }) alertCtrl: AlertController;
   @Event() userDidLogOut: EventEmitter;
 
@@ -30,20 +30,20 @@ export class PageAccount {
   }
 
   async logout() {
-    const navCtrl: NavControllerBase = await (this.nav as any).componentOnReady();
+    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
     await UserData.logout();
     this.userDidLogOut.emit({ loginStatus: false });
     navCtrl.setRoot('page-tabs', null, { animate: true, direction: 'forward' });
   }
 
   async support() {
-    const navCtrl: NavControllerBase = await (this.nav as any).componentOnReady();
+    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
     navCtrl.setRoot('page-support');
   }
 
   async changeUsername() {
     const alert = await this.alertCtrl.create({
-      title: 'Change Username',
+      header: 'Change Username',
       inputs: [
         {
           type: 'text',
