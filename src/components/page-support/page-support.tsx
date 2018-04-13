@@ -113,7 +113,7 @@ export class PageSupport {
         <form novalidate>
           <ion-list no-lines>
             <ion-item>
-              <ion-label stacked color="primary">Enter your support message below</ion-label>
+              <ion-label position="stacked" color="primary">Enter your support message below</ion-label>
               <ion-textarea  name="supportQuestion" value={this.supportQuestion.value} onInput={(ev) => this.handleSupportQuestion(ev)} rows={6} required></ion-textarea>
             </ion-item>
           </ion-list>

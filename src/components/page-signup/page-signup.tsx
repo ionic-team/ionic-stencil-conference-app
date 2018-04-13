@@ -101,7 +101,7 @@ export class PageSignup {
         <form novalidate>
           <ion-list no-lines>
             <ion-item>
-              <ion-label stacked color="primary">Username</ion-label>
+              <ion-label position="stacked" color="primary">Username</ion-label>
               <ion-input name="username" type="text" value={this.username.value} onInput={(ev) => this.handleUsername(ev)} required>
               </ion-input>
             </ion-item>
@@ -112,7 +112,7 @@ export class PageSignup {
             </ion-text>
 
             <ion-item>
-              <ion-label stacked color="primary">Password</ion-label>
+              <ion-label position="stacked" color="primary">Password</ion-label>
               <ion-input name="password" type="password" value={this.password.value} onInput={(ev) => this.handlePassword(ev)} required>
               </ion-input>
             </ion-item>

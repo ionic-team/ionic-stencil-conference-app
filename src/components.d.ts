@@ -28,9 +28,15 @@ import '@ionic/core';
 
 
 declare global {
-  interface HTMLAppRootElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface AppRoot {
+
+    }
   }
+
+  interface HTMLAppRootElement extends StencilComponents.AppRoot, HTMLStencilElement {}
+
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
@@ -55,9 +61,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageAboutPopoverElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageAboutPopover {
+
+    }
   }
+
+  interface HTMLPageAboutPopoverElement extends StencilComponents.PageAboutPopover, HTMLStencilElement {}
+
   var HTMLPageAboutPopoverElement: {
     prototype: HTMLPageAboutPopoverElement;
     new (): HTMLPageAboutPopoverElement;
@@ -82,9 +94,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageAboutElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageAbout {
+
+    }
   }
+
+  interface HTMLPageAboutElement extends StencilComponents.PageAbout, HTMLStencilElement {}
+
   var HTMLPageAboutElement: {
     prototype: HTMLPageAboutElement;
     new (): HTMLPageAboutElement;
@@ -109,9 +127,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageAccountElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageAccount {
+
+    }
   }
+
+  interface HTMLPageAccountElement extends StencilComponents.PageAccount, HTMLStencilElement {}
+
   var HTMLPageAccountElement: {
     prototype: HTMLPageAccountElement;
     new (): HTMLPageAccountElement;
@@ -136,9 +160,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageLoginElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageLogin {
+
+    }
   }
+
+  interface HTMLPageLoginElement extends StencilComponents.PageLogin, HTMLStencilElement {}
+
   var HTMLPageLoginElement: {
     prototype: HTMLPageLoginElement;
     new (): HTMLPageLoginElement;
@@ -163,9 +193,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageMapElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageMap {
+
+    }
   }
+
+  interface HTMLPageMapElement extends StencilComponents.PageMap, HTMLStencilElement {}
+
   var HTMLPageMapElement: {
     prototype: HTMLPageMapElement;
     new (): HTMLPageMapElement;
@@ -190,9 +226,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageScheduleFilterElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageScheduleFilter {
+
+    }
   }
+
+  interface HTMLPageScheduleFilterElement extends StencilComponents.PageScheduleFilter, HTMLStencilElement {}
+
   var HTMLPageScheduleFilterElement: {
     prototype: HTMLPageScheduleFilterElement;
     new (): HTMLPageScheduleFilterElement;
@@ -217,9 +259,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageScheduleElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageSchedule {
+
+    }
   }
+
+  interface HTMLPageScheduleElement extends StencilComponents.PageSchedule, HTMLStencilElement {}
+
   var HTMLPageScheduleElement: {
     prototype: HTMLPageScheduleElement;
     new (): HTMLPageScheduleElement;
@@ -244,10 +292,16 @@ declare global {
 
 
 declare global {
-  interface HTMLPageSessionElement extends HTMLStencilElement {
-    'goback': string;
-    'sessionId': string;
+
+  namespace StencilComponents {
+    interface PageSession {
+      'goback': string;
+      'sessionId': string;
+    }
   }
+
+  interface HTMLPageSessionElement extends StencilComponents.PageSession, HTMLStencilElement {}
+
   var HTMLPageSessionElement: {
     prototype: HTMLPageSessionElement;
     new (): HTMLPageSessionElement;
@@ -273,9 +327,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageSignupElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageSignup {
+
+    }
   }
+
+  interface HTMLPageSignupElement extends StencilComponents.PageSignup, HTMLStencilElement {}
+
   var HTMLPageSignupElement: {
     prototype: HTMLPageSignupElement;
     new (): HTMLPageSignupElement;
@@ -300,9 +360,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageSpeakerDetailElement extends HTMLStencilElement {
-    'speakerId': string;
+
+  namespace StencilComponents {
+    interface PageSpeakerDetail {
+      'speakerId': string;
+    }
   }
+
+  interface HTMLPageSpeakerDetailElement extends StencilComponents.PageSpeakerDetail, HTMLStencilElement {}
+
   var HTMLPageSpeakerDetailElement: {
     prototype: HTMLPageSpeakerDetailElement;
     new (): HTMLPageSpeakerDetailElement;
@@ -327,9 +393,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageSpeakerListElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageSpeakerList {
+
+    }
   }
+
+  interface HTMLPageSpeakerListElement extends StencilComponents.PageSpeakerList, HTMLStencilElement {}
+
   var HTMLPageSpeakerListElement: {
     prototype: HTMLPageSpeakerListElement;
     new (): HTMLPageSpeakerListElement;
@@ -354,9 +426,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageSupportElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageSupport {
+
+    }
   }
+
+  interface HTMLPageSupportElement extends StencilComponents.PageSupport, HTMLStencilElement {}
+
   var HTMLPageSupportElement: {
     prototype: HTMLPageSupportElement;
     new (): HTMLPageSupportElement;
@@ -381,9 +459,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageTabsElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageTabs {
+
+    }
   }
+
+  interface HTMLPageTabsElement extends StencilComponents.PageTabs, HTMLStencilElement {}
+
   var HTMLPageTabsElement: {
     prototype: HTMLPageTabsElement;
     new (): HTMLPageTabsElement;
@@ -408,9 +492,15 @@ declare global {
 
 
 declare global {
-  interface HTMLPageTutorialElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface PageTutorial {
+
+    }
   }
+
+  interface HTMLPageTutorialElement extends StencilComponents.PageTutorial, HTMLStencilElement {}
+
   var HTMLPageTutorialElement: {
     prototype: HTMLPageTutorialElement;
     new (): HTMLPageTutorialElement;

@@ -14,14 +14,22 @@
     "test": "jest",
     "test.watch": "jest --watch"
   },
-  "devDependencies": {
+  "dependencies": {
     "@ionic/core": "4.0.0-alpha.1",
-    "@stencil/core": "0.7.18",
+    "@capacitor/core": "^1.0.0-alpha.34",
+    "@capacitor/ios": "^1.0.0-alpha.34",
+    "@ionic-native/core": "^5.0.0-beta.6",
+    "@ionic-native/in-app-browser": "^5.0.0-beta.6",
+    "rxjs": "^5.5.6"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^1.0.0-alpha.34",
+    "@stencil/core": "0.7.23",
     "@stencil/dev-server": "latest",
     "@stencil/sass": "0.0.3",
     "@stencil/utils": "latest",
-    "@types/jest": "^21.1.1",
-    "jest": "^21.2.1",
+    "@types/jest": "^22.2.3",
+    "jest": "^22.4.3",
     "tslint": "^5.9.1",
     "tslint-ionic-rules": "0.0.14"
   },
@@ -47,13 +55,5 @@
       "json",
       "jsx"
     ]
-  },
-  "dependencies": {
-    "@capacitor/cli": "^1.0.0-alpha.33",
-    "@capacitor/core": "^1.0.0-alpha.33",
-    "@capacitor/ios": "^1.0.0-alpha.33",
-    "@ionic-native/core": "^5.0.0-beta.6",
-    "@ionic-native/in-app-browser": "^5.0.0-beta.6",
-    "rxjs": "^5.5.6"
   }
 }
