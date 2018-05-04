@@ -23,7 +23,7 @@
     "rxjs": "^5.5.6"
   },
   "devDependencies": {
-    "@capacitor/cli": "^1.0.0-alpha.36",
+    "@capacitor/cli": "^1.0.0-alpha.37",
     "@stencil/core": "0.7.26",
     "@stencil/dev-server": "latest",
     "@stencil/sass": "0.0.3",
