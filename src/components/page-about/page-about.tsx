@@ -1,5 +1,4 @@
 import { Component, Prop } from '@stencil/core';
-import { PopoverController } from '@ionic/core';
 
 @Component({
   tag: 'page-about',
@@ -7,7 +6,7 @@ import { PopoverController } from '@ionic/core';
 })
 export class PageAbout {
 
-  @Prop({ connect: 'ion-popover-controller' }) popoverCtrl: PopoverController;
+  @Prop({ connect: 'ion-popover-controller' }) popoverCtrl: HTMLIonPopoverControllerElement;
 
   async presentPopover(event: any) {
     const popover = await this.popoverCtrl.create({

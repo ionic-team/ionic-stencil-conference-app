@@ -1,5 +1,4 @@
 import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
-import { AlertController } from '@ionic/core';
 import { UserData } from '../../providers/user-data';
 
 
@@ -10,7 +9,7 @@ export class PageAccount {
 
   @State() user;
   @Prop({ connect: 'ion-nav' }) nav: HTMLIonNavElement;
-  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: AlertController;
+  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
   @Event() userDidLogOut: EventEmitter;
 
   componentDidLoad() {
@@ -33,7 +32,7 @@ export class PageAccount {
     const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
     await UserData.logout();
     this.userDidLogOut.emit({ loginStatus: false });
-    navCtrl.setRoot('page-tabs', null, { animate: true, direction: 'forward' });
+    navCtrl.setRoot('page-tabs', null, { animated: true, direction: 'forward' });
   }
 
   async support() {

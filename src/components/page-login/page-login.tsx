@@ -83,7 +83,7 @@ export class PageLogin {
       await UserData.login(this.username.value);
 
       this.userDidLogIn.emit({loginStatus: true});
-      navCtrl.setRoot('page-tabs', null , {animate: true, direction: 'forward'});
+      navCtrl.setRoot('page-tabs', null , {animated: true, direction: 'forward'});
     }
   }
 

@@ -1,4 +1,4 @@
-import { ActionSheetController, Config } from '@ionic/core';
+import { Config } from '@ionic/core';
 import { Component, Prop } from '@stencil/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
@@ -11,7 +11,7 @@ import { ConferenceData } from '../../providers/conference-data';
 export class PageSpeakerList {
   speakers: any[] = [];
 
-  @Prop({ connect: 'ion-action-sheet-controller' }) actionSheetCtrl: ActionSheetController;
+  @Prop({ connect: 'ion-action-sheet-controller' }) actionSheetCtrl: HTMLIonActionSheetControllerElement;
 
   @Prop({ context: 'config' }) config: Config;
 

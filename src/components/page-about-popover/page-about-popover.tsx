@@ -17,7 +17,7 @@ export class PageAboutPopover {
 
   async support() {
     const nav: HTMLIonNavElement = await (this.nav as any).componentOnReady();
-    nav.setRoot('page-support', null, { animate: true, direction: 'forward' });
+    nav.setRoot('page-support', null, { animated: true, direction: 'forward' });
     this.dismiss();
   }
 
