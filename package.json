@@ -26,7 +26,7 @@
     "@capacitor/cli": "^1.0.0-alpha.37",
     "@stencil/core": "0.8.2",
     "@stencil/dev-server": "latest",
-    "@stencil/sass": "0.0.3",
+    "@stencil/sass": "0.0.5",
     "@stencil/utils": "latest",
     "@types/jest": "^22.2.3",
     "jest": "^22.4.3",
