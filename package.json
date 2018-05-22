@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ionic/core": "4.0.0-alpha.6",
-    "@capacitor/core": "^1.0.0-alpha.37",
+    "@capacitor/core": "^1.0.0-alpha.38",
     "@capacitor/ios": "^1.0.0-alpha.37",
     "@ionic-native/core": "^5.0.0-beta.10",
     "@ionic-native/in-app-browser": "^5.0.0-beta.10",
