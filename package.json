@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-alpha.37",
-    "@stencil/core": "0.8.2",
+    "@stencil/core": "0.9.4",
     "@stencil/dev-server": "latest",
     "@stencil/sass": "0.0.3",
     "@stencil/utils": "latest",
