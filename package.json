@@ -31,7 +31,7 @@
     "@types/jest": "^22.2.3",
     "jest": "^22.4.3",
     "tslint": "^5.10.0",
-    "tslint-ionic-rules": "0.0.14"
+    "tslint-ionic-rules": "0.0.16"
   },
   "repository": {
     "type": "git",
