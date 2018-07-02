@@ -15,6 +15,16 @@
  * element in the app.
  */
 
+@import "~@ionic/core/css/normalize.css";
+@import "~@ionic/core/css/structure.css";
+@import "~@ionic/core/css/typography.css";
+@import "~@ionic/core/css/colors.css";
+
+@import "~@ionic/core/css/padding.css";
+@import "~@ionic/core/css/float-elements.css";
+@import "~@ionic/core/css/text-alignment.css";
+@import "~@ionic/core/css/text-transformation.css";
+
 :root {
   --ion-color-primary:                 #3880ff;
   --ion-color-secondary:               #0cd1e8;
@@ -41,8 +51,9 @@
   --ion-color-food:                    #3bc7c4;
   --ion-color-documentation:           #b16be3;
   --ion-color-navigation:              #6600cc;
+}
 
-  /* Material Design Toolbar Variables */
-  --ion-toolbar-md-background-color:   var(--ion-color-primary);
-  --ion-toolbar-md-text-color:         #fff;
+.md ion-toolbar {
+  --background: var(--ion-color-primary);
+  color: #fff;
 }

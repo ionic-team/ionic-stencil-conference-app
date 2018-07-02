@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "stencil build",
-    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "dev": "stencil build --dev --watch --serve",
     "serve": "stencil-dev-server",
     "start": "npm run dev",
     "test": "jest",
@@ -16,22 +16,20 @@
   },
   "dependencies": {
     "@ionic/core": "4.0.0-alpha.6",
-    "@capacitor/core": "^1.0.0-alpha.37",
-    "@capacitor/ios": "^1.0.0-alpha.37",
-    "@ionic-native/core": "^5.0.0-beta.10",
-    "@ionic-native/in-app-browser": "^5.0.0-beta.10",
-    "rxjs": "^6.1.0"
+    "@capacitor/core": "^1.0.0-beta.0",
+    "@capacitor/ios": "^1.0.0-beta.0",
+    "@ionic-native/core": "^5.0.0-beta.13",
+    "@ionic-native/in-app-browser": "^5.0.0-beta.13",
+    "rxjs": "^6.2.1"
   },
   "devDependencies": {
-    "@capacitor/cli": "^1.0.0-alpha.37",
-    "@stencil/core": "0.8.2",
-    "@stencil/dev-server": "latest",
-    "@stencil/sass": "0.0.3",
-    "@stencil/utils": "latest",
+    "@capacitor/cli": "^1.0.0-beta.0",
+    "@stencil/core": "0.10.0-9",
+    "@stencil/sass": "0.0.5",
     "@types/jest": "^22.2.3",
     "jest": "^22.4.3",
     "tslint": "^5.10.0",
-    "tslint-ionic-rules": "0.0.14"
+    "tslint-ionic-rules": "0.0.16"
   },
   "repository": {
     "type": "git",
