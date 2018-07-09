@@ -9,13 +9,13 @@
   "scripts": {
     "build": "stencil build",
     "dev": "stencil build --dev --watch --serve",
-    "serve": "stencil-dev-server",
     "start": "npm run dev",
+    "serve": "stencil-dev-server",
     "test": "jest",
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "@ionic/core": "4.0.0-alpha.6",
+    "@ionic/core": "4.0.0-alpha.8",
     "@capacitor/core": "^1.0.0-beta.0",
     "@capacitor/ios": "^1.0.0-beta.0",
     "@ionic-native/core": "^5.0.0-beta.13",
