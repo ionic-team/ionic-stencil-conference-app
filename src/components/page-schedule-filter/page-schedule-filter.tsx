@@ -11,14 +11,16 @@ import { ConferenceData } from '../../providers/conference-data';
 export class PageScheduleFilter {
   @Element() el: any;
 
-  @State() tracks: Array<{name: string, isChecked: boolean}>;
+  @State() tracks: {name: string, isChecked: boolean}[];
 
   @Prop({ context: 'config' }) config: Config;
+
+  @Prop() excludedTracks: string[] = [];
 
   async componentWillLoad() {
     // passed in array of track names that should be excluded (unchecked)
     // TODO = this.navParams.data.excludedTracks;
-    const excludedTrackNames = [];
+    const excludedTrackNames = this.excludedTracks;
 
     const trackNames = await ConferenceData.getTracks();
     this.tracks = trackNames.map(trackName => ({
@@ -48,7 +50,7 @@ export class PageScheduleFilter {
 
   @Listen('ionChange')
   onToggleChanged(ev: CustomEvent) {
-    const track = this.tracks.find(({name}) => name === (ev.target as any).name);
+    const track = this.tracks.find(({ name }) => name === (ev.target as any).name);
     track.isChecked = (ev.target as any).checked;
   }
 
@@ -77,7 +79,7 @@ export class PageScheduleFilter {
           <ion-list-header>Tracks</ion-list-header>
 
           {this.tracks.map(track =>
-            <ion-item class={{[`item-track-${track.name.toLowerCase()}`]: true, 'item-track': true}}>
+            <ion-item class={{ [`item-track-${track.name.toLowerCase()}`]: true, 'item-track': true }}>
               <span slot="start" class="dot"></span>
               <ion-label>{track.name}</ion-label>
               <ion-toggle checked={track.isChecked} color="success" name={track.name}></ion-toggle>

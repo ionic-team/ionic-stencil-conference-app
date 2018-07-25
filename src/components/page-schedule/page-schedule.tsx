@@ -53,6 +53,7 @@ export class PageSchedule {
   @Listen('ionInput')
   searchbarChanged(event: any) {
     this.queryText = event.target.value;
+    console.log(this.queryText);
     this.updateSchedule();
   }
 
@@ -204,7 +205,7 @@ export class PageSchedule {
               </ion-item-divider>
 
               {group.sessions.map(session =>
-              <ion-item-sliding class={{[`item-sliding-track-${session.tracks[0].toLowerCase()}`]: true, 'item-sliding-track': true}} hidden={session.hide}>
+              <ion-item-sliding class={{ [`item-sliding-track-${session.tracks[0].toLowerCase()}`]: true, 'item-sliding-track': true }} hidden={session.hide}>
               <ion-item href={`/schedule/session/${session.id}`}>
                   <ion-label>
                     <h3>{session.name}</h3>

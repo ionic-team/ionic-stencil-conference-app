@@ -231,7 +231,7 @@ declare global {
 
   namespace StencilComponents {
     interface PageScheduleFilter {
-
+      'excludedTracks': string[];
     }
   }
 
@@ -254,7 +254,7 @@ declare global {
   }
   namespace JSXElements {
     export interface PageScheduleFilterAttributes extends HTMLAttributes {
-
+      'excludedTracks'?: string[];
     }
   }
 }
