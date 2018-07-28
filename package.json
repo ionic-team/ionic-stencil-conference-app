@@ -20,7 +20,7 @@
     "@capacitor/ios": "^1.0.0-beta.0",
     "@ionic-native/core": "^5.0.0-beta.13",
     "@ionic-native/in-app-browser": "^5.0.0-beta.13",
-    "rxjs": "^6.2.1"
+    "rxjs": "^6.2.2"
   },
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-beta.0",
