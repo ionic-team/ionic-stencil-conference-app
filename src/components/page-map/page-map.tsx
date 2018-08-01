@@ -33,7 +33,7 @@ export class PageMap {
 
       const marker = new google.maps.Marker({
         position: markerData,
-        map: map,
+        map,
         title: markerData.name
       });
 
@@ -65,9 +65,9 @@ export class PageMap {
 
 function getGoogleMaps(apiKey: string): Promise<any> {
   const win = window as any;
-  const google = win.google;
-  if (google && google.maps) {
-    return Promise.resolve(google.maps);
+  const googleModule = win.google;
+  if (googleModule && googleModule.maps) {
+    return Promise.resolve(googleModule.maps);
   }
 
   return new Promise((resolve, reject) => {
@@ -77,10 +77,9 @@ function getGoogleMaps(apiKey: string): Promise<any> {
     script.defer = true;
     document.body.appendChild(script);
     script.onload = () => {
-      const win = window as any;
-      const google = win.google;
-      if (google && google.maps) {
-        resolve(google.maps);
+      const googleModule2 = win.google;
+      if (googleModule2 && googleModule2.maps) {
+        resolve(googleModule2.maps);
       } else {
         reject('google maps not available');
       }

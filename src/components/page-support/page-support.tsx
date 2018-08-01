@@ -114,7 +114,7 @@ export class PageSupport {
           <ion-list no-lines>
             <ion-item>
               <ion-label position="stacked" color="primary">Enter your support message below</ion-label>
-              <ion-textarea  name="supportQuestion" value={this.supportQuestion.value} onInput={(ev) => this.handleSupportQuestion(ev)} rows={6} required></ion-textarea>
+              <ion-textarea name="supportQuestion" value={this.supportQuestion.value} onInput={(ev) => this.handleSupportQuestion(ev)} rows={6} required></ion-textarea>
             </ion-item>
           </ion-list>
 

@@ -16,7 +16,7 @@ export class AppRoot {
 
   @Element() el: HTMLElement;
 
-  @Prop({context: 'isServer'}) isServer: boolean;
+  @Prop({ context: 'isServer' }) isServer: boolean;
 
 
   appPages = [
@@ -24,15 +24,18 @@ export class AppRoot {
       title: 'Schedule',
       url: '/schedule',
       icon: 'calendar'
-    }, {
+    },
+    {
       title: 'Speakers',
       url: '/speakers',
       icon: 'contacts'
-    }, {
+    },
+    {
       title: 'Map',
       url: '/map',
       icon: 'map'
-    }, {
+    },
+    {
       title: 'About',
       url: '/about',
       icon: 'information-circle'

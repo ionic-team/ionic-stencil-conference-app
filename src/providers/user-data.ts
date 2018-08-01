@@ -44,7 +44,7 @@ export class UserDataController {
   }
 
   async getUsername(): Promise<string> {
-    return await get('username');
+    return get('username');
   }
 
   async isLoggedIn(): Promise<boolean> {
@@ -53,7 +53,7 @@ export class UserDataController {
   }
 
   async hasSeenTutorial(value: boolean): Promise<void> {
-    return await set(HAS_SEEN_TUTORIAL, value);
+    return set(HAS_SEEN_TUTORIAL, value);
   }
 
   async checkHasSeenTutorial(): Promise<boolean> {

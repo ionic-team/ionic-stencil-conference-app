@@ -16,7 +16,7 @@ export class PageLogin {
     value: null
   };
   @State() submitted = false;
-  @Prop({connect: 'ion-nav'}) nav;
+  @Prop({ connect: 'ion-nav' }) nav;
   @Event() userDidLogIn: EventEmitter;
   handleUsername(ev) {
     this.validateUsername();
@@ -82,8 +82,8 @@ export class PageLogin {
     if (this.password.valid && this.username.valid) {
       await UserData.login(this.username.value);
 
-      this.userDidLogIn.emit({loginStatus: true});
-      navCtrl.setRoot('page-tabs', null , {animated: true, direction: 'forward'});
+      this.userDidLogIn.emit({ loginStatus: true });
+      navCtrl.setRoot('page-tabs', null , { animated: true, direction: 'forward' });
     }
   }
 

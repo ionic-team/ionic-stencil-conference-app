@@ -1,5 +1,0 @@
-// https://stenciljs.com/docs/config
-
-exports.config = {
-  globalStyle: 'src/global.css'
-};

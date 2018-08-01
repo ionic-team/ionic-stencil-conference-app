@@ -48,7 +48,7 @@ export class PageSession {
             <ion-row>
               <ion-col col-6>
                 {this.session.tracks.map(track =>
-                  <span class={{[`session-track-${track.toLowerCase()}`]: true}}>
+                  <span class={{ [`session-track-${track.toLowerCase()}`]: true }}>
                     { track }
                   </span>
                 )}
