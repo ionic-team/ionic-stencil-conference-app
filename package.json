@@ -15,7 +15,7 @@
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "@ionic/core": "4.0.0-beta.0",
+    "@ionic/core": "4.0.0-beta.1",
     "@capacitor/core": "^1.0.0-beta.3",
     "@capacitor/ios": "^1.0.0-beta.3",
     "@ionic-native/core": "^5.0.0-beta.14",
