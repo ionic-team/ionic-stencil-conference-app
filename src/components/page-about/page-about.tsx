@@ -11,7 +11,7 @@ export class PageAbout {
   async presentPopover(event: any) {
     const popover = await this.popoverCtrl.create({
       component: 'page-about-popover',
-      ev: event
+      event
     });
     popover.present();
   }

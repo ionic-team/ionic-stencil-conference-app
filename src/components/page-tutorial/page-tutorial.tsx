@@ -21,7 +21,7 @@ export class PageTutorial {
         </ion-toolbar>
       </ion-header>,
 
-      <ion-content scrollEnabled={false}>
+      <ion-content scrollY={false}>
         <ion-slides pager={false}>
 
           <ion-slide>
