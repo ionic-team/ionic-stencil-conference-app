@@ -71,10 +71,6 @@ export class PageSchedule {
   }
 
   async updateSchedule() {
-    // Close any open sliding items when the schedule updates
-    if (this.scheduleList) {
-      this.scheduleList.closeSlidingItems();
-    }
 
     const data = await ConferenceData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment);
     this.shownSessions = data.shownSessions;
@@ -86,7 +82,9 @@ export class PageSchedule {
   async presentFilter() {
     const modal = await this.modalCtrl.create({
       component: 'page-schedule-filter',
-      componentProps: { excludedTracks: this.excludeTracks }
+      componentProps: {
+        excludedTracks: this.excludeTracks,
+      }
     });
     await modal.present();
   }
@@ -106,7 +104,6 @@ export class PageSchedule {
           text: 'OK',
           handler: () => {
             // close the sliding item
-            this.scheduleList.closeSlidingItems();
             this.updateSchedule();
           }
         }]
@@ -127,7 +124,6 @@ export class PageSchedule {
           handler: () => {
             // they clicked the cancel button, do not remove the session
             // close the sliding item and hide the option buttons
-            this.scheduleList.closeSlidingItems();
           }
         },
         {
@@ -147,11 +143,11 @@ export class PageSchedule {
   async openSocial(social: string) {
     this.toggleList();
     const loading = await this.loadingCtrl.create({
-      content: `Posting to ${social}`,
+      message: `Posting to ${social}`,
       duration: (Math.random() * 1000) + 500
     });
 
-    loading.present();
+    await loading.present();
   }
 
   toggleList() {
