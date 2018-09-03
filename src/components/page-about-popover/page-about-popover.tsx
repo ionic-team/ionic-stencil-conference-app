@@ -28,16 +28,16 @@ export class PageAboutPopover {
   render() {
     return [
       <ion-list>
-        <ion-item onClick={() => this.close('http://ionicframework.com/docs/getting-started')} >
+        <ion-item href="http://ionicframework.com/docs/getting-started" >
           <ion-label>Learn Ionic</ion-label>
         </ion-item>
-        <ion-item onClick={() => this.close('http://ionicframework.com/docs/')}>
+        <ion-item href="http://ionicframework.com/docs/">
           <ion-label>Documentation</ion-label>
         </ion-item>
-        <ion-item onClick={() => this.close('http://showcase.ionicframework.com')}>
+        <ion-item href="http://showcase.ionicframework.com">
           <ion-label>Showcase</ion-label>
         </ion-item>
-        <ion-item onClick={() => this.close('https://github.com/ionic-team/ionic')}>
+        <ion-item href="https://github.com/ionic-team/ionic">
           <ion-label>GitHub Repo</ion-label>
         </ion-item>
         <ion-item onClick={() => this.support()}>
