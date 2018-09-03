@@ -1,7 +1,7 @@
-import { Config } from '@ionic/core';
 import { Component, Prop } from '@stencil/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { Plugins } from '@capacitor/core';
+const { Browser } = Plugins;
 import { ConferenceData } from '../../providers/conference-data';
 
 @Component({
@@ -9,11 +9,12 @@ import { ConferenceData } from '../../providers/conference-data';
   styleUrl: 'page-speaker-list.css'
 })
 export class PageSpeakerList {
-  speakers: any[] = [];
 
+  mode!: string;
+
+  speakers: any[] = [];
   @Prop({ connect: 'ion-action-sheet-controller' }) actionSheetCtrl: HTMLIonActionSheetControllerElement;
 
-  @Prop({ context: 'config' }) config: Config;
 
   async componentWillLoad() {
     this.speakers = await ConferenceData.getSpeakers();
@@ -22,7 +23,9 @@ export class PageSpeakerList {
   goToSpeakerTwitter(speaker: any) {
     console.log('goToSpeakerTwitter', speaker);
 
-    InAppBrowser.create(`https://twitter.com/${speaker.twitter}`, '_blank');
+    Browser.open({
+      url: `https://twitter.com/${speaker.twitter}`
+    });
   }
 
   async openSpeakerShare(speaker: any) {
@@ -59,7 +62,7 @@ export class PageSpeakerList {
   }
 
   async openContact(speaker: any) {
-    const mode = this.config.get('mode');
+    const mode = this.mode;
 
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Contact ' + speaker.name,
