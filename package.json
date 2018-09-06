@@ -10,22 +10,23 @@
     "build": "stencil build",
     "dev": "stencil build --dev --watch --serve",
     "start": "npm run dev",
-    "serve": "stencil-dev-server",
+    "serve": "stencil serve --root www",
     "test": "jest",
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "@ionic/core": "4.0.0-beta.6",
+    "@ionic/core": "4.0.0-beta.8",
     "@capacitor/core": "^1.0.0-beta.7",
     "@capacitor/ios": "^1.0.0-beta.7"
   },
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-beta.0",
-    "@stencil/core": "0.12.3",
+    "@stencil/core": "0.13.0-4",
     "@types/jest": "^22.2.3",
     "jest": "^22.4.3",
     "tslint": "^5.10.0",
-    "tslint-ionic-rules": "0.0.17"
+    "tslint-ionic-rules": "0.0.17",
+    "workbox-build": "3.4.1"
   },
   "repository": {
     "type": "git",
