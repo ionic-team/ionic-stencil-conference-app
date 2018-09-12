@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "production": "ionic-stencil-conf-app",
+    "default": "ionic-stencil-conf-app"
+  }
+}

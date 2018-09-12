@@ -1,5 +1,19 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  globalStyle: 'src/global.css'
+  outputTargets: [
+    {
+      type: 'www',
+      serviceWorker: {
+        swSrc: 'src/sw.js',
+        globPatterns: [
+          '**/*.{html,js,css,json,ico,png}'
+        ]
+      }
+    }
+  ],
+  globalStyle: 'src/global.css',
+  copy: [
+    { src: 'robots.txt' }
+  ]
 };
