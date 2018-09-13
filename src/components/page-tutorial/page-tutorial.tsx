@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core';
+import { Component, Element, Prop } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 
 @Component({
@@ -6,15 +6,20 @@ import { UserData } from '../../providers/user-data';
   styleUrl: 'page-tutorial.css',
 })
 export class PageTutorial {
+  @Element() el: HTMLElement;
+  @Prop({ connect: 'ion-menu-controller' }) menuCtrl: HTMLIonMenuControllerElement;
 
-  componentDidLoad() {
+  async componentDidLoad() {
     UserData.hasSeenTutorial(true);
+    const menuCtlr: HTMLIonMenuControllerElement = await (this.menuCtrl as any).componentOnReady();
+    menuCtlr.enable(false);
+    setTimeout(() => this.el.querySelector('ion-slides').update(), 100);
   }
 
   render() {
     return [
       <ion-header no-border>
-        <ion-toolbar class="tutorial-transparent">
+        <ion-toolbar>
           <ion-buttons slot="end">
             <ion-button color="primary" href="/schedule">Skip</ion-button>
           </ion-buttons>

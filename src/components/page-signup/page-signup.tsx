@@ -9,11 +9,11 @@ import { UserData } from '../../providers/user-data';
 export class PageSignup {
   @State() username = {
     valid: false,
-    value: null
+    value: ''
   };
   @State() password = {
     valid: false,
-    value: null
+    value: ''
   };
   @State() submitted = false;
 

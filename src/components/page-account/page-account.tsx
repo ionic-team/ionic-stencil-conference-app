@@ -8,7 +8,7 @@ import { UserData } from '../../providers/user-data';
 export class PageAccount {
 
   @State() user;
-  @Prop({ connect: 'ion-nav' }) nav: HTMLIonNavElement;
+  @Prop({ connect: 'ion-router' }) nav: HTMLIonRouterElement;
   @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
   @Event() userDidLogOut: EventEmitter;
 
@@ -29,15 +29,17 @@ export class PageAccount {
   }
 
   async logout() {
-    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
+    const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
     await UserData.logout();
     this.userDidLogOut.emit({ loginStatus: false });
-    navCtrl.setRoot('page-tabs', null, { animated: true, direction: 'forward' });
+    navCtrl.push('/schedule', 'root')
+    // navCtrl.setRoot('page-tabs', null, { animated: true, direction: 'forward' });
   }
 
   async support() {
-    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
-    navCtrl.setRoot('page-support');
+    const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
+    // navCtrl.setRoot('page-support');
+    navCtrl.push('/support', 'root')
   }
 
   async changeUsername() {

@@ -1,6 +1,6 @@
-page-tutorial .tutorial-transparent .toolbar-background {
-  background: transparent;
-  border-color: transparent;
+page-tutorial ion-toolbar {
+  --background: transparent !important;
+  --border-color: transparent !important;
 }
 
 page-tutorial .swiper-slide {

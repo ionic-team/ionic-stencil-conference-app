@@ -178,12 +178,11 @@ export class PageSchedule {
           </ion-segment>
 
           <ion-buttons slot="end">
-            <ion-button onClick={() => this.presentFilter()}>
+            <ion-button color="light" onClick={() => this.presentFilter()}>
               <ion-icon slot="icon-only" name="options"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-toolbar>
-
         <ion-toolbar>
           <ion-searchbar value={this.queryText} placeholder="Search">
           </ion-searchbar>

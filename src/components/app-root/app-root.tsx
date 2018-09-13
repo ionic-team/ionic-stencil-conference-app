@@ -18,7 +18,6 @@ export class AppRoot {
 
   @Prop({ context: 'isServer' }) isServer: boolean;
 
-
   appPages = [
     {
       title: 'Schedule',
@@ -66,6 +65,7 @@ export class AppRoot {
     await UserData.logout();
     this.loggedIn = false;
   }
+
 
   @Listen('userDidLogIn')
   @Listen('userDidLogOut')
@@ -199,7 +199,7 @@ export class AppRoot {
             </ion-content>
           </ion-menu>
 
-          <ion-router-outlet animated={false} main></ion-router-outlet>
+          <ion-router-outlet animated={true} main></ion-router-outlet>
         </ion-split-pane>
       </ion-app>
     );

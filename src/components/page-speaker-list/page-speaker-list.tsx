@@ -100,10 +100,10 @@ export class PageSpeakerList {
 
       <ion-content class="outer-content">
         <ion-list>
-          <ion-grid>
+          <ion-grid fixed>
             <ion-row align-items-stretch>
               {this.speakers.map(speaker => (
-                <ion-col col-12 col-md-6 align-self-stretch>
+                <ion-col size="12" size-md="6">
                   <ion-card class="speaker-card">
                     <ion-card-header>
                       <ion-item detail-none href={`/speakers/${speaker.id}`}>
@@ -129,7 +129,7 @@ export class PageSpeakerList {
                     </ion-card-content>
 
                     <ion-row no-padding justify-content-center>
-                      <ion-col col-auto text-left>
+                      <ion-col size="4" text-left>
                         <ion-button
                           fill="clear"
                           size="small"
@@ -139,7 +139,7 @@ export class PageSpeakerList {
                           Tweet
                         </ion-button>
                       </ion-col>
-                      <ion-col col-auto text-center>
+                      <ion-col size="4" text-center>
                         <ion-button
                           fill="clear"
                           size="small"
@@ -149,7 +149,7 @@ export class PageSpeakerList {
                           Share
                         </ion-button>
                       </ion-col>
-                      <ion-col col-auto text-right>
+                      <ion-col size="4" text-right>
                         <ion-button
                           fill="clear"
                           size="small"

@@ -9,14 +9,14 @@ import { UserData } from '../../providers/user-data';
 export class PageLogin {
   @State() username = {
     valid: false,
-    value: null
+    value: ''
   };
   @State() password = {
     valid: false,
-    value: null
+    value: ''
   };
   @State() submitted = false;
-  @Prop({ connect: 'ion-nav' }) nav;
+  @Prop({ connect: 'ion-router' }) nav;
   @Event() userDidLogIn: EventEmitter;
   handleUsername(ev) {
     this.validateUsername();
@@ -71,7 +71,7 @@ export class PageLogin {
 
   async onLogin(e) {
     e.preventDefault();
-    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
+    const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
 
     console.log('Clicked login');
     this.validatePassword();
@@ -83,7 +83,8 @@ export class PageLogin {
       await UserData.login(this.username.value);
 
       this.userDidLogIn.emit({ loginStatus: true });
-      navCtrl.setRoot('page-tabs', null , { animated: true, direction: 'forward' });
+      console.log(navCtrl)
+      navCtrl.push('/schedule', 'root')
     }
   }
 
@@ -111,7 +112,7 @@ export class PageLogin {
           <img src="assets/img/appicon.svg" alt="Ionic logo" />
         </div>
 
-        <form novalidate>
+        <form novalidate="true" onSubmit={(e) => this.onLogin(e)}>
           <ion-list no-lines>
             <ion-item>
               <ion-label position="stacked" color="primary">Username</ion-label>
@@ -138,7 +139,7 @@ export class PageLogin {
 
           <ion-row responsive-sm>
             <ion-col>
-              <ion-button onClick={(e) => this.onLogin(e)} type="submit" expand="block">Login</ion-button>
+              <ion-button type="submit" expand="block">Login</ion-button>
             </ion-col>
             <ion-col>
               <ion-button onClick={(e) => this.onSignup(e)} color="light" expand="block">Signup</ion-button>
