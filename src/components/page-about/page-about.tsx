@@ -25,7 +25,7 @@ export class PageAbout {
           </ion-buttons>
           <ion-title>About</ion-title>
           <ion-buttons slot="end">
-            <ion-button color="light" onClick={this.presentPopover.bind(this)}>
+            <ion-button onClick={this.presentPopover.bind(this)}>
               <ion-icon slot="icon-only" name="more"></ion-icon>
             </ion-button>
           </ion-buttons>

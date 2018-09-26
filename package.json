@@ -13,13 +13,13 @@
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "@ionic/core": "4.0.0-beta.10",
+    "@ionic/core": "4.0.0-beta.12",
     "@capacitor/core": "^1.0.0-beta.7",
     "@capacitor/ios": "^1.0.0-beta.7"
   },
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-beta.0",
-    "@stencil/core": "0.13.0-11",
+    "@stencil/core": "0.13.0",
     "@types/jest": "^22.2.3",
     "jest": "^22.4.3",
     "tslint": "^5.10.0",

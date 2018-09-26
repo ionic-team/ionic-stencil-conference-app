@@ -178,7 +178,7 @@ export class PageSchedule {
           </ion-segment>
 
           <ion-buttons slot="end">
-            <ion-button color="light" onClick={() => this.presentFilter()}>
+            <ion-button onClick={() => this.presentFilter()}>
               <ion-icon slot="icon-only" name="options"></ion-icon>
             </ion-button>
           </ion-buttons>
