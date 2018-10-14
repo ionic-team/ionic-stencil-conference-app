@@ -5,21 +5,18 @@
   "description": "Stencil App Starter",
   "scripts": {
     "build": "stencil build",
-    "dev": "stencil build --dev --watch --serve",
-    "start": "npm run dev",
+    "start": "stencil build --dev --watch --serve",
     "serve": "stencil serve --root www",
-    "deploy": "npm run build && firebase deploy",
-    "test": "jest",
-    "test.watch": "jest --watch"
+    "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "@ionic/core": "4.0.0-beta.12",
+    "@ionic/core": "4.0.0-beta.13",
     "@capacitor/core": "^1.0.0-beta.7",
     "@capacitor/ios": "^1.0.0-beta.7"
   },
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-beta.0",
-    "@stencil/core": "0.13.0",
+    "@stencil/core": "0.13.2",
     "@types/jest": "^22.2.3",
     "jest": "^22.4.3",
     "tslint": "^5.10.0",
@@ -35,18 +32,5 @@
   "bugs": {
     "url": "https://github.com/ionic-team/stencil"
   },
-  "homepage": "https://github.com/ionic-team/stencil",
-  "jest": {
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json",
-      "jsx"
-    ]
-  }
+  "homepage": "https://github.com/ionic-team/stencil"
 }
