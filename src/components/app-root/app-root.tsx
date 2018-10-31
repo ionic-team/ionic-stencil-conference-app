@@ -90,9 +90,9 @@ export class AppRoot {
             <ion-route url="/:speakerId" component="page-speaker-detail"></ion-route>
           </ion-route>
 
-          <ion-route url="/map" component="page-map"></ion-route>
+          <ion-route url="/map" component="tab-map"></ion-route>
 
-          <ion-route url="/about" component="page-about"></ion-route>
+          <ion-route url="/about" component="tab-about"></ion-route>
         </ion-route>
 
         <ion-route url="/tutorial" component="page-tutorial"></ion-route>
