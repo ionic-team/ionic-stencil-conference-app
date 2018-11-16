@@ -36,7 +36,48 @@
   --ion-color-navigation:              #6600cc;
 }
 
-.md ion-toolbar {
-  --background: var(--ion-color-primary);
-  color: #fff;
+
+/* Shared Variables
+ * --------------------------------------------------
+ * To customize the look and feel of this app, you can override
+ * the CSS variables found in Ionic's source files.
+ * To view all the possible Ionic variables, see:
+ * https://beta.ionicframework.com/docs/theming/css-variables#ionic-variables
+ */
+
+:root {
+
+}
+
+
+/* App iOS Variables
+ * --------------------------------------------------
+ * iOS only CSS variables can go here
+ */
+
+.ios {
+
+}
+
+
+/* App Material Design Variables
+ * --------------------------------------------------
+ * Material Design only CSS variables can go here
+ */
+
+.md {
+  /* Use the primary color as the background for the toolbar */
+  --ion-toolbar-background: var(--ion-color-primary);
+
+  /* Change the color of the toolbar components */
+  --ion-toolbar-color: #fff;
+
+  /* Change the color of the activated toolbar components */
+  --ion-toolbar-color-activated: #fff;
+
+  /* Change the color of the unchecked segment buttons */
+  --ion-toolbar-color-unchecked: rgba(255, 255, 255, .6);
+
+  /* Change the color of the checked segment button */
+  --ion-toolbar-color-checked: #fff;
 }

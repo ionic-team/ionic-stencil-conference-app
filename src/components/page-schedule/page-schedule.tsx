@@ -159,8 +159,6 @@ export class PageSchedule {
   }
 
   render() {
-    const mode = this.config.get('mode');
-
     return [
       <ion-header>
         <ion-toolbar>
@@ -168,7 +166,7 @@ export class PageSchedule {
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
 
-          <ion-segment value={this.segment} color={mode === 'md' ? 'light' : null}>
+          <ion-segment value={this.segment}>
             <ion-segment-button value="all">
               All
             </ion-segment-button>
