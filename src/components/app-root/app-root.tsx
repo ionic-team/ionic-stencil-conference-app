@@ -118,77 +118,59 @@ export class AppRoot {
             </ion-header>
             <ion-content forceOverscroll={false}>
               <ion-list>
-                <ion-list-header>
-                  Navigate
-                </ion-list-header>
+                <ion-list-header>Navigate</ion-list-header>
 
-                {this.appPages.map((p) =>
+                {this.appPages.map((p) => (
                   <ion-menu-toggle autoHide={false}>
                     <ion-item href={p.url}>
                       <ion-icon slot="start" name={p.icon}></ion-icon>
-                      <ion-label>
-                        {p.title}
-                      </ion-label>
+                      <ion-label>{p.title}</ion-label>
                     </ion-item>
                   </ion-menu-toggle>
-                )}
+                ))}
               </ion-list>
 
               <ion-list>
-                <ion-list-header>
-                  Account
-                  </ion-list-header>
+                <ion-list-header>Account</ion-list-header>
 
                 <ion-menu-toggle autoHide={false}>
-                  {this.loggedIn
-                    ? <ion-item href="account">
+                  {this.loggedIn ? (
+                    <ion-item href="account">
                       <ion-icon slot="start" name="person"></ion-icon>
-                      <ion-label>
-                        Account
-                          </ion-label>
+                      <ion-label>Account</ion-label>
                     </ion-item>
-
-                    : <ion-item href="login">
+                  ) : (
+                    <ion-item href="login">
                       <ion-icon slot="start" name="log-in"></ion-icon>
-                      <ion-label>
-                        Login
-                          </ion-label>
+                      <ion-label>Login</ion-label>
                     </ion-item>
-                  }
+                  )}
                 </ion-menu-toggle>
 
                 <ion-menu-toggle autoHide={false}>
                   <ion-item href="support" button>
                     <ion-icon slot="start" name="help"></ion-icon>
-                    <ion-label>
-                      Support
-                      </ion-label>
+                    <ion-label>Support</ion-label>
                   </ion-item>
                 </ion-menu-toggle>
 
                 <ion-menu-toggle autoHide={false}>
-                  {this.loggedIn
-                    ? <ion-item onClick={() => this.logout()} button>
+                  {this.loggedIn ? (
+                    <ion-item onClick={() => this.logout()} button>
                       <ion-icon slot="start" name="log-out"></ion-icon>
-                      <ion-label>
-                        Logout
-                          </ion-label>
+                      <ion-label>Logout</ion-label>
                     </ion-item>
-
-                    : <ion-item href="signup" button>
+                  ) : (
+                    <ion-item href="signup" button>
                       <ion-icon slot="start" name="person-add"></ion-icon>
-                      <ion-label>
-                        Signup
-                          </ion-label>
+                      <ion-label>Signup</ion-label>
                     </ion-item>
-                  }
+                  )}
                 </ion-menu-toggle>
               </ion-list>
 
               <ion-list>
-                <ion-list-header>
-                  Tutorial
-                </ion-list-header>
+                <ion-list-header>Tutorial</ion-list-header>
                 <ion-menu-toggle autoHide={false}>
                   <ion-item href="tutorial">
                     <ion-icon slot="start" name="hammer"></ion-icon>
