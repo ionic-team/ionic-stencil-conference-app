@@ -1,6 +1,7 @@
 {
   "projects": {
     "production": "ionic-stencil-conf-app",
-    "default": "ionic-stencil-conf-app"
+    "default": "ionic-stencil-conf-app",
+    "conference": "conference-app-b28d9"
   }
 }
