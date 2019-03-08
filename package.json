@@ -21,7 +21,7 @@
     "jest": "^22.4.3",
     "tslint": "^5.10.0",
     "tslint-ionic-rules": "0.0.17",
-    "workbox-build": "3.4.1"
+    "workbox-build": "4.1.0"
   },
   "repository": {
     "type": "git",
