@@ -15,7 +15,7 @@
     "@ionic/core": "4.4.0"
   },
   "devDependencies": {
-    "@capacitor/cli": "^1.0.0-beta.0",
+    "@capacitor/cli": "^1.0.0-beta.24",
     "@stencil/core": "^0.18.1",
     "@types/jest": "^22.2.3",
     "jest": "^22.4.3",
