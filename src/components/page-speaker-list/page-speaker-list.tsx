@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop , h } from '@stencil/core';
 
 import { Plugins } from '@capacitor/core';
 const { Browser } = Plugins;

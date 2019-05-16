@@ -1,4 +1,4 @@
-import { Component, Element } from '@stencil/core';
+import { Component, Element , h } from '@stencil/core';
 import { ConferenceData } from '../../providers/conference-data';
 
 declare var google: any;

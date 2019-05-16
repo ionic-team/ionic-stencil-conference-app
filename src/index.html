@@ -16,12 +16,13 @@
 
   <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
-  <link href="/build/app.css" rel="stylesheet">
-  <script src="/build/app.js"></script>
+  <script type="module" src="/build/app.esm.js"></script>
+  <script src="/build/app.js" nomodule></script>
+  <link rel="preload" href="/build/app.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-  <link rel="apple-touch-icon" href="assets/icon/icon.png">
-  <link rel="icon" type="image/x-icon" href="assets/icon/icon.png">
-  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="/assets/icon/icon.png">
+  <link rel="icon" type="image/x-icon" href="/assets/icon/icon.png">
+  <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 

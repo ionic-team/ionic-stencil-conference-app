@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Prop, State , h } from '@stencil/core';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 
@@ -43,7 +43,7 @@ export class PageSession {
       </ion-header>,
 
       <ion-content>
-        <div padding>
+        <div class="ion-padding">
           <ion-grid no-padding>
             <ion-row>
               <ion-col size="6">

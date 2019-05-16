@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Prop, State, h } from '@stencil/core';
 
 
 @Component({
@@ -107,7 +107,7 @@ export class PageSupport {
 
       <ion-content>
         <div class="support-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic Logo"/>
+          <img src="/assets/img/appicon.svg" alt="Ionic Logo"/>
         </div>
 
         <form novalidate>
@@ -124,7 +124,7 @@ export class PageSupport {
             </p>
           </ion-text>
 
-          <div padding>
+          <div class="ion-padding">
             <ion-button onClick={(e) => this.submit(e)} expand="block" type="submit">Submit</ion-button>
           </div>
         </form>

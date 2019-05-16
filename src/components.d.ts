@@ -5,114 +5,104 @@
  */
 
 
-import '@stencil/core';
-
-import '@ionic/core';
-import 'ionicons';
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+import { JSX } from '@stencil/core';
 
 
 export namespace Components {
-
   interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
-
-  interface PageAboutPopover {}
-  interface PageAboutPopoverAttributes extends StencilHTMLAttributes {}
-
   interface PageAbout {}
-  interface PageAboutAttributes extends StencilHTMLAttributes {}
-
+  interface PageAboutPopover {}
   interface PageAccount {}
-  interface PageAccountAttributes extends StencilHTMLAttributes {
-    'onUserDidLogOut'?: (event: CustomEvent) => void;
-  }
-
   interface PageLogin {}
-  interface PageLoginAttributes extends StencilHTMLAttributes {
-    'onUserDidLogIn'?: (event: CustomEvent) => void;
-  }
-
+  interface PageLogin2 {}
   interface PageMap {}
-  interface PageMapAttributes extends StencilHTMLAttributes {}
-
+  interface PageSchedule {}
   interface PageScheduleFilter {
     'excludedTracks': string[];
   }
-  interface PageScheduleFilterAttributes extends StencilHTMLAttributes {
-    'excludedTracks'?: string[];
-  }
-
-  interface PageSchedule {}
-  interface PageScheduleAttributes extends StencilHTMLAttributes {}
-
   interface PageSession {
     'goback': string;
     'sessionId': string;
   }
-  interface PageSessionAttributes extends StencilHTMLAttributes {
-    'goback'?: string;
-    'sessionId'?: string;
-  }
-
   interface PageSignup {}
-  interface PageSignupAttributes extends StencilHTMLAttributes {}
-
   interface PageSpeakerDetail {
     'speakerId': string;
   }
-  interface PageSpeakerDetailAttributes extends StencilHTMLAttributes {
-    'speakerId'?: string;
-  }
-
   interface PageSpeakerList {}
-  interface PageSpeakerListAttributes extends StencilHTMLAttributes {}
-
   interface PageSupport {}
-  interface PageSupportAttributes extends StencilHTMLAttributes {}
-
   interface PageTabs {}
-  interface PageTabsAttributes extends StencilHTMLAttributes {}
-
   interface PageTutorial {}
-  interface PageTutorialAttributes extends StencilHTMLAttributes {}
 }
 
+declare namespace LocalJSX {
+  interface AppRoot extends JSXBase.HTMLAttributes {}
+  interface PageAbout extends JSXBase.HTMLAttributes {}
+  interface PageAboutPopover extends JSXBase.HTMLAttributes {}
+  interface PageAccount extends JSXBase.HTMLAttributes {
+    'onUserDidLogOut'?: (event: CustomEvent<any>) => void;
+  }
+  interface PageLogin extends JSXBase.HTMLAttributes {
+    'onUserDidLogIn'?: (event: CustomEvent<any>) => void;
+  }
+  interface PageLogin2 extends JSXBase.HTMLAttributes {
+    'onUserDidLogIn'?: (event: CustomEvent<any>) => void;
+  }
+  interface PageMap extends JSXBase.HTMLAttributes {}
+  interface PageSchedule extends JSXBase.HTMLAttributes {}
+  interface PageScheduleFilter extends JSXBase.HTMLAttributes {
+    'excludedTracks'?: string[];
+  }
+  interface PageSession extends JSXBase.HTMLAttributes {
+    'goback'?: string;
+    'sessionId'?: string;
+  }
+  interface PageSignup extends JSXBase.HTMLAttributes {}
+  interface PageSpeakerDetail extends JSXBase.HTMLAttributes {
+    'speakerId'?: string;
+  }
+  interface PageSpeakerList extends JSXBase.HTMLAttributes {}
+  interface PageSupport extends JSXBase.HTMLAttributes {}
+  interface PageTabs extends JSXBase.HTMLAttributes {}
+  interface PageTutorial extends JSXBase.HTMLAttributes {}
+
+  interface IntrinsicElements {
+    'app-root': AppRoot;
+    'page-about': PageAbout;
+    'page-about-popover': PageAboutPopover;
+    'page-account': PageAccount;
+    'page-login': PageLogin;
+    'page-login2': PageLogin2;
+    'page-map': PageMap;
+    'page-schedule': PageSchedule;
+    'page-schedule-filter': PageScheduleFilter;
+    'page-session': PageSession;
+    'page-signup': PageSignup;
+    'page-speaker-detail': PageSpeakerDetail;
+    'page-speaker-list': PageSpeakerList;
+    'page-support': PageSupport;
+    'page-tabs': PageTabs;
+    'page-tutorial': PageTutorial;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+
 declare global {
-  interface StencilElementInterfaces {
-    'AppRoot': Components.AppRoot;
-    'PageAboutPopover': Components.PageAboutPopover;
-    'PageAbout': Components.PageAbout;
-    'PageAccount': Components.PageAccount;
-    'PageLogin': Components.PageLogin;
-    'PageMap': Components.PageMap;
-    'PageScheduleFilter': Components.PageScheduleFilter;
-    'PageSchedule': Components.PageSchedule;
-    'PageSession': Components.PageSession;
-    'PageSignup': Components.PageSignup;
-    'PageSpeakerDetail': Components.PageSpeakerDetail;
-    'PageSpeakerList': Components.PageSpeakerList;
-    'PageSupport': Components.PageSupport;
-    'PageTabs': Components.PageTabs;
-    'PageTutorial': Components.PageTutorial;
+
+  // Adding a global JSX for backcompatibility with legacy dependencies
+  export namespace JSX {
+    export interface Element {}
   }
 
-  interface StencilIntrinsicElements {
-    'app-root': Components.AppRootAttributes;
-    'page-about-popover': Components.PageAboutPopoverAttributes;
-    'page-about': Components.PageAboutAttributes;
-    'page-account': Components.PageAccountAttributes;
-    'page-login': Components.PageLoginAttributes;
-    'page-map': Components.PageMapAttributes;
-    'page-schedule-filter': Components.PageScheduleFilterAttributes;
-    'page-schedule': Components.PageScheduleAttributes;
-    'page-session': Components.PageSessionAttributes;
-    'page-signup': Components.PageSignupAttributes;
-    'page-speaker-detail': Components.PageSpeakerDetailAttributes;
-    'page-speaker-list': Components.PageSpeakerListAttributes;
-    'page-support': Components.PageSupportAttributes;
-    'page-tabs': Components.PageTabsAttributes;
-    'page-tutorial': Components.PageTutorialAttributes;
-  }
 
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
@@ -121,16 +111,16 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
-  interface HTMLPageAboutPopoverElement extends Components.PageAboutPopover, HTMLStencilElement {}
-  var HTMLPageAboutPopoverElement: {
-    prototype: HTMLPageAboutPopoverElement;
-    new (): HTMLPageAboutPopoverElement;
-  };
-
   interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {}
   var HTMLPageAboutElement: {
     prototype: HTMLPageAboutElement;
     new (): HTMLPageAboutElement;
+  };
+
+  interface HTMLPageAboutPopoverElement extends Components.PageAboutPopover, HTMLStencilElement {}
+  var HTMLPageAboutPopoverElement: {
+    prototype: HTMLPageAboutPopoverElement;
+    new (): HTMLPageAboutPopoverElement;
   };
 
   interface HTMLPageAccountElement extends Components.PageAccount, HTMLStencilElement {}
@@ -145,22 +135,28 @@ declare global {
     new (): HTMLPageLoginElement;
   };
 
+  interface HTMLPageLogin2Element extends Components.PageLogin2, HTMLStencilElement {}
+  var HTMLPageLogin2Element: {
+    prototype: HTMLPageLogin2Element;
+    new (): HTMLPageLogin2Element;
+  };
+
   interface HTMLPageMapElement extends Components.PageMap, HTMLStencilElement {}
   var HTMLPageMapElement: {
     prototype: HTMLPageMapElement;
     new (): HTMLPageMapElement;
   };
 
-  interface HTMLPageScheduleFilterElement extends Components.PageScheduleFilter, HTMLStencilElement {}
-  var HTMLPageScheduleFilterElement: {
-    prototype: HTMLPageScheduleFilterElement;
-    new (): HTMLPageScheduleFilterElement;
-  };
-
   interface HTMLPageScheduleElement extends Components.PageSchedule, HTMLStencilElement {}
   var HTMLPageScheduleElement: {
     prototype: HTMLPageScheduleElement;
     new (): HTMLPageScheduleElement;
+  };
+
+  interface HTMLPageScheduleFilterElement extends Components.PageScheduleFilter, HTMLStencilElement {}
+  var HTMLPageScheduleFilterElement: {
+    prototype: HTMLPageScheduleFilterElement;
+    new (): HTMLPageScheduleFilterElement;
   };
 
   interface HTMLPageSessionElement extends Components.PageSession, HTMLStencilElement {}
@@ -206,32 +202,15 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
-    'app-root': HTMLAppRootElement
-    'page-about-popover': HTMLPageAboutPopoverElement
-    'page-about': HTMLPageAboutElement
-    'page-account': HTMLPageAccountElement
-    'page-login': HTMLPageLoginElement
-    'page-map': HTMLPageMapElement
-    'page-schedule-filter': HTMLPageScheduleFilterElement
-    'page-schedule': HTMLPageScheduleElement
-    'page-session': HTMLPageSessionElement
-    'page-signup': HTMLPageSignupElement
-    'page-speaker-detail': HTMLPageSpeakerDetailElement
-    'page-speaker-list': HTMLPageSpeakerListElement
-    'page-support': HTMLPageSupportElement
-    'page-tabs': HTMLPageTabsElement
-    'page-tutorial': HTMLPageTutorialElement
-  }
-
-  interface ElementTagNameMap {
     'app-root': HTMLAppRootElement;
-    'page-about-popover': HTMLPageAboutPopoverElement;
     'page-about': HTMLPageAboutElement;
+    'page-about-popover': HTMLPageAboutPopoverElement;
     'page-account': HTMLPageAccountElement;
     'page-login': HTMLPageLoginElement;
+    'page-login2': HTMLPageLogin2Element;
     'page-map': HTMLPageMapElement;
-    'page-schedule-filter': HTMLPageScheduleFilterElement;
     'page-schedule': HTMLPageScheduleElement;
+    'page-schedule-filter': HTMLPageScheduleFilterElement;
     'page-session': HTMLPageSessionElement;
     'page-signup': HTMLPageSignupElement;
     'page-speaker-detail': HTMLPageSpeakerDetailElement;
@@ -241,13 +220,6 @@ declare global {
     'page-tutorial': HTMLPageTutorialElement;
   }
 
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
+  interface ElementTagNameMap extends HTMLElementTagNameMap {}
 }
+

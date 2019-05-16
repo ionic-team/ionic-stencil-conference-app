@@ -3,10 +3,10 @@ import { UserData } from '../../providers/user-data';
 
 
 @Component({
-  tag: 'page-login',
-  styleUrl: 'page-login.css',
+  tag: 'page-login2',
+  styleUrl: 'page-login2.css',
 })
-export class PageLogin {
+export class PageL {
   @State() username = {
     valid: false,
     value: ''
@@ -89,6 +89,9 @@ export class PageLogin {
   }
 
   async onSignup(e) {
+    // hola
+
+    console.log('sf');
     e.preventDefault();
     const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
     console.log('Clicked signup');

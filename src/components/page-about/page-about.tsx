@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop , h } from '@stencil/core';
 
 @Component({
   tag: 'page-about',
@@ -34,9 +34,9 @@ export class PageAbout {
 
       <ion-content>
         <div class="about-header">
-          <img src="assets/img/ionic-logo-white.svg" alt="ionic logo"/>
+          <img src="/assets/img/ionic-logo-white.svg" alt="ionic logo"/>
         </div>
-        <div padding class="about-info">
+        <div class="ion-padding about-info">
           <h4>Ionic Conference</h4>
 
           <ion-list no-lines>

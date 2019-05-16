@@ -1,4 +1,4 @@
-import { Component, State } from '@stencil/core';
+import { Component, State , h } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 
 
@@ -93,9 +93,8 @@ export class PageSignup {
       </ion-header>,
 
       <ion-content padding>
-
         <div class="signup-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic Logo"/>
+          <img src="/assets/img/appicon.svg" alt="Ionic Logo"/>
         </div>
 
         <form novalidate>
@@ -123,7 +122,7 @@ export class PageSignup {
             </ion-text>
           </ion-list>
 
-          <div padding>
+          <div class="ion-padding">
             <ion-button onClick={(e) => this.onSignup(e)} type="submit" expand="block">Create</ion-button>
           </div>
         </form>

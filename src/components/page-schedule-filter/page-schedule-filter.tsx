@@ -1,5 +1,5 @@
 import { Config } from '@ionic/core';
-import { Component, Element, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, Listen, Prop, State , h } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 
@@ -55,12 +55,10 @@ export class PageScheduleFilter {
   }
 
   render() {
-    const mode = this.config.get('mode');
-
     return [
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot={mode === 'md' ? 'end' : 'start'}>
+          <ion-buttons slot="primary">
             <ion-button onClick={() => this.dismiss()}>Cancel</ion-button>
           </ion-buttons>
 

@@ -11,6 +11,17 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "headers": [
+      {
+        "source": "/build/p-*.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=365000000, immutable"
+          }
+        ]
+      }
     ]
   }
 }

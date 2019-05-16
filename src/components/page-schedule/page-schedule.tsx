@@ -1,5 +1,5 @@
 import { Config } from '@ionic/core';
-import { Component, Element, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, Listen, Prop, State , h } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 
@@ -57,7 +57,7 @@ export class PageSchedule {
     this.updateSchedule();
   }
 
-  @Listen('body:ionModalDidDismiss')
+  @Listen('ionModalDidDismiss', { target: 'body' })
   modalDidDismiss(event: CustomEvent) {
     if (event) {
       this.excludeTracks = event.detail.data;
@@ -65,7 +65,7 @@ export class PageSchedule {
     }
   }
 
-  @Listen('body:ionLoadingWillDismiss')
+  @Listen('ionLoadingWillDismiss', { target: 'body' })
   loadingWillDismiss() {
     this.fab.close();
   }
@@ -168,7 +168,7 @@ export class PageSchedule {
 
           <ion-segment value={this.segment}>
             <ion-segment-button value="all">
-              All
+              T
             </ion-segment-button>
             <ion-segment-button value="favorites">
               Favorites

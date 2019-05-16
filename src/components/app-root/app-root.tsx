@@ -1,6 +1,6 @@
 import '@ionic/core';
 
-import { Component, Element, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, Listen, Prop, State, h } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 import { Plugins } from '@capacitor/core';
 
@@ -65,7 +65,6 @@ export class AppRoot {
     await UserData.logout();
     this.loggedIn = false;
   }
-
 
   @Listen('userDidLogIn')
   @Listen('userDidLogOut')
@@ -181,9 +180,10 @@ export class AppRoot {
             </ion-content>
           </ion-menu>
 
-          <ion-router-outlet animated={true} main></ion-router-outlet>
+          <ion-router-outlet animated={false} main></ion-router-outlet>
         </ion-split-pane>
       </ion-app>
     );
   }
 }
+
