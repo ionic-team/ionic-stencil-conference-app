@@ -10,7 +10,7 @@
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "@capacitor/core": "^1.0.0-beta.24",
+    "@capacitor/core": "^1.0.0",
     "@capacitor/ios": "^1.0.0-beta.24",
     "@ionic/core": "one"
   },
