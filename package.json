@@ -17,7 +17,7 @@
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-beta.24",
     "@stencil/core": "one",
-    "@types/jest": "^22.2.3",
+    "@types/jest": "^24.0.13",
     "tslint": "^5.16.0",
     "tslint-ionic-rules": "0.0.21",
     "workbox-build": "4.3.1"
