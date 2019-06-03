@@ -108,8 +108,8 @@ export class AppRoot {
     return (
       <ion-app>
         {this.renderRouter()}
-        <ion-split-pane>
-          <ion-menu>
+        <ion-split-pane content-id="menu-content">
+          <ion-menu content-id="menu-content">
             <ion-header>
               <ion-toolbar>
                 <ion-title>Menu</ion-title>
@@ -180,7 +180,7 @@ export class AppRoot {
             </ion-content>
           </ion-menu>
 
-          <ion-router-outlet animated={false} main></ion-router-outlet>
+          <ion-router-outlet animated={false} id="menu-content"></ion-router-outlet>
         </ion-split-pane>
       </ion-app>
     );

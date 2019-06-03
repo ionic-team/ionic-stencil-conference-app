@@ -92,7 +92,7 @@ export class PageSignup {
         </ion-toolbar>
       </ion-header>,
 
-      <ion-content padding>
+      <ion-content class="ion-padding">
         <div class="signup-logo">
           <img src="/assets/img/appicon.svg" alt="Ionic Logo"/>
         </div>
