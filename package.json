@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@capacitor/core": "^1.0.0-beta.24",
-    "@capacitor/ios": "^1.0.0-beta.24",
+    "@capacitor/ios": "^1.0.0",
     "@ionic/core": "one"
   },
   "devDependencies": {
