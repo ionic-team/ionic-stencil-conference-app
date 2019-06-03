@@ -15,7 +15,7 @@
     "@ionic/core": "one"
   },
   "devDependencies": {
-    "@capacitor/cli": "^1.0.0-beta.24",
+    "@capacitor/cli": "^1.0.0",
     "@stencil/core": "one",
     "@types/jest": "^22.2.3",
     "tslint": "^5.16.0",
