@@ -109,7 +109,7 @@ export class PageL {
           <ion-title>Login</ion-title>
         </ion-toolbar>
       </ion-header>,
-      <ion-content padding>
+      <ion-content class="ion-padding">
         <div class="login-logo">
           <img src="/assets/img/appicon.svg" alt="Ionic logo" />
         </div>
