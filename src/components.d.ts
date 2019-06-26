@@ -14,7 +14,6 @@ export namespace Components {
   interface PageAboutPopover {}
   interface PageAccount {}
   interface PageLogin {}
-  interface PageLogin2 {}
   interface PageMap {}
   interface PageSchedule {}
   interface PageScheduleFilter {
@@ -65,12 +64,6 @@ declare global {
   var HTMLPageLoginElement: {
     prototype: HTMLPageLoginElement;
     new (): HTMLPageLoginElement;
-  };
-
-  interface HTMLPageLogin2Element extends Components.PageLogin2, HTMLStencilElement {}
-  var HTMLPageLogin2Element: {
-    prototype: HTMLPageLogin2Element;
-    new (): HTMLPageLogin2Element;
   };
 
   interface HTMLPageMapElement extends Components.PageMap, HTMLStencilElement {}
@@ -138,7 +131,6 @@ declare global {
     'page-about-popover': HTMLPageAboutPopoverElement;
     'page-account': HTMLPageAccountElement;
     'page-login': HTMLPageLoginElement;
-    'page-login2': HTMLPageLogin2Element;
     'page-map': HTMLPageMapElement;
     'page-schedule': HTMLPageScheduleElement;
     'page-schedule-filter': HTMLPageScheduleFilterElement;
@@ -160,9 +152,6 @@ declare namespace LocalJSX {
     'onUserDidLogOut'?: (event: CustomEvent<any>) => void;
   }
   interface PageLogin extends JSXBase.HTMLAttributes<HTMLPageLoginElement> {
-    'onUserDidLogIn'?: (event: CustomEvent<any>) => void;
-  }
-  interface PageLogin2 extends JSXBase.HTMLAttributes<HTMLPageLogin2Element> {
     'onUserDidLogIn'?: (event: CustomEvent<any>) => void;
   }
   interface PageMap extends JSXBase.HTMLAttributes<HTMLPageMapElement> {}
@@ -189,7 +178,6 @@ declare namespace LocalJSX {
     'page-about-popover': PageAboutPopover;
     'page-account': PageAccount;
     'page-login': PageLogin;
-    'page-login2': PageLogin2;
     'page-map': PageMap;
     'page-schedule': PageSchedule;
     'page-schedule-filter': PageScheduleFilter;

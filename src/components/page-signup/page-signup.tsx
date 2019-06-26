@@ -105,7 +105,7 @@ export class PageSignup {
               </ion-input>
             </ion-item>
             <ion-text color="danger">
-              <p hidden={this.username.valid || this.submitted === false} padding-left>
+              <p hidden={this.username.valid || this.submitted === false} class="ion-padding-start">
                 Username is required
               </p>
             </ion-text>
@@ -116,7 +116,7 @@ export class PageSignup {
               </ion-input>
             </ion-item>
             <ion-text color="danger">
-              <p hidden={this.password.valid || this.submitted === false} padding-left>
+              <p hidden={this.password.valid || this.submitted === false} class="ion-padding-start">
                 Password is required
               </p>
             </ion-text>

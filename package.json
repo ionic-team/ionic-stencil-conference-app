@@ -10,13 +10,13 @@
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "@capacitor/core": "^1.0.0-beta.24",
-    "@capacitor/ios": "^1.0.0-beta.24",
-    "@ionic/core": "one"
+    "@capacitor/core": "^1.1.0",
+    "@capacitor/ios": "^1.1.0",
+    "@ionic/core": "4.6.0-dev.201906261519.301b0fc"
   },
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-beta.24",
-    "@stencil/core": "one",
+    "@stencil/core": "1.1.2",
     "@types/jest": "^22.2.3",
     "tslint": "^5.16.0",
     "tslint-ionic-rules": "0.0.21",
