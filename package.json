@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^1.0.0-beta.24",
-    "@stencil/core": "1.1.2",
+    "@stencil/core": "1.1.4",
     "@types/jest": "^22.2.3",
     "tslint": "^5.16.0",
     "tslint-ionic-rules": "0.0.21",
