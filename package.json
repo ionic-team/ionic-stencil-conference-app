@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@capacitor/core": "^1.1.0",
-    "@capacitor/ios": "^1.1.0",
+    "@capacitor/ios": "^1.1.1",
     "@ionic/core": "4.6.0-dev.201906261519.301b0fc"
   },
   "devDependencies": {
