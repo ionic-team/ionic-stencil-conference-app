@@ -128,7 +128,7 @@ export class PageSpeakerList {
                       </ion-list>
                     </ion-card-content>
 
-                    <ion-row no-padding justify-content-center>
+                    <ion-row class="ion-no-padding ion-justify-content-center">
                       <ion-col size="4" text-left>
                         <ion-button
                           fill="clear"

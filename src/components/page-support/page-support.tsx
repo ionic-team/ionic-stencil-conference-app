@@ -119,7 +119,7 @@ export class PageSupport {
           </ion-list>
 
           <ion-text color="danger">
-            <p hidden={this.supportQuestion.valid || this.submitted === false} padding-left>
+            <p hidden={this.supportQuestion.valid || this.submitted === false} class="ion-padding-left">
               Support message is required
             </p>
           </ion-text>

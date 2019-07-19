@@ -44,7 +44,7 @@ export class PageSession {
 
       <ion-content>
         <div class="ion-padding">
-          <ion-grid no-padding>
+          <ion-grid class="ion-no-padding">
             <ion-row>
               <ion-col size="6">
                 {this.session.tracks.map(track => (
