@@ -168,7 +168,7 @@ export class PageSchedule {
 
           <ion-segment value={this.segment}>
             <ion-segment-button value="all">
-              T
+              All
             </ion-segment-button>
             <ion-segment-button value="favorites">
               Favorites

@@ -1,15 +1,35 @@
-/* Ionic Variables and Theming. For more information, please see
- * https://beta.ionicframework.com/docs/theming/
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can
+ * be used as an entry point to import other CSS files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+ /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/core/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
 @import "~@ionic/core/css/normalize.css";
 @import "~@ionic/core/css/structure.css";
 @import "~@ionic/core/css/typography.css";
 
+/* Optional CSS utils that can be commented out */
 @import "~@ionic/core/css/padding.css";
+/* @import "~@ionic/core/css/float-elements.css"; */
 @import "~@ionic/core/css/text-alignment.css";
+/* @import "~@ionic/core/css/text-transformation.css"; */
+/* @import "~@ionic/core/css/flex-utils.css"; */
 
-:root {
-  --ion-color-dark: #222428;
-}
+
+/*
+ * Ionic Variables and Theming.
+ * ----------------------------------------------------------------------------
+ * Include the local variable file to style Ionic components
+ * with CSS variables and custom themes.
+ */
+
+@import "./theme/variables.css";

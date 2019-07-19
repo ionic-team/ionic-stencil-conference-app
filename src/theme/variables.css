@@ -1,0 +1,297 @@
+/*
+ * Ionic Variables and Theming
+ * ----------------------------------------------------------------------------
+ * For more information, please see
+ * https://www.ionicframework.com/docs/theming/
+ */
+
+/*
+ * Ionic Colors
+ * ----------------------------------------------------------------------------
+ * Named colors make it easy to reuse colors on various components.
+ * It's highly recommended to change the default colors
+ * to match your app's branding. Ionic provides nine layered colors
+ * that can be changed to theme an app. Additional colors can be
+ * added as well (see below). For more information, please see
+ * https://www.ionicframework.com/docs/theming/colors
+ *
+ * To easily create custom color palettes for your app’s UI,
+ * check out our color generator:
+ * https://www.ionicframework.com/docs/theming/color-generator
+ */
+
+:root {
+  --ion-color-primary: #3880ff;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+
+  --ion-color-secondary: #0cd1e8;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+}
+
+/*
+ * Additional Ionic Colors
+ * ----------------------------------------------------------------------------
+ * In order to add colors to be used within Ionic components,
+ * the color should be added as a class with the convention `.ion-color-{COLOR}`
+ * where `{COLOR}` is the color to be used on the Ionic component.
+ * For more information on adding new colors, please see
+ * https://ionicframework.com/docs/theming/colors#adding-colors
+ *
+ * To generate the code for a new color, check out our new color creator:
+ * https://ionicframework.com/docs/theming/colors#new-color-creator
+ */
+
+ :root {
+  --ion-color-favorite: #69bb7b;
+  --ion-color-favorite-rgb: 105,187,123;
+  --ion-color-favorite-contrast: #ffffff;
+  --ion-color-favorite-contrast-rgb: 255,255,255;
+  --ion-color-favorite-shade: #5ca56c;
+  --ion-color-favorite-tint: #78c288;
+
+  --ion-color-twitter: #1da1f4;
+  --ion-color-twitter-rgb: 29,161,244;
+  --ion-color-twitter-contrast: #ffffff;
+  --ion-color-twitter-contrast-rgb: 255,255,255;
+  --ion-color-twitter-shade: #1a8ed7;
+  --ion-color-twitter-tint: #34aaf5;
+
+  --ion-color-google: #dc4a38;
+  --ion-color-google-rgb: 220,74,56;
+  --ion-color-google-contrast: #ffffff;
+  --ion-color-google-contrast-rgb: 255,255,255;
+  --ion-color-google-shade: #c24131;
+  --ion-color-google-tint: #e05c4c;
+
+  --ion-color-vimeo: #23b6ea;
+  --ion-color-vimeo-rgb: 35,182,234;
+  --ion-color-vimeo-contrast: #ffffff;
+  --ion-color-vimeo-contrast-rgb: 255,255,255;
+  --ion-color-vimeo-shade: #1fa0ce;
+  --ion-color-vimeo-tint: #39bdec;
+
+  --ion-color-facebook: #3b5998;
+  --ion-color-facebook-rgb: 59,89,152;
+  --ion-color-facebook-contrast: #ffffff;
+  --ion-color-facebook-contrast-rgb: 255,255,255;
+  --ion-color-facebook-shade: #344e86;
+  --ion-color-facebook-tint: #4f6aa2;
+}
+
+.ion-color-favorite {
+  --ion-color-base: var(--ion-color-favorite);
+  --ion-color-base-rgb: var(--ion-color-favorite-rgb);
+  --ion-color-contrast: var(--ion-color-favorite-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-favorite-contrast-rgb);
+  --ion-color-shade: var(--ion-color-favorite-shade);
+  --ion-color-tint: var(--ion-color-favorite-tint);
+}
+
+.ion-color-twitter {
+  --ion-color-base: var(--ion-color-twitter);
+  --ion-color-base-rgb: var(--ion-color-twitter-rgb);
+  --ion-color-contrast: var(--ion-color-twitter-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-twitter-contrast-rgb);
+  --ion-color-shade: var(--ion-color-twitter-shade);
+  --ion-color-tint: var(--ion-color-twitter-tint);
+}
+
+.ion-color-google {
+  --ion-color-base: var(--ion-color-google);
+  --ion-color-base-rgb: var(--ion-color-google-rgb);
+  --ion-color-contrast: var(--ion-color-google-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-google-contrast-rgb);
+  --ion-color-shade: var(--ion-color-google-shade);
+  --ion-color-tint: var(--ion-color-google-tint);
+}
+
+.ion-color-vimeo {
+  --ion-color-base: var(--ion-color-vimeo);
+  --ion-color-base-rgb: var(--ion-color-vimeo-rgb);
+  --ion-color-contrast: var(--ion-color-vimeo-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-vimeo-contrast-rgb);
+  --ion-color-shade: var(--ion-color-vimeo-shade);
+  --ion-color-tint: var(--ion-color-vimeo-tint);
+}
+
+.ion-color-facebook {
+  --ion-color-base: var(--ion-color-facebook);
+  --ion-color-base-rgb: var(--ion-color-facebook-rgb);
+  --ion-color-contrast: var(--ion-color-facebook-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-facebook-contrast-rgb);
+  --ion-color-shade: var(--ion-color-facebook-shade);
+  --ion-color-tint: var(--ion-color-facebook-tint);
+}
+
+/*
+ * Shared Variables
+ * ----------------------------------------------------------------------------
+ * To customize the look and feel of this app, you can override
+ * the CSS variables found in Ionic's source files.
+ * To view all of the possible Ionic variables, see:
+ * https://ionicframework.com/docs/theming/css-variables#ionic-variables
+ */
+
+:root {
+  --ion-headings-font-weight: 300;
+
+  --ion-color-angular: #ac282b;
+  --ion-color-communication: #8e8d93;
+  --ion-color-tooling: #fe4c52;
+  --ion-color-services: #fd8b2d;
+  --ion-color-design: #fed035;
+  --ion-color-workshop: #69bb7b;
+  --ion-color-food: #3bc7c4;
+  --ion-color-documentation: #b16be3;
+  --ion-color-navigation: #6600cc;
+}
+
+/*
+ * App iOS Variables
+ * ----------------------------------------------------------------------------
+ * iOS only CSS variables can go here
+ */
+
+.ios {
+
+}
+
+/*
+ * App Material Design Variables
+ * ----------------------------------------------------------------------------
+ * Material Design only CSS variables can go here
+ */
+
+.md {
+  /* Use the primary color as the background for the toolbar */
+  --ion-toolbar-background: var(--ion-color-primary);
+
+  /* Change the color of the toolbar components */
+  --ion-toolbar-color: #fff;
+
+  /* Change the color of the activated toolbar components */
+  --ion-toolbar-color-activated: #fff;
+
+  /* Change the color of the unchecked segment buttons */
+  --ion-toolbar-color-unchecked: rgba(255, 255, 255, .6);
+
+  /* Change the color of the checked segment button */
+  --ion-toolbar-color-checked: #fff;
+}
+
+/*
+ * App Theme
+ * ----------------------------------------------------------------------------
+ * Ionic apps can have different themes applied, which can
+ * then be further customized. These variables come last
+ * so that the above variables are used by default.
+ */
+
+/*
+ * Dark Theme
+ * ----------------------------------------------------------------------------
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-border-color: #2a2a2a;
+    --ion-background-color: var(--ion-color-dark);
+    --ion-background-color-rgb: var(--ion-color-dark-rgb);
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+
+    --ion-color-step-50: #232323;
+    --ion-color-step-100: #2e2e2e;
+    --ion-color-step-150: #3a3a3a;
+    --ion-color-step-200: #454545;
+    --ion-color-step-250: #515151;
+    --ion-color-step-300: #5d5d5d;
+    --ion-color-step-350: #686868;
+    --ion-color-step-400: #747474;
+    --ion-color-step-450: #7f7f7f;
+    --ion-color-step-500: #8b8b8b;
+    --ion-color-step-550: #979797;
+    --ion-color-step-600: #a2a2a2;
+    --ion-color-step-650: #aeaeae;
+    --ion-color-step-700: #b9b9b9;
+    --ion-color-step-750: #c5c5c5;
+    --ion-color-step-800: #d1d1d1;
+    --ion-color-step-850: #dcdcdc;
+    --ion-color-step-900: #e8e8e8;
+    --ion-color-step-950: #f3f3f3;
+  }
+
+  .md {
+    /* Use the dark color as the background for the toolbar */
+    --ion-toolbar-background: var(--ion-color-dark);
+
+    /* Change the color of the toolbar components */
+    --ion-toolbar-color: #fff;
+
+    /* Change the color of the activated toolbar components */
+    --ion-toolbar-color-activated: #fff;
+
+    /* Change the color of the unchecked segment buttons */
+    --ion-toolbar-color-unchecked: rgba(255, 255, 255, .6);
+
+    /* Change the color of the checked segment button */
+    --ion-toolbar-color-checked: #fff;
+  }
+}
