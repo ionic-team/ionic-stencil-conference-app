@@ -1,4 +1,4 @@
-import { Component, State , h } from '@stencil/core';
+import { Component, State, h } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 
 
@@ -86,6 +86,7 @@ export class PageSignup {
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
           <ion-title>Signup</ion-title>
