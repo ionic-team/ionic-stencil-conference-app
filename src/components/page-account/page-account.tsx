@@ -32,14 +32,14 @@ export class PageAccount {
     const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
     await UserData.logout();
     this.userDidLogOut.emit({ loginStatus: false });
-    navCtrl.push('/schedule', 'root')
+    navCtrl.push('/schedule', 'root');
     // navCtrl.setRoot('page-tabs', null, { animated: true, direction: 'forward' });
   }
 
   async support() {
     const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
     // navCtrl.setRoot('page-support');
-    navCtrl.push('/support', 'root')
+    navCtrl.push('/support', 'root');
   }
 
   async changeUsername() {
@@ -84,7 +84,7 @@ export class PageAccount {
 
       <ion-content>
 
-        <div padding-top text-center >
+        <div class="ion-padding-top ion-text-center">
           <img src="http://www.gravatar.com/avatar?d=mm&s=140" alt="avatar" />
           <h2>{this.user}</h2>
           <ion-list>

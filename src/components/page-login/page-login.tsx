@@ -73,7 +73,6 @@ export class PageLogin {
     e.preventDefault();
     const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
 
-    console.log('Clicked login');
     this.validatePassword();
     this.validateUsername();
 
@@ -83,16 +82,14 @@ export class PageLogin {
       await UserData.login(this.username.value);
 
       this.userDidLogIn.emit({ loginStatus: true });
-      console.log(navCtrl)
-      navCtrl.push('/schedule', 'root')
+      navCtrl.push('/schedule', 'root');
     }
   }
 
   async onSignup(e) {
     e.preventDefault();
-    const navCtrl: HTMLIonNavElement = await (this.nav as any).componentOnReady();
-    console.log('Clicked signup');
-    navCtrl.push('page-signup');
+    const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
+    navCtrl.push('/signup');
   }
 
   render() {
@@ -119,7 +116,7 @@ export class PageLogin {
             </ion-item>
 
             <ion-text color="danger">
-              <p hidden={this.username.valid || this.submitted === false} padding-left>
+              <p hidden={this.username.valid || this.submitted === false} class="ion-padding-left">
                 Username is required
               </p>
             </ion-text>
@@ -130,13 +127,13 @@ export class PageLogin {
             </ion-item>
 
             <ion-text color="danger">
-              <p hidden={this.password.valid || this.submitted === false} padding-left>
+              <p hidden={this.password.valid || this.submitted === false} class="ion-padding-left">
                 Password is required
               </p>
             </ion-text>
           </ion-list>
 
-          <ion-row responsive-sm>
+          <ion-row>
             <ion-col>
               <ion-button type="submit" expand="block">Login</ion-button>
             </ion-col>
