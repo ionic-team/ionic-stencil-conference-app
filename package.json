@@ -12,7 +12,7 @@
   "dependencies": {
     "@capacitor/core": "^1.1.1",
     "@capacitor/ios": "^1.1.1",
-    "@ionic/core": "^4.7.1"
+    "@ionic/core": "^4.10.0"
   },
   "devDependencies": {
     "@capacitor/cli": "^1.1.1",
