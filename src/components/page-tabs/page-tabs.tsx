@@ -29,7 +29,7 @@ export class PageTabs {
             <ion-label>Schedule</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab-speaker">
-            <ion-icon name="contacts"></ion-icon>
+            <ion-icon name="people"></ion-icon>
             <ion-label>Speakers</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab-map">

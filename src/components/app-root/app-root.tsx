@@ -11,10 +11,13 @@ const { SplashScreen } = Plugins;
   styleUrl: 'app-root.css'
 })
 export class AppRoot {
-  @State() loggedIn = false;
   hasSeenTutorial = false;
 
   @Element() el: HTMLElement;
+
+  @State() dark = false;
+
+  @State() loggedIn = false;
 
   @Prop({ context: 'isServer' }) isServer: boolean;
 
@@ -27,7 +30,7 @@ export class AppRoot {
     {
       title: 'Speakers',
       url: '/speakers',
-      icon: 'contacts'
+      icon: 'people'
     },
     {
       title: 'Map',
@@ -64,6 +67,11 @@ export class AppRoot {
   async logout() {
     await UserData.logout();
     this.loggedIn = false;
+  }
+
+  @Listen('ionChange')
+  toggleChanged(event: any) {
+    this.dark = event.target.checked;
   }
 
   @Listen('userDidLogIn')
@@ -106,30 +114,27 @@ export class AppRoot {
   // TODO ion-menu should be split out
   render() {
     return (
-      <ion-app>
+      <ion-app class={{
+        'dark-theme': this.dark
+      }}>
         {this.renderRouter()}
         <ion-split-pane content-id="menu-content">
           <ion-menu content-id="menu-content">
-            <ion-header>
-              <ion-toolbar>
-                <ion-title>Menu</ion-title>
-              </ion-toolbar>
-            </ion-header>
             <ion-content forceOverscroll={false}>
-              <ion-list>
-                <ion-list-header>Navigate</ion-list-header>
+              <ion-list lines="none">
+                <ion-list-header>Conference</ion-list-header>
 
                 {this.appPages.map((p) => (
                   <ion-menu-toggle autoHide={false}>
                     <ion-item href={p.url}>
-                      <ion-icon slot="start" name={p.icon}></ion-icon>
+                      <ion-icon slot="start" name={p.icon + '-outline'}></ion-icon>
                       <ion-label>{p.title}</ion-label>
                     </ion-item>
                   </ion-menu-toggle>
                 ))}
               </ion-list>
 
-              <ion-list>
+              <ion-list lines="none">
                 <ion-list-header>Account</ion-list-header>
 
                 <ion-menu-toggle autoHide={false}>
@@ -166,9 +171,17 @@ export class AppRoot {
                     </ion-item>
                   )}
                 </ion-menu-toggle>
+
+                <ion-item>
+                  <ion-icon slot="start" name="moon-outline"></ion-icon>
+                  <ion-label>
+                    Dark Mode
+                  </ion-label>
+                  <ion-toggle checked={this.dark}></ion-toggle>
+                </ion-item>
               </ion-list>
 
-              <ion-list>
+              <ion-list lines="none">
                 <ion-list-header>Tutorial</ion-list-header>
                 <ion-menu-toggle autoHide={false}>
                   <ion-item href="tutorial">
