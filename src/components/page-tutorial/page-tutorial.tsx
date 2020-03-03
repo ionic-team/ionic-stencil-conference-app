@@ -1,5 +1,8 @@
-import { Component, Element, Prop , h } from '@stencil/core';
+import { Component, Element, h } from '@stencil/core';
+import { menuController } from '@ionic/core';
+
 import { UserData } from '../../providers/user-data';
+
 
 @Component({
   tag: 'page-tutorial',
@@ -7,12 +10,12 @@ import { UserData } from '../../providers/user-data';
 })
 export class PageTutorial {
   @Element() el: HTMLElement;
-  @Prop({ connect: 'ion-menu-controller' }) menuCtrl: HTMLIonMenuControllerElement;
 
   async componentDidLoad() {
     UserData.hasSeenTutorial(true);
-    const menuCtlr: HTMLIonMenuControllerElement = await (this.menuCtrl as any).componentOnReady();
-    menuCtlr.enable(false);
+
+    menuController.enable(false);
+
     setTimeout(() => this.el.querySelector('ion-slides').update(), 100);
   }
 

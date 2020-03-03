@@ -1,4 +1,5 @@
-import { Component, Prop , h } from '@stencil/core';
+import { menuController } from '@ionic/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'page-tabs',
@@ -6,12 +7,10 @@ import { Component, Prop , h } from '@stencil/core';
 })
 export class PageTabs {
 
-  @Prop({ connect: 'ion-menu-controller' }) menuCtrl: HTMLIonMenuControllerElement;
-
   async componentDidLoad() {
-    const menuCtlr: HTMLIonMenuControllerElement = await (this.menuCtrl as any).componentOnReady();
-    menuCtlr.enable(true);
+    menuController.enable(true);
   }
+
   render() {
     return [
       <ion-tabs>

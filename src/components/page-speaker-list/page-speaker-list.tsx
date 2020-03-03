@@ -1,7 +1,9 @@
-import { Component, Prop , h } from '@stencil/core';
-
-import { Plugins } from '@capacitor/core';
 const { Browser } = Plugins;
+
+import { actionSheetController } from '@ionic/core';
+import { Component, h } from '@stencil/core';
+import { Plugins } from '@capacitor/core';
+
 import { ConferenceData } from '../../providers/conference-data';
 
 @Component({
@@ -9,12 +11,9 @@ import { ConferenceData } from '../../providers/conference-data';
   styleUrl: 'page-speaker-list.css'
 })
 export class PageSpeakerList {
-
   mode!: string;
 
   speakers: any[] = [];
-  @Prop({ connect: 'ion-action-sheet-controller' }) actionSheetCtrl: HTMLIonActionSheetControllerElement;
-
 
   async componentWillLoad() {
     this.speakers = await ConferenceData.getSpeakers();
@@ -29,7 +28,7 @@ export class PageSpeakerList {
   }
 
   async openSpeakerShare(speaker: any) {
-    const actionSheet = await this.actionSheetCtrl.create({
+    const actionSheet = await actionSheetController.create({
       header: 'Share ' + speaker.name,
       buttons: [
         {
@@ -64,7 +63,7 @@ export class PageSpeakerList {
   async openContact(speaker: any) {
     const mode = this.mode;
 
-    const actionSheet = await this.actionSheetCtrl.create({
+    const actionSheet = await actionSheetController.create({
       header: 'Contact ' + speaker.name,
       buttons: [
         {

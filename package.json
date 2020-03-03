@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "description": "Stencil App Starter",
   "scripts": {
+    "lint": "tslint --project .",
+    "lint.fix": "tslint --project . --fix",
     "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve",
     "serve": "stencil serve --root www",
@@ -12,11 +14,11 @@
   "dependencies": {
     "@capacitor/core": "^1.3.0",
     "@capacitor/ios": "^1.3.0",
-    "@ionic/core": "^4.11.6"
+    "@ionic/core": "^5.0.4"
   },
   "devDependencies": {
     "@capacitor/cli": "^1.3.0",
-    "@stencil/core": "^1.8.9",
+    "@stencil/core": "^1.8.11",
     "@types/jest": "^24.0.23",
     "tslint": "^5.20.1",
     "tslint-ionic-rules": "0.0.21",

@@ -1,4 +1,6 @@
-import { Component, Prop , h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
+
+import { popoverController } from '@ionic/core';
 
 @Component({
   tag: 'page-about',
@@ -6,10 +8,8 @@ import { Component, Prop , h } from '@stencil/core';
 })
 export class PageAbout {
 
-  @Prop({ connect: 'ion-popover-controller' }) popoverCtrl: HTMLIonPopoverControllerElement;
-
   async presentPopover(event: any) {
-    const popover = await this.popoverCtrl.create({
+    const popover = await popoverController.create({
       component: 'page-about-popover',
       event
     });
@@ -49,8 +49,8 @@ export class PageAbout {
             <ion-item>
               <ion-icon name="pin" slot="start"></ion-icon>
               <ion-label>Location</ion-label>
-              <ion-select>
-                <ion-select-option value="madison" selected>Madison, WI</ion-select-option>
+              <ion-select value="madison">
+                <ion-select-option value="madison">Madison, WI</ion-select-option>
                 <ion-select-option value="austin">Austin, TX</ion-select-option>
                 <ion-select-option value="chicago">Chicago, IL</ion-select-option>
                 <ion-select-option value="seattle">Seattle, WA</ion-select-option>
