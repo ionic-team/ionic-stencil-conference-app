@@ -1,5 +1,8 @@
 import { Component, Prop, h } from '@stencil/core';
 import { ConferenceData } from '../../providers/conference-data';
+import { Plugins } from '@capacitor/core';
+
+const { Browser } = Plugins;
 
 @Component({
   tag: 'page-speaker-detail',
@@ -14,9 +17,11 @@ export class PageSpeakerDetail {
     this.speaker = await ConferenceData.getSpeaker(this.speakerId);
   }
 
-  // TODO open URL
   openExternalUrl(url: string) {
     console.log('open url', url);
+    Browser.open({
+      url
+    });
   }
 
   render() {
