@@ -13,7 +13,7 @@ const { SplashScreen } = Plugins;
 export class AppRoot {
   hasSeenTutorial = false;
 
-  @Element() el: HTMLElement;
+  @Element() el: any;
 
   @State() dark = false;
 
@@ -44,6 +44,11 @@ export class AppRoot {
     }
   ];
 
+  @Listen('ionRouteWillChange')
+  routeChanged() {
+    this.el.forceUpdate();
+  }
+
   async componentWillLoad() {
     this.hasSeenTutorial = this.isServer
       ? true
@@ -71,6 +76,16 @@ export class AppRoot {
 
   toggleChanged(event: any) {
     this.dark = event.target.checked;
+  }
+
+  isActiveUrl(url: string) {
+    const current = window.location.pathname;
+
+    if (current.includes(url)) {
+      return true;
+    }
+
+    return false;
   }
 
   @Listen('userDidLogIn')
@@ -110,7 +125,6 @@ export class AppRoot {
     );
   }
 
-  // TODO ion-menu should be split out
   render() {
     return (
       <ion-app class={{
@@ -125,7 +139,7 @@ export class AppRoot {
 
                 {this.appPages.map((p) => (
                   <ion-menu-toggle autoHide={false}>
-                    <ion-item detail={false} href={p.url}>
+                    <ion-item detail={false} href={p.url} class={{ 'selected': this.isActiveUrl(p.url) }}>
                       <ion-icon slot="start" name={p.icon + '-outline'}></ion-icon>
                       <ion-label>{p.title}</ion-label>
                     </ion-item>
@@ -138,12 +152,12 @@ export class AppRoot {
 
                 <ion-menu-toggle autoHide={false}>
                   {this.loggedIn ? (
-                    <ion-item detail={false} href="account">
+                    <ion-item detail={false} href="account" class={{ 'selected': this.isActiveUrl('/account') }}>
                       <ion-icon slot="start" name="person"></ion-icon>
                       <ion-label>Account</ion-label>
                     </ion-item>
                   ) : (
-                    <ion-item detail={false} href="login">
+                    <ion-item detail={false} href="login" class={{ 'selected': this.isActiveUrl('/login') }}>
                       <ion-icon slot="start" name="log-in"></ion-icon>
                       <ion-label>Login</ion-label>
                     </ion-item>
@@ -151,7 +165,7 @@ export class AppRoot {
                 </ion-menu-toggle>
 
                 <ion-menu-toggle autoHide={false}>
-                  <ion-item detail={false} href="support" button>
+                  <ion-item detail={false} href="support" class={{ 'selected': this.isActiveUrl('/support') }}>
                     <ion-icon slot="start" name="help"></ion-icon>
                     <ion-label>Support</ion-label>
                   </ion-item>
@@ -164,7 +178,7 @@ export class AppRoot {
                       <ion-label>Logout</ion-label>
                     </ion-item>
                   ) : (
-                    <ion-item detail={false} href="signup" button>
+                    <ion-item detail={false} href="signup" button class={{ 'selected': this.isActiveUrl('/signup') }}>
                       <ion-icon slot="start" name="person-add"></ion-icon>
                       <ion-label>Signup</ion-label>
                     </ion-item>
