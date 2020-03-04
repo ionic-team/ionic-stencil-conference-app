@@ -1,8 +1,4 @@
-.scroll {
-  background: #ededed;
-}
-
-.speaker-card {
+page-speaker-list .speaker-card {
   display: flex;
   flex-direction: column;
 }
@@ -10,40 +6,40 @@
 /* Due to the fact the cards are inside of columns the margins don't overlap
  * properly so we want to remove the extra margin between cards
  */
-ion-col:not(:last-of-type) .speaker-card {
+ page-speaker-list ion-col:not(:last-of-type) .speaker-card {
   margin-bottom: 0;
 }
 
-.speaker-card .speaker-item {
+page-speaker-list .speaker-card .speaker-item {
   --min-height: 85px;
 }
 
-.speaker-card .speaker-item h2 {
+page-speaker-list .speaker-card .speaker-item h2 {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
 
-.speaker-card .speaker-item p {
+page-speaker-list .speaker-card .speaker-item p {
   font-size: 13px;
   letter-spacing: 0.02em;
 }
 
-.speaker-card ion-card-header {
+page-speaker-list .speaker-card ion-card-header {
   padding: 0;
 }
 
-.speaker-card ion-card-content {
+page-speaker-list .speaker-card ion-card-content {
   flex: 1 1 auto;
 
   padding: 0;
 }
 
-.ios ion-list {
+.ios page-speaker-list ion-list {
   margin-bottom: 10px;
 }
 
-.md ion-list {
+.md page-speaker-list ion-list {
   border-top: 1px solid var(--ion-color-step-150, #d7d8da);
 
   padding: 0;
