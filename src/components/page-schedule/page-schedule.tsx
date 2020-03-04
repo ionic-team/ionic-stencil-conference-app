@@ -1,4 +1,4 @@
-import { Config, alertController, getMode, loadingController, modalController } from '@ionic/core';
+import { Config, alertController, getMode, loadingController, modalController, toastController } from '@ionic/core';
 
 import { Component, Element, Listen, Prop, State , h } from '@stencil/core';
 
@@ -77,6 +77,8 @@ export class PageSchedule {
   async presentFilter() {
     const modal = await modalController.create({
       component: 'page-schedule-filter',
+      swipeToClose: true,
+      presentingElement: this.el.closest('ion-router-outlet'),
       componentProps: {
         excludedTracks: this.excludeTracks,
       }
@@ -86,26 +88,24 @@ export class PageSchedule {
 
   async addFavorite(session: any) {
     if (UserData.hasFavorite(session.name)) {
-      // oops, this session has already been favorited, prompt to remove it
+      // Prompt to remove favorite
       this.removeFavorite(session, 'Favorite already added');
     } else {
-      // remember this session as a user favorite
+      // Add as a favorite
       UserData.addFavorite(session.name);
 
-      // create an alert instance
-      const alert = await alertController.create({
-        header: 'Favorite Added',
+      // Create a toast
+      const toast = await toastController.create({
+        header: `${session.name} was successfully added as a favorite.`,
+        duration: 3000,
         buttons: [{
-          text: 'OK',
-          handler: () => {
-            // close the sliding item
-            this.updateSchedule();
-          }
+          text: 'Close',
+          role: 'cancel'
         }]
       });
 
-      // now present the alert
-      alert.present();
+      // Present the toast at the bottom of the page
+      toast.present();
     }
   }
 
@@ -232,7 +232,7 @@ export class PageSchedule {
                   <ion-label>
                     <h3>{session.name}</h3>
                     <p>
-                      {session.timeStart} &ndash;&ndash; {session.timeEnd}: {session.location}
+                      {session.timeStart} &ndash; {session.timeEnd}: {session.location}
                     </p>
                   </ion-label>
                 </ion-item>

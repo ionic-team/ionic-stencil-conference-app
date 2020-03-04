@@ -1,4 +1,3 @@
-import { actionSheetController } from '@ionic/core';
 import { Component, h } from '@stencil/core';
 import { Plugins } from '@capacitor/core';
 
