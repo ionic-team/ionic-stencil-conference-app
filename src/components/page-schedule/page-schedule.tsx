@@ -42,13 +42,11 @@ export class PageSchedule {
     this.fab = this.el.querySelector('#socialFab');
   }
 
-  @Listen('ionChange')
   segmentChanged(event: any) {
     this.segment = event.target.value;
     this.updateSchedule();
   }
 
-  @Listen('ionInput')
   searchbarChanged(event: any) {
     this.queryText = event.target.value;
     this.updateSchedule();
@@ -165,7 +163,7 @@ export class PageSchedule {
             </ion-buttons>
           }
           { this.ios &&
-            <ion-segment value={this.segment}>
+            <ion-segment value={this.segment} onIonChange={(ev) => this.segmentChanged(ev)}>
               <ion-segment-button value="all">
                 All
               </ion-segment-button>
@@ -178,7 +176,7 @@ export class PageSchedule {
             <ion-title>Schedule</ion-title>
           }
           { this.showSearchbar &&
-            <ion-searchbar showCancelButton="always" value={this.queryText} placeholder="Search" onIonCancel={() => this.showSearchbar = false }></ion-searchbar>
+            <ion-searchbar showCancelButton="always" value={this.queryText} placeholder="Search" onIonInput={(ev) => this.searchbarChanged(ev)} onIonCancel={() => this.showSearchbar = false }></ion-searchbar>
           }
           <ion-buttons slot="end">
             { !this.ios && !this.showSearchbar &&
@@ -197,7 +195,7 @@ export class PageSchedule {
 
         { !this.ios &&
           <ion-toolbar>
-            <ion-segment value={this.segment}>
+            <ion-segment value={this.segment} onIonChange={(ev) => this.segmentChanged(ev)}>
               <ion-segment-button value="all">
                 All
               </ion-segment-button>
@@ -215,7 +213,7 @@ export class PageSchedule {
             <ion-title size="large">Schedule</ion-title>
           </ion-toolbar>
           <ion-toolbar>
-          <ion-searchbar value={this.queryText} placeholder="Search"></ion-searchbar>
+          <ion-searchbar value={this.queryText} placeholder="Search" onIonInput={(ev) => this.searchbarChanged(ev)}></ion-searchbar>
           </ion-toolbar>
         </ion-header>
 

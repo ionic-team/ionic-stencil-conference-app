@@ -69,7 +69,6 @@ export class AppRoot {
     this.loggedIn = false;
   }
 
-  @Listen('ionChange')
   toggleChanged(event: any) {
     this.dark = event.target.checked;
   }
@@ -177,7 +176,7 @@ export class AppRoot {
                   <ion-label>
                     Dark Mode
                   </ion-label>
-                  <ion-toggle checked={this.dark}></ion-toggle>
+                  <ion-toggle checked={this.dark} onIonChange={(ev) => this.toggleChanged(ev)}></ion-toggle>
                 </ion-item>
               </ion-list>
 
