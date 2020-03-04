@@ -21,7 +21,7 @@ export class PageTutorial {
 
   render() {
     return [
-      <ion-header no-border>
+      <ion-header class="ion-no-border">
         <ion-toolbar>
           <ion-buttons slot="end">
             <ion-button color="primary" href="/schedule">Skip</ion-button>

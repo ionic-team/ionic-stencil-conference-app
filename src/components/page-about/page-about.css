@@ -1,4 +1,4 @@
-ion-toolbar {
+page-about ion-toolbar {
   position: absolute;
 
   top: 0;
@@ -9,20 +9,20 @@ ion-toolbar {
   --color: white;
 }
 
-ion-toolbar ion-button,
-ion-toolbar ion-back-button,
-ion-toolbar ion-menu-button {
+page-about ion-toolbar ion-button,
+page-about ion-toolbar ion-back-button,
+page-about ion-toolbar ion-menu-button {
   --color: white;
 }
 
-.about-header {
+page-about .about-header {
   position: relative;
 
   width: 100%;
   height: 30%;
 }
 
-.about-header .about-image {
+page-about .about-header .about-image {
   position: absolute;
 
   top: 0;
@@ -39,41 +39,41 @@ ion-toolbar ion-menu-button {
   transition: opacity 500ms ease-in-out;
 }
 
-.about-header .madison {
+page-about .about-header .madison {
   background-image: url(/assets/img/about/madison.jpg);
 }
-.about-header .austin {
+page-about .about-header .austin {
   background-image: url(/assets/img/about/austin.jpg);
 }
-.about-header .chicago {
+page-about .about-header .chicago {
   background-image: url(/assets/img/about/chicago.jpg);
 }
-.about-header .seattle {
+page-about .about-header .seattle {
   background-image: url(/assets/img/about/seattle.jpg);
 }
 
-.about-info {
+page-about .about-info {
   position: absolute;
   margin-top: -10px;
   border-radius: 10px;
   background: var(--ion-background-color, #fff);
 }
 
-.about-info h3 {
+page-about .about-info h3 {
   margin-top: 0;
 }
 
-.about-info ion-list {
+page-about .about-info ion-list {
   padding-top: 0;
 }
 
-.about-info p {
+page-about .about-info p {
   line-height: 130%;
 
   color: var(--ion-color-dark);
 }
 
-.about-info ion-icon {
+page-about .about-info ion-icon {
   margin-inline-end: 32px;
 }
 
@@ -81,10 +81,10 @@ ion-toolbar ion-menu-button {
  * iOS Only
  */
 
-.ios .about-info {
+.ios page-about .about-info {
   --ion-padding: 19px;
 }
 
-.ios .about-info h3 {
+.ios page-about .about-info h3 {
   font-weight: 700;
 }

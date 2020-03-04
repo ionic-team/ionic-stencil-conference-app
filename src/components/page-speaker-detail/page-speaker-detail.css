@@ -2,7 +2,7 @@
  * Speaker Background
  */
 
- ion-toolbar {
+ page-speaker-detail ion-toolbar {
   position: absolute;
 
   top: 0;
@@ -13,13 +13,13 @@
   --color: white;
 }
 
-ion-toolbar ion-button,
-ion-toolbar ion-back-button,
-ion-toolbar ion-menu-button {
+page-speaker-detail ion-toolbar ion-button,
+page-speaker-detail ion-toolbar ion-back-button,
+page-speaker-detail ion-toolbar ion-menu-button {
   --color: white;
 }
 
-.speaker-background {
+page-speaker-detail .speaker-background {
   position: relative;
 
   display: flex;
@@ -36,13 +36,13 @@ ion-toolbar ion-menu-button {
   background: center / cover url(/assets/img/speaker-background.png) no-repeat;
 }
 
-.speaker-background img {
+page-speaker-detail .speaker-background img {
   width: 70px;
   border-radius: 50%;
   margin-top: calc(-1 * var(--ion-safe-area-top));
 }
 
-.speaker-background h2 {
+page-speaker-detail .speaker-background h2 {
   position: absolute;
 
   bottom: 10px;
@@ -50,11 +50,11 @@ ion-toolbar ion-menu-button {
   color: white;
 }
 
-.md .speaker-background {
+.md page-speaker-detail .speaker-background {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 }
 
-.ios .speaker-background {
+.ios page-speaker-detail .speaker-background {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
 }
 
@@ -62,12 +62,12 @@ ion-toolbar ion-menu-button {
  * Speaker Details
  */
 
-.speaker-detail p {
+ page-speaker-detail .speaker-detail p {
   margin-left: 6px;
   margin-right: 6px;
 }
 
-.speaker-detail hr {
+page-speaker-detail .speaker-detail hr {
   margin-top: 20px;
   margin-bottom: 20px;
 
