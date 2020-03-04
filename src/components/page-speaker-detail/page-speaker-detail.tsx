@@ -89,7 +89,7 @@ export class PageSpeakerDetail {
 
     return [
       <ion-content>
-        <ion-header>
+        <ion-header class="ion-no-border">
           <ion-toolbar>
             <ion-buttons slot="start">
               <ion-back-button defaultHref="/speakers"></ion-back-button>
