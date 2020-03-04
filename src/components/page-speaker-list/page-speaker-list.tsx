@@ -97,7 +97,7 @@ export class PageSpeakerList {
         </ion-toolbar>
       </ion-header>,
 
-      <ion-content class="outer-content">
+      <ion-content>
         <ion-list>
           <ion-grid fixed>
             <ion-row align-items-stretch>

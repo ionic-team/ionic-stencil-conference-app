@@ -1,5 +1,5 @@
 import { Config, getMode } from '@ionic/core';
-import { Component, Element, Listen, Prop, State , h } from '@stencil/core';
+import { Component, Element, Prop, State , h } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 
