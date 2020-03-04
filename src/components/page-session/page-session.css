@@ -38,31 +38,49 @@
   color: var(--ion-color-navigation);
 }
 
-.show-favorite {
+/* Favorite Icon
+ * --------------------------------------------------------
+ */
+
+ page-session .show-favorite {
   position: relative;
 }
 
-.icon-heart-empty {
+page-session .icon-heart-empty,
+page-session .icon-heart {
+  --border-radius: 50%;
+  --padding-start: 0;
+  --padding-end: 0;
+
   position: absolute;
+
   top: 5px;
   right: 5px;
-  transform: scale(1);
-  transition: transform 0.3s ease;
+
+  width: 48px;
+  height: 48px;
+
+  font-size: 16px;
+
+  transition: transform 300ms ease;
 }
 
-.icon-heart {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  transform: scale(0);
-  transition: transform 0.3s ease;
-}
-
-.show-favorite .icon-heart {
+page-session .icon-heart-empty {
   transform: scale(1);
 }
 
-.show-favorite .icon-heart-empty {
+page-session .icon-heart {
   transform: scale(0);
 }
 
+page-session .show-favorite .icon-heart {
+  transform: scale(1);
+}
+
+page-session .show-favorite .icon-heart-empty {
+  transform: scale(0);
+}
+
+page-session h1 {
+  margin: 0;
+}

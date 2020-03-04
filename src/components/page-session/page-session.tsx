@@ -31,57 +31,43 @@ export class PageSession {
     }
   }
 
+  shareSession() {
+    console.log('Clicked share session');
+  }
+
   render() {
+    const { session } = this;
+
     return [
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-back-button defaultHref={this.goback} />
+            <ion-back-button defaultHref={this.goback}></ion-back-button>
           </ion-buttons>
-          {this.session ? <ion-title>{this.session.name}</ion-title> : null}
+          <ion-buttons slot="end">
+            <ion-button onClick={() => this.toggleFavorite()}>
+              { !this.isFavorite && <ion-icon slot="icon-only" name="star-outline"></ion-icon> }
+              { this.isFavorite && <ion-icon slot="icon-only" name="star"></ion-icon> }
+            </ion-button>
+            <ion-button onClick={() => this.shareSession()}>
+              <ion-icon slot="icon-only" name="share"></ion-icon>
+            </ion-button>
+          </ion-buttons>
         </ion-toolbar>
       </ion-header>,
 
       <ion-content>
         <div class="ion-padding">
-          <ion-grid class="ion-no-padding">
-            <ion-row>
-              <ion-col size="6">
-                {this.session.tracks.map(track => (
-                  <span
-                    class={{ [`session-track-${track.toLowerCase()}`]: true }}
-                  >
-                    {track}
-                  </span>
-                ))}
-                <div>Session {this.sessionId}</div>
-              </ion-col>
-              <ion-col size="6" text-right class={this.isFavorite ? 'show-favorite' : ''} >
-                <ion-icon
-                  name="heart-empty"
-                  size="large"
-                  class="icon-heart-empty"
-                  onClick={() => this.toggleFavorite()}
-                />
-                <ion-icon
-                  name="heart"
-                  color="danger"
-                  size="large"
-                  class="icon-heart"
-                  onClick={() => this.toggleFavorite()}
-                />
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-
-          <h1>{this.session.name}</h1>
-
-          <p>{this.session.description}</p>
-
+          <h1>{session.name}</h1>
+          {session.tracks.map(track => (
+            <span class={{ [`session-track-${track.toLowerCase()}`]: true }}>
+              {track}
+            </span>
+          ))}
+          <p>{session.description}</p>
           <ion-text color="medium">
-            {this.session.timeStart} &ndash; {this.session.timeEnd}
-            <br />
-            {this.session.location}
+            {session.timeStart} &ndash; {session.timeEnd}
+            <br /> {session.location}
           </ion-text>
         </div>
 
@@ -92,20 +78,12 @@ export class PageSession {
           <ion-item onClick={() => this.sessionClick('add to calendar')} button>
             <ion-label color="primary">Add to Calendar</ion-label>
           </ion-item>
-          <ion-item
-            onClick={() => this.sessionClick('mark as unwatched')}
-            button
-          >
+          <ion-item onClick={() => this.sessionClick('mark as unwatched')} button>
             <ion-label color="primary">Mark as Unwatched</ion-label>
           </ion-item>
           <ion-item onClick={() => this.sessionClick('download video')} button>
             <ion-label color="primary">Download Video</ion-label>
-            <ion-icon
-              slot="end"
-              color="primary"
-              size="small"
-              name="cloud-download"
-            />
+            <ion-icon slot="end" color="primary" size="small" name="cloud-download"></ion-icon>
           </ion-item>
           <ion-item onClick={() => this.sessionClick('leave feedback')} button>
             <ion-label color="primary">Leave Feedback</ion-label>
