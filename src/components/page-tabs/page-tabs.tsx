@@ -33,7 +33,7 @@ export class PageTabs {
             <ion-label>Speakers</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab-map">
-            <ion-icon name="map"></ion-icon>
+            <ion-icon name="location"></ion-icon>
             <ion-label>Map</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab-about">
