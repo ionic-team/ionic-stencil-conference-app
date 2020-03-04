@@ -1,10 +1,10 @@
-const { Browser } = Plugins;
-
 import { actionSheetController } from '@ionic/core';
 import { Component, h } from '@stencil/core';
 import { Plugins } from '@capacitor/core';
 
 import { ConferenceData } from '../../providers/conference-data';
+
+const { Browser } = Plugins;
 
 @Component({
   tag: 'page-speaker-list',
@@ -20,8 +20,6 @@ export class PageSpeakerList {
   }
 
   goToSpeakerTwitter(speaker: any) {
-    console.log('goToSpeakerTwitter', speaker);
-
     Browser.open({
       url: `https://twitter.com/${speaker.twitter}`
     });
@@ -97,74 +95,52 @@ export class PageSpeakerList {
         </ion-toolbar>
       </ion-header>,
 
-      <ion-content>
-        <ion-list>
-          <ion-grid fixed>
-            <ion-row align-items-stretch>
-              {this.speakers.map(speaker => (
-                <ion-col size="12" size-md="6">
-                  <ion-card class="speaker-card">
-                    <ion-card-header>
-                      <ion-item detail-none href={`/speakers/${speaker.id}`}>
-                        <ion-avatar slot="start">
-                          <img src={speaker.profilePic} alt="Speaker profile pic"/>
-                        </ion-avatar>
-                        {speaker.name}
-                      </ion-item>
-                    </ion-card-header>
+      <ion-content fullscreen={true}>
+        <ion-header collapse="condense">
+          <ion-toolbar>
+            <ion-title size="large">Speakers</ion-title>
+          </ion-toolbar>
+        </ion-header>
 
-                    <ion-card-content>
-                      <ion-list>
-                        {speaker.sessions.map(session => (
-                          <ion-item href={`/speakers/session/${session.id}`}>
+        <ion-grid fixed>
+          <ion-row>
+            {this.speakers.map(speaker => (
+              <ion-col size="12" size-md="6">
+                <ion-card class="speaker-card">
+                  <ion-card-header>
+                    <ion-item detail={false} lines="none" class="speaker-item" href={`/speakers/${speaker.id}`}>
+                      <ion-avatar slot="start">
+                        <img src={speaker.profilePic} alt={speaker.name + ' profile pic'}/>
+                      </ion-avatar>
+                      <ion-label>
+                        <h2>{speaker.name}</h2>
+                        <p>{speaker.title}</p>
+                      </ion-label>
+                    </ion-item>
+                  </ion-card-header>
+
+                  <ion-card-content>
+                    <ion-list lines="none">
+                      {speaker.sessions.map(session => (
+                        <ion-item detail={false} href={`/speakers/session/${session.id}`}>
+                          <ion-label>
                             <h3>{session.name}</h3>
-                          </ion-item>
-                        ))}
-
-                        <ion-item href={`/speakers/${speaker.id}`}>
-                          <h3>About {speaker.name}</h3>
+                          </ion-label>
                         </ion-item>
-                      </ion-list>
-                    </ion-card-content>
+                      ))}
 
-                    <ion-row class="ion-no-padding ion-justify-content-center">
-                      <ion-col size="4" text-left>
-                        <ion-button
-                          fill="clear"
-                          size="small"
-                          color="primary"
-                          onClick={() => this.goToSpeakerTwitter(speaker)}>
-                          <ion-icon name="logo-twitter" slot="start"></ion-icon>
-                          Tweet
-                        </ion-button>
-                      </ion-col>
-                      <ion-col size="4" text-center>
-                        <ion-button
-                          fill="clear"
-                          size="small"
-                          color="primary"
-                          onClick={() => this.openSpeakerShare(speaker)}>
-                          <ion-icon name="share-alt" slot="start"></ion-icon>
-                          Share
-                        </ion-button>
-                      </ion-col>
-                      <ion-col size="4" text-right>
-                        <ion-button
-                          fill="clear"
-                          size="small"
-                          color="primary"
-                          onClick={() => this.openContact(speaker)}>
-                          <ion-icon name="chatboxes" slot="start"></ion-icon>
-                          Contact
-                        </ion-button>
-                      </ion-col>
-                    </ion-row>
-                  </ion-card>
-                </ion-col>
-              ))}
-            </ion-row>
-          </ion-grid>
-        </ion-list>
+                      <ion-item detail={false} href={`/speakers/${speaker.id}`}>
+                        <ion-label>
+                          <h3>About {speaker.name}</h3>
+                        </ion-label>
+                      </ion-item>
+                    </ion-list>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            ))}
+          </ion-row>
+        </ion-grid>
       </ion-content>
     ];
   }
