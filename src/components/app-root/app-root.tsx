@@ -125,7 +125,7 @@ export class AppRoot {
 
                 {this.appPages.map((p) => (
                   <ion-menu-toggle autoHide={false}>
-                    <ion-item href={p.url}>
+                    <ion-item detail={false} href={p.url}>
                       <ion-icon slot="start" name={p.icon + '-outline'}></ion-icon>
                       <ion-label>{p.title}</ion-label>
                     </ion-item>
@@ -138,12 +138,12 @@ export class AppRoot {
 
                 <ion-menu-toggle autoHide={false}>
                   {this.loggedIn ? (
-                    <ion-item href="account">
+                    <ion-item detail={false} href="account">
                       <ion-icon slot="start" name="person"></ion-icon>
                       <ion-label>Account</ion-label>
                     </ion-item>
                   ) : (
-                    <ion-item href="login">
+                    <ion-item detail={false} href="login">
                       <ion-icon slot="start" name="log-in"></ion-icon>
                       <ion-label>Login</ion-label>
                     </ion-item>
@@ -151,7 +151,7 @@ export class AppRoot {
                 </ion-menu-toggle>
 
                 <ion-menu-toggle autoHide={false}>
-                  <ion-item href="support" button>
+                  <ion-item detail={false} href="support" button>
                     <ion-icon slot="start" name="help"></ion-icon>
                     <ion-label>Support</ion-label>
                   </ion-item>
@@ -159,12 +159,12 @@ export class AppRoot {
 
                 <ion-menu-toggle autoHide={false}>
                   {this.loggedIn ? (
-                    <ion-item onClick={() => this.logout()} button>
+                    <ion-item detail={false} onClick={() => this.logout()} button>
                       <ion-icon slot="start" name="log-out"></ion-icon>
                       <ion-label>Logout</ion-label>
                     </ion-item>
                   ) : (
-                    <ion-item href="signup" button>
+                    <ion-item detail={false} href="signup" button>
                       <ion-icon slot="start" name="person-add"></ion-icon>
                       <ion-label>Signup</ion-label>
                     </ion-item>
@@ -183,7 +183,7 @@ export class AppRoot {
               <ion-list lines="none">
                 <ion-list-header>Tutorial</ion-list-header>
                 <ion-menu-toggle autoHide={false}>
-                  <ion-item href="tutorial">
+                  <ion-item detail={false} href="tutorial">
                     <ion-icon slot="start" name="hammer"></ion-icon>
                     <ion-label>Show Tutorial</ion-label>
                   </ion-item>

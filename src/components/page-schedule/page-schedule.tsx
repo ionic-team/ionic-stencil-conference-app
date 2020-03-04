@@ -213,7 +213,7 @@ export class PageSchedule {
             <ion-title size="large">Schedule</ion-title>
           </ion-toolbar>
           <ion-toolbar>
-          <ion-searchbar value={this.queryText} placeholder="Search" onIonInput={(ev) => this.searchbarChanged(ev)}></ion-searchbar>
+            <ion-searchbar value={this.queryText} placeholder="Search" onIonInput={(ev) => this.searchbarChanged(ev)}></ion-searchbar>
           </ion-toolbar>
         </ion-header>
 
