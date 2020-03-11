@@ -25,8 +25,6 @@ export class PageAbout {
 
   // momentjs would be a better way to do this https://momentjs.com/
   displayDate(date: string, format: string) {
-    console.log(date);
-
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const d = new Date(date);

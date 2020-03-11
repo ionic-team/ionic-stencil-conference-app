@@ -19,7 +19,6 @@ export class PageSpeakerDetail {
   }
 
   openExternalUrl(url: string) {
-    console.log('open url', url);
     Browser.open({
       url
     });
@@ -95,12 +94,12 @@ export class PageSpeakerDetail {
               <ion-back-button defaultHref="/speakers"></ion-back-button>
             </ion-buttons>
             <ion-buttons slot="end">
-            <ion-button onClick={() => this.openContact(speaker)}>
-              <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
-            </ion-button>
-            <ion-button onClick={() => this.openSpeakerShare(speaker)}>
-              <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
-            </ion-button>
+              <ion-button onClick={() => this.openContact(speaker)}>
+                <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
+              </ion-button>
+              <ion-button onClick={() => this.openSpeakerShare(speaker)}>
+                <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
+              </ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
