@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, Prop, State , h } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
+import { alertController } from '@ionic/core';
 
 
 @Component({
@@ -9,7 +10,6 @@ export class PageAccount {
 
   @State() user;
   @Prop({ connect: 'ion-router' }) nav: HTMLIonRouterElement;
-  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
   @Event() userDidLogOut: EventEmitter;
 
   componentDidLoad() {
@@ -43,7 +43,7 @@ export class PageAccount {
   }
 
   async changeUsername() {
-    const alert = await this.alertCtrl.create({
+    const alert = await alertController.create({
       header: 'Change Username',
       inputs: [
         {

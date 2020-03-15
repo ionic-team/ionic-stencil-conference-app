@@ -1,8 +1,10 @@
-import { Component, Prop , h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 import { Plugins } from '@capacitor/core';
 const { Browser } = Plugins;
 import { ConferenceData } from '../../providers/conference-data';
+
+import { actionSheetController } from '@ionic/core';
 
 @Component({
   tag: 'page-speaker-list',
@@ -13,7 +15,6 @@ export class PageSpeakerList {
   mode!: string;
 
   speakers: any[] = [];
-  @Prop({ connect: 'ion-action-sheet-controller' }) actionSheetCtrl: HTMLIonActionSheetControllerElement;
 
 
   async componentWillLoad() {
@@ -29,7 +30,7 @@ export class PageSpeakerList {
   }
 
   async openSpeakerShare(speaker: any) {
-    const actionSheet = await this.actionSheetCtrl.create({
+    const actionSheet = await actionSheetController.create({
       header: 'Share ' + speaker.name,
       buttons: [
         {
@@ -64,7 +65,7 @@ export class PageSpeakerList {
   async openContact(speaker: any) {
     const mode = this.mode;
 
-    const actionSheet = await this.actionSheetCtrl.create({
+    const actionSheet = await actionSheetController.create({
       header: 'Contact ' + speaker.name,
       buttons: [
         {
@@ -139,7 +140,7 @@ export class PageSpeakerList {
                           Tweet
                         </ion-button>
                       </ion-col>
-                      <ion-col size="4" text-center>
+                      <ion-col size="4" class="ion-text-center">
                         <ion-button
                           fill="clear"
                           size="small"
@@ -149,7 +150,7 @@ export class PageSpeakerList {
                           Share
                         </ion-button>
                       </ion-col>
-                      <ion-col size="4" text-right>
+                      <ion-col size="4" class="ion-text-right">
                         <ion-button
                           fill="clear"
                           size="small"

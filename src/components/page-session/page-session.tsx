@@ -58,9 +58,9 @@ export class PageSession {
               </ion-col>
               <ion-col size="6" text-right class={this.isFavorite ? 'show-favorite' : ''} >
                 <ion-icon
-                  name="heart-empty"
+                  name="heart-outline"
                   size="large"
-                  class="icon-heart-empty"
+                  class="icon-heart-outline"
                   onClick={() => this.toggleFavorite()}
                 />
                 <ion-icon

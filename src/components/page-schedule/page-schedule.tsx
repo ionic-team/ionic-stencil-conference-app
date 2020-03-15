@@ -5,6 +5,8 @@ import { ConferenceData } from '../../providers/conference-data';
 
 import { UserData } from '../../providers/user-data';
 
+import { alertController, loadingController, modalController } from '@ionic/core';
+
 
 @Component({
   tag: 'page-schedule',
@@ -27,12 +29,6 @@ export class PageSchedule {
   @State() queryText = '';
 
   @Prop({ context: 'config' }) config: Config;
-
-  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
-
-  @Prop({ connect: 'ion-loading-controller' }) loadingCtrl: HTMLIonLoadingControllerElement;
-
-  @Prop({ connect: 'ion-modal-controller' }) modalCtrl: HTMLIonModalControllerElement;
 
 
   componentWillLoad() {
@@ -80,7 +76,7 @@ export class PageSchedule {
   }
 
   async presentFilter() {
-    const modal = await this.modalCtrl.create({
+    const modal = await modalController.create({
       component: 'page-schedule-filter',
       componentProps: {
         excludedTracks: this.excludeTracks,
@@ -98,7 +94,7 @@ export class PageSchedule {
       UserData.addFavorite(session.name);
 
       // create an alert instance
-      const alert = await this.alertCtrl.create({
+      const alert = await alertController.create({
         header: 'Favorite Added',
         buttons: [{
           text: 'OK',
@@ -115,7 +111,7 @@ export class PageSchedule {
   }
 
   async removeFavorite(session: any, title: string) {
-    const alert = await this.alertCtrl.create({
+    const alert = await alertController.create({
       header: title,
       message: 'Would you like to remove this session from your favorites?',
       buttons: [
@@ -142,7 +138,7 @@ export class PageSchedule {
 
   async openSocial(social: string) {
     this.toggleList();
-    const loading = await this.loadingCtrl.create({
+    const loading = await loadingController.create({
       message: `Posting to ${social}`,
       duration: (Math.random() * 1000) + 500
     });
@@ -237,9 +233,6 @@ export class PageSchedule {
           <ion-fab-list side="top">
             <ion-fab-button color="vimeo" onClick={() => this.openSocial('Vimeo')}>
               <ion-icon name="logo-vimeo"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button color="google" onClick={() => this.openSocial('Google+')}>
-              <ion-icon name="logo-googleplus"></ion-icon>
             </ion-fab-button>
             <ion-fab-button color="twitter" onClick={() => this.openSocial('Twitter')}>
               <ion-icon name="logo-twitter"></ion-icon>

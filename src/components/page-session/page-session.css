@@ -42,7 +42,7 @@
   position: relative;
 }
 
-.icon-heart-empty {
+.icon-heart-outline {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -62,7 +62,7 @@
   transform: scale(1);
 }
 
-.show-favorite .icon-heart-empty {
+.show-favorite .icon-heart-outline {
   transform: scale(0);
 }
 

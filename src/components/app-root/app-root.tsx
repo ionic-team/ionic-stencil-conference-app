@@ -27,7 +27,7 @@ export class AppRoot {
     {
       title: 'Speakers',
       url: '/speakers',
-      icon: 'contacts'
+      icon: 'person-circle'
     },
     {
       title: 'Map',
