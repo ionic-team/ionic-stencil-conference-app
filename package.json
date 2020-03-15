@@ -20,7 +20,7 @@
     "@types/jest": "^24.0.23",
     "tslint": "^5.20.1",
     "tslint-ionic-rules": "0.0.21",
-    "workbox-build": "4.3.1"
+    "workbox-build": "5.0.0"
   },
   "repository": {
     "type": "git",
