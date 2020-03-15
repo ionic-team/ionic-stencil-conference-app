@@ -1,4 +1,5 @@
-import { Component, Prop, State, h } from '@stencil/core';
+import { Component, State, h } from '@stencil/core';
+import { toastController } from '@ionic/core';
 
 
 @Component({
@@ -12,12 +13,8 @@ export class PageSupport {
   };
   @State() submitted = false;
 
-  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
-
-  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: HTMLIonToastControllerElement;
-
   async componentDidLoad() {
-    const toast = await this.toastCtrl.create({
+    const toast = await toastController.create({
       message: 'This does not actually send a support request.',
       duration: 3000
     });
@@ -63,7 +60,7 @@ export class PageSupport {
 
       this.submitted = false;
 
-      const toast = await this.toastCtrl.create({
+      const toast = await toastController.create({
         message: 'Your support request has been sent.',
         duration: 3000
       });

@@ -1,0 +1,7 @@
+{
+  "name": "conferenceapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
