@@ -1,4 +1,4 @@
-import { Component, State, h } from '@stencil/core';
+import { Build, Component, State, h } from '@stencil/core';
 
 import { toastController } from '@ionic/core';
 
@@ -14,11 +14,13 @@ export class PageSupport {
   @State() submitted = false;
 
   async componentDidLoad() {
-    const toast = await toastController.create({
-      message: 'This does not actually send a support request.',
-      duration: 3000
-    });
-    toast.present();
+    if (Build.isBrowser) {
+      const toast = await toastController.create({
+        message: 'This does not actually send a support request.',
+        duration: 3000
+      });
+      toast.present();
+    }
   }
 
   handleSupportQuestion(ev) {
