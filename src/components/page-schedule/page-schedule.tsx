@@ -242,13 +242,13 @@ export class PageSchedule {
                         Favorite
                       </ion-item-option>
 
-                    : <ion-item-option color="danger" onClick={() => this.removeFavorite(session, 'Remove Favorite')}>
-                      Remove
-                    </ion-item-option>
-                  }
+                      : <ion-item-option color="danger" onClick={() => this.removeFavorite(session, 'Remove Favorite')}>
+                        Remove
+                      </ion-item-option>
+                    }
 
-                </ion-item-options>
-              </ion-item-sliding>
+                  </ion-item-options>
+                </ion-item-sliding>
               )}
             </ion-item-group>
           )}
