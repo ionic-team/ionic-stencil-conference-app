@@ -33,9 +33,3 @@
  */
 
 @import "./theme/variables.css";
-
-
-/* TODO remove once fixed in framework https://github.com/ionic-team/ionic/issues/20691 */
-.ios .header-collapse-condense ion-toolbar {
-  --background: var(--ion-background-color, #fff);
-}
