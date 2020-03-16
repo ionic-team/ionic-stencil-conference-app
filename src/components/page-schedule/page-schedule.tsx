@@ -198,28 +198,28 @@ export class PageSchedule {
               </ion-item-divider>
 
               {group.sessions.map(session =>
-              <ion-item-sliding class={{ [`item-sliding-track-${session.tracks[0].toLowerCase()}`]: true, 'item-sliding-track': true }} hidden={session.hide}>
-              <ion-item href={`/schedule/session/${session.id}`}>
-                  <ion-label>
-                    <h3>{session.name}</h3>
-                    <p>
-                      {session.timeStart} &ndash; {session.timeEnd} &mdash; {session.location}
-                    </p>
-                  </ion-label>
-                </ion-item>
-                <ion-item-options>
-                  {session.isFavorite === false
-                    ? <ion-item-option color="favorite" onClick={() => this.addFavorite(session)}>
+                <ion-item-sliding class={{ [`item-sliding-track-${session.tracks[0].toLowerCase()}`]: true, 'item-sliding-track': true }} hidden={session.hide}>
+                  <ion-item href={`/schedule/session/${session.id}`}>
+                    <ion-label>
+                      <h3>{session.name}</h3>
+                      <p>
+                        {session.timeStart} &ndash; {session.timeEnd} &mdash; {session.location}
+                      </p>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item-options>
+                    {session.isFavorite === false
+                      ? <ion-item-option color="favorite" onClick={() => this.addFavorite(session)}>
                         Favorite
                       </ion-item-option>
 
-                    : <ion-item-option color="danger" onClick={() => this.removeFavorite(session, 'Remove Favorite')}>
-                      Remove
-                    </ion-item-option>
-                  }
+                      : <ion-item-option color="danger" onClick={() => this.removeFavorite(session, 'Remove Favorite')}>
+                        Remove
+                      </ion-item-option>
+                    }
 
-                </ion-item-options>
-              </ion-item-sliding>
+                  </ion-item-options>
+                </ion-item-sliding>
               )}
             </ion-item-group>
           )}
