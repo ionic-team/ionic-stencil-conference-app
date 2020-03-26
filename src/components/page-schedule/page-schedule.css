@@ -1,50 +1,64 @@
-.ion-item-divider.sticky {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
+page-schedule ion-fab-button {
+  --background: var(--ion-color-step-150, #fff);
+  --background-hover: var(--ion-color-step-200, #f2f2f2);
+  --background-focused: var(--ion-color-step-250, #d9d9d9);
+
+  --color: var(--ion-color-primary, #3880ff);
 }
 
-.item-sliding-track ion-label {
+/*
+ * Material Design uses the ripple for activated
+ * so only style the iOS activated background
+ */
+.ios page-schedule ion-fab-button {
+  --background-activated: var(--ion-color-step-250, #d9d9d9);
+}
+
+/*
+ * Schedule item border colors
+ */
+
+page-schedule .item-sliding-track ion-label {
   border-left: 2px solid transparent;
   padding-left: 10px;
 }
 
-.item-sliding-track-ionic ion-label {
+page-schedule .item-sliding-track-ionic ion-label {
   border-left-color: var(--ion-color-primary);
 }
 
-.item-sliding-track-angular ion-label {
+page-schedule .item-sliding-track-angular ion-label {
   border-left-color: var(--ion-color-angular);
 }
 
-.item-sliding-track-communication ion-label {
+page-schedule .item-sliding-track-communication ion-label {
   border-left-color: var(--ion-color-communication);
 }
 
-.item-sliding-track-tooling ion-label {
+page-schedule .item-sliding-track-tooling ion-label {
   border-left-color: var(--ion-color-tooling);
 }
 
-.item-sliding-track-services ion-label {
+page-schedule .item-sliding-track-services ion-label {
   border-left-color: var(--ion-color-services);
 }
 
-.item-sliding-track-design ion-label {
+page-schedule .item-sliding-track-design ion-label {
   border-left-color: var(--ion-color-design);
 }
 
-.item-sliding-track-workshop ion-label {
+page-schedule .item-sliding-track-workshop ion-label {
   border-left-color: var(--ion-color-workshop);
 }
 
-.item-sliding-track-food ion-label {
+page-schedule .item-sliding-track-food ion-label {
   border-left-color: var(--ion-color-food);
 }
 
-.item-sliding-track-documentation ion-label {
+page-schedule .item-sliding-track-documentation ion-label {
   border-left-color: var(--ion-color-documentation);
 }
 
-.item-sliding-track-navigation ion-label {
+page-schedule .item-sliding-track-navigation ion-label {
   border-left-color: var(--ion-color-navigation);
 }

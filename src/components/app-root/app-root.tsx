@@ -11,10 +11,13 @@ const { SplashScreen } = Plugins;
   styleUrl: 'app-root.css'
 })
 export class AppRoot {
-  @State() loggedIn = false;
   hasSeenTutorial = false;
 
-  @Element() el: HTMLElement;
+  @Element() el: any;
+
+  @State() dark = false;
+
+  @State() loggedIn = false;
 
   @Prop({ context: 'isServer' }) isServer: boolean;
 
@@ -27,7 +30,7 @@ export class AppRoot {
     {
       title: 'Speakers',
       url: '/speakers',
-      icon: 'contacts'
+      icon: 'people'
     },
     {
       title: 'Map',
@@ -40,6 +43,11 @@ export class AppRoot {
       icon: 'information-circle'
     }
   ];
+
+  @Listen('ionRouteWillChange')
+  routeChanged() {
+    this.el.forceUpdate();
+  }
 
   async componentWillLoad() {
     this.hasSeenTutorial = this.isServer
@@ -64,6 +72,20 @@ export class AppRoot {
   async logout() {
     await UserData.logout();
     this.loggedIn = false;
+  }
+
+  toggleChanged(event: any) {
+    this.dark = event.target.checked;
+  }
+
+  isActiveUrl(url: string) {
+    const current = window.location.pathname;
+
+    if (current.includes(url)) {
+      return true;
+    }
+
+    return false;
   }
 
   @Listen('userDidLogIn')
@@ -103,43 +125,39 @@ export class AppRoot {
     );
   }
 
-  // TODO ion-menu should be split out
   render() {
     return (
-      <ion-app>
+      <ion-app class={{
+        'dark-theme': this.dark
+      }}>
         {this.renderRouter()}
         <ion-split-pane content-id="menu-content">
           <ion-menu content-id="menu-content">
-            <ion-header>
-              <ion-toolbar>
-                <ion-title>Menu</ion-title>
-              </ion-toolbar>
-            </ion-header>
             <ion-content forceOverscroll={false}>
-              <ion-list>
-                <ion-list-header>Navigate</ion-list-header>
+              <ion-list lines="none">
+                <ion-list-header>Conference</ion-list-header>
 
                 {this.appPages.map((p) => (
                   <ion-menu-toggle autoHide={false}>
-                    <ion-item href={p.url}>
-                      <ion-icon slot="start" name={p.icon}></ion-icon>
+                    <ion-item detail={false} href={p.url} class={{ 'selected': this.isActiveUrl(p.url) }}>
+                      <ion-icon slot="start" name={p.icon + '-outline'}></ion-icon>
                       <ion-label>{p.title}</ion-label>
                     </ion-item>
                   </ion-menu-toggle>
                 ))}
               </ion-list>
 
-              <ion-list>
+              <ion-list lines="none">
                 <ion-list-header>Account</ion-list-header>
 
                 <ion-menu-toggle autoHide={false}>
                   {this.loggedIn ? (
-                    <ion-item href="account">
+                    <ion-item detail={false} href="account" class={{ 'selected': this.isActiveUrl('/account') }}>
                       <ion-icon slot="start" name="person"></ion-icon>
                       <ion-label>Account</ion-label>
                     </ion-item>
                   ) : (
-                    <ion-item href="login">
+                    <ion-item detail={false} href="login" class={{ 'selected': this.isActiveUrl('/login') }}>
                       <ion-icon slot="start" name="log-in"></ion-icon>
                       <ion-label>Login</ion-label>
                     </ion-item>
@@ -147,7 +165,7 @@ export class AppRoot {
                 </ion-menu-toggle>
 
                 <ion-menu-toggle autoHide={false}>
-                  <ion-item href="support" button>
+                  <ion-item detail={false} href="support" class={{ 'selected': this.isActiveUrl('/support') }}>
                     <ion-icon slot="start" name="help"></ion-icon>
                     <ion-label>Support</ion-label>
                   </ion-item>
@@ -155,23 +173,31 @@ export class AppRoot {
 
                 <ion-menu-toggle autoHide={false}>
                   {this.loggedIn ? (
-                    <ion-item onClick={() => this.logout()} button>
+                    <ion-item detail={false} onClick={() => this.logout()} button>
                       <ion-icon slot="start" name="log-out"></ion-icon>
                       <ion-label>Logout</ion-label>
                     </ion-item>
                   ) : (
-                    <ion-item href="signup" button>
+                    <ion-item detail={false} href="signup" button class={{ 'selected': this.isActiveUrl('/signup') }}>
                       <ion-icon slot="start" name="person-add"></ion-icon>
                       <ion-label>Signup</ion-label>
                     </ion-item>
                   )}
                 </ion-menu-toggle>
+
+                <ion-item>
+                  <ion-icon slot="start" name="moon-outline"></ion-icon>
+                  <ion-label>
+                    Dark Mode
+                  </ion-label>
+                  <ion-toggle checked={this.dark} onIonChange={(ev) => this.toggleChanged(ev)}></ion-toggle>
+                </ion-item>
               </ion-list>
 
-              <ion-list>
+              <ion-list lines="none">
                 <ion-list-header>Tutorial</ion-list-header>
                 <ion-menu-toggle autoHide={false}>
-                  <ion-item href="tutorial">
+                  <ion-item detail={false} href="tutorial">
                     <ion-icon slot="start" name="hammer"></ion-icon>
                     <ion-label>Show Tutorial</ion-label>
                   </ion-item>

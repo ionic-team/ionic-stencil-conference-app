@@ -1,5 +1,6 @@
-import { Component, Prop, State, h } from '@stencil/core';
+import { Build, Component, State, h } from '@stencil/core';
 
+import { toastController } from '@ionic/core';
 
 @Component({
   tag: 'page-support',
@@ -12,16 +13,14 @@ export class PageSupport {
   };
   @State() submitted = false;
 
-  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
-
-  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: HTMLIonToastControllerElement;
-
   async componentDidLoad() {
-    const toast = await this.toastCtrl.create({
-      message: 'This does not actually send a support request.',
-      duration: 3000
-    });
-    toast.present();
+    if (Build.isBrowser) {
+      const toast = await toastController.create({
+        message: 'This does not actually send a support request.',
+        duration: 3000
+      });
+      toast.present();
+    }
   }
 
   handleSupportQuestion(ev) {
@@ -63,7 +62,7 @@ export class PageSupport {
 
       this.submitted = false;
 
-      const toast = await this.toastCtrl.create({
+      const toast = await toastController.create({
         message: 'Your support request has been sent.',
         duration: 3000
       });
@@ -78,19 +77,6 @@ export class PageSupport {
     if (!this.supportQuestion.value || this.supportQuestion.value.trim().length === 0) {
       return true;
     }
-
-    // return new Promise((resolve: any, reject: any) => {
-    //   const alert = this.alertCtrl.create({
-    //     title: 'Leave this page?',
-    //     message: 'Are you sure you want to leave this page? Your support message will not be submitted.',
-    //     buttons: [
-    //       { text: 'Stay', handler: reject },
-    //       { text: 'Leave', role: 'cancel', handler: resolve }
-    //     ]
-    //   });
-
-    //   alert.present();
-    // });
   }
 
   render() {

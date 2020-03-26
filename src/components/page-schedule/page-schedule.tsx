@@ -1,8 +1,8 @@
-import { Config } from '@ionic/core';
+import { Config, alertController, getMode, loadingController, modalController, toastController } from '@ionic/core';
+
 import { Component, Element, Listen, Prop, State , h } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
-
 import { UserData } from '../../providers/user-data';
 
 
@@ -15,6 +15,7 @@ export class PageSchedule {
   dayIndex = 0;
   scheduleList: HTMLIonListElement;
   fab: HTMLIonFabElement;
+  ios: boolean;
 
   @Element() el: any;
 
@@ -22,20 +23,17 @@ export class PageSchedule {
 
   @State() shownSessions: any = [];
 
+  @State() showSearchbar: boolean;
+
   @State() segment = 'all';
 
   @State() queryText = '';
 
   @Prop({ context: 'config' }) config: Config;
 
-  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
-
-  @Prop({ connect: 'ion-loading-controller' }) loadingCtrl: HTMLIonLoadingControllerElement;
-
-  @Prop({ connect: 'ion-modal-controller' }) modalCtrl: HTMLIonModalControllerElement;
-
-
   componentWillLoad() {
+    this.ios = getMode() === 'ios';
+
     this.updateSchedule();
   }
 
@@ -44,16 +42,13 @@ export class PageSchedule {
     this.fab = this.el.querySelector('#socialFab');
   }
 
-  @Listen('ionChange')
   segmentChanged(event: any) {
     this.segment = event.target.value;
     this.updateSchedule();
   }
 
-  @Listen('ionInput')
   searchbarChanged(event: any) {
     this.queryText = event.target.value;
-    console.log(this.queryText);
     this.updateSchedule();
   }
 
@@ -80,8 +75,10 @@ export class PageSchedule {
   }
 
   async presentFilter() {
-    const modal = await this.modalCtrl.create({
+    const modal = await modalController.create({
       component: 'page-schedule-filter',
+      swipeToClose: true,
+      presentingElement: this.el.closest('ion-router-outlet'),
       componentProps: {
         excludedTracks: this.excludeTracks,
       }
@@ -91,31 +88,29 @@ export class PageSchedule {
 
   async addFavorite(session: any) {
     if (UserData.hasFavorite(session.name)) {
-      // oops, this session has already been favorited, prompt to remove it
+      // Prompt to remove favorite
       this.removeFavorite(session, 'Favorite already added');
     } else {
-      // remember this session as a user favorite
+      // Add as a favorite
       UserData.addFavorite(session.name);
 
-      // create an alert instance
-      const alert = await this.alertCtrl.create({
-        header: 'Favorite Added',
+      // Create a toast
+      const toast = await toastController.create({
+        header: `${session.name} was successfully added as a favorite.`,
+        duration: 3000,
         buttons: [{
-          text: 'OK',
-          handler: () => {
-            // close the sliding item
-            this.updateSchedule();
-          }
+          text: 'Close',
+          role: 'cancel'
         }]
       });
 
-      // now present the alert
-      alert.present();
+      // Present the toast at the bottom of the page
+      toast.present();
     }
   }
 
   async removeFavorite(session: any, title: string) {
-    const alert = await this.alertCtrl.create({
+    const alert = await alertController.create({
       header: title,
       message: 'Would you like to remove this session from your favorites?',
       buttons: [
@@ -142,7 +137,7 @@ export class PageSchedule {
 
   async openSocial(social: string) {
     this.toggleList();
-    const loading = await this.loadingCtrl.create({
+    const loading = await loadingController.create({
       message: `Posting to ${social}`,
       duration: (Math.random() * 1000) + 500
     });
@@ -160,34 +155,68 @@ export class PageSchedule {
 
   render() {
     return [
-      <ion-header>
+      <ion-header translucent={true}>
         <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
-
-          <ion-segment value={this.segment}>
-            <ion-segment-button value="all">
-              All
-            </ion-segment-button>
-            <ion-segment-button value="favorites">
-              Favorites
-            </ion-segment-button>
-          </ion-segment>
-
+          { !this.showSearchbar &&
+            <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+          }
+          { this.ios &&
+            <ion-segment value={this.segment} onIonChange={(ev) => this.segmentChanged(ev)}>
+              <ion-segment-button value="all">
+                All
+              </ion-segment-button>
+              <ion-segment-button value="favorites">
+                Favorites
+              </ion-segment-button>
+            </ion-segment>
+          }
+          { !this.ios && !this.showSearchbar &&
+            <ion-title>Schedule</ion-title>
+          }
+          { this.showSearchbar &&
+            <ion-searchbar showCancelButton="always" value={this.queryText} placeholder="Search" onIonInput={(ev) => this.searchbarChanged(ev)} onIonCancel={() => this.showSearchbar = false }></ion-searchbar>
+          }
           <ion-buttons slot="end">
-            <ion-button onClick={() => this.presentFilter()}>
-              <ion-icon slot="icon-only" name="options"></ion-icon>
-            </ion-button>
+            { !this.ios && !this.showSearchbar &&
+              <ion-button onClick={() => this.showSearchbar = true}>
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+              </ion-button>
+            }
+            { !this.showSearchbar &&
+              <ion-button onClick={() => this.presentFilter()}>
+                { this.ios && <span>Filter</span> }
+                { !this.ios && <ion-icon slot="icon-only" name="options"></ion-icon> }
+              </ion-button>
+            }
           </ion-buttons>
         </ion-toolbar>
-        <ion-toolbar>
-          <ion-searchbar value={this.queryText} placeholder="Search">
-          </ion-searchbar>
-        </ion-toolbar>
+
+        { !this.ios &&
+          <ion-toolbar>
+            <ion-segment value={this.segment} onIonChange={(ev) => this.segmentChanged(ev)}>
+              <ion-segment-button value="all">
+                All
+              </ion-segment-button>
+              <ion-segment-button value="favorites">
+                Favorites
+              </ion-segment-button>
+            </ion-segment>
+          </ion-toolbar>
+        }
       </ion-header>,
 
-      <ion-content>
+      <ion-content fullscreen={true}>
+        <ion-header collapse="condense">
+          <ion-toolbar>
+            <ion-title size="large">Schedule</ion-title>
+          </ion-toolbar>
+          <ion-toolbar>
+            <ion-searchbar value={this.queryText} placeholder="Search" onIonInput={(ev) => this.searchbarChanged(ev)}></ion-searchbar>
+          </ion-toolbar>
+        </ion-header>
+
         <ion-list id="scheduleList" hidden={this.shownSessions === 0}>
           {this.groups.map(group =>
             <ion-item-group hidden={group.hide}>
@@ -203,7 +232,7 @@ export class PageSchedule {
                     <ion-label>
                       <h3>{session.name}</h3>
                       <p>
-                        {session.timeStart} &ndash; {session.timeEnd} &mdash; {session.location}
+                        {session.timeStart} &ndash; {session.timeEnd}: {session.location}
                       </p>
                     </ion-label>
                   </ion-item>
@@ -217,7 +246,6 @@ export class PageSchedule {
                         Remove
                       </ion-item-option>
                     }
-
                   </ion-item-options>
                 </ion-item-sliding>
               )}
@@ -231,15 +259,15 @@ export class PageSchedule {
 
         <ion-fab id="socialFab" vertical="bottom" horizontal="end" slot="fixed">
           <ion-fab-button onClick={() => this.toggleList()}>
-            <ion-icon name="share"></ion-icon>
+            <ion-icon name="share-social"></ion-icon>
           </ion-fab-button>
 
           <ion-fab-list side="top">
             <ion-fab-button color="vimeo" onClick={() => this.openSocial('Vimeo')}>
               <ion-icon name="logo-vimeo"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button color="google" onClick={() => this.openSocial('Google+')}>
-              <ion-icon name="logo-googleplus"></ion-icon>
+            <ion-fab-button color="instagram" onClick={() => this.openSocial('Instagram')}>
+              <ion-icon name="logo-instagram"></ion-icon>
             </ion-fab-button>
             <ion-fab-button color="twitter" onClick={() => this.openSocial('Twitter')}>
               <ion-icon name="logo-twitter"></ion-icon>

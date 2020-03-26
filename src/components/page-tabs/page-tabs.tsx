@@ -1,4 +1,5 @@
-import { Component, Prop , h } from '@stencil/core';
+import { menuController } from '@ionic/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'page-tabs',
@@ -6,12 +7,10 @@ import { Component, Prop , h } from '@stencil/core';
 })
 export class PageTabs {
 
-  @Prop({ connect: 'ion-menu-controller' }) menuCtrl: HTMLIonMenuControllerElement;
-
   async componentDidLoad() {
-    const menuCtlr: HTMLIonMenuControllerElement = await (this.menuCtrl as any).componentOnReady();
-    menuCtlr.enable(true);
+    menuController.enable(true);
   }
+
   render() {
     return [
       <ion-tabs>
@@ -30,11 +29,11 @@ export class PageTabs {
             <ion-label>Schedule</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab-speaker">
-            <ion-icon name="contacts"></ion-icon>
+            <ion-icon name="people"></ion-icon>
             <ion-label>Speakers</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab-map">
-            <ion-icon name="map"></ion-icon>
+            <ion-icon name="location"></ion-icon>
             <ion-label>Map</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab-about">

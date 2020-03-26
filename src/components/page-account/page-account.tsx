@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, Prop, State , h } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 
+import { alertController } from '@ionic/core';
 
 @Component({
   tag: 'page-account',
@@ -8,8 +9,9 @@ import { UserData } from '../../providers/user-data';
 export class PageAccount {
 
   @State() user;
+
   @Prop({ connect: 'ion-router' }) nav: HTMLIonRouterElement;
-  @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
+
   @Event() userDidLogOut: EventEmitter;
 
   componentDidLoad() {
@@ -33,17 +35,15 @@ export class PageAccount {
     await UserData.logout();
     this.userDidLogOut.emit({ loginStatus: false });
     navCtrl.push('/schedule', 'root');
-    // navCtrl.setRoot('page-tabs', null, { animated: true, direction: 'forward' });
   }
 
   async support() {
     const navCtrl: HTMLIonRouterElement = await (this.nav as any).componentOnReady();
-    // navCtrl.setRoot('page-support');
     navCtrl.push('/support', 'root');
   }
 
   async changeUsername() {
-    const alert = await this.alertCtrl.create({
+    const alert = await alertController.create({
       header: 'Change Username',
       inputs: [
         {
@@ -74,8 +74,8 @@ export class PageAccount {
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
             <ion-back-button></ion-back-button>
+            <ion-menu-button></ion-menu-button>
           </ion-buttons>
 
           <ion-title>Account</ion-title>

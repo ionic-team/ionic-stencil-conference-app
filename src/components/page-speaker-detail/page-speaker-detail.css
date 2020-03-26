@@ -1,12 +1,75 @@
-page-speaker-detail ion-card {
-  text-align: center;
-}
-page-speaker-detail img {
-  max-width: 140px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
+/*
+ * Speaker Background
+ */
+
+ page-speaker-detail ion-toolbar {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  --background: transparent;
+  --color: white;
 }
 
-page-speaker-detail p {
-  color: #60646b;
+page-speaker-detail ion-toolbar ion-button,
+page-speaker-detail ion-toolbar ion-back-button,
+page-speaker-detail ion-toolbar ion-menu-button {
+  --color: white;
+}
+
+page-speaker-detail .speaker-background {
+  position: relative;
+
+  display: flex;
+
+  padding-top: var(--ion-safe-area-top);
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  height: calc(250px + var(--ion-safe-area-top));
+
+  background: center / cover url(/assets/img/speaker-background.png) no-repeat;
+}
+
+page-speaker-detail .speaker-background img {
+  width: 70px;
+  border-radius: 50%;
+  margin-top: calc(-1 * var(--ion-safe-area-top));
+}
+
+page-speaker-detail .speaker-background h2 {
+  position: absolute;
+
+  bottom: 10px;
+
+  color: white;
+}
+
+.md page-speaker-detail .speaker-background {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.ios page-speaker-detail .speaker-background {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+}
+
+/*
+ * Speaker Details
+ */
+
+ page-speaker-detail .speaker-detail p {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+page-speaker-detail .speaker-detail hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  background: var(--ion-color-step-150, #d7d8da);
 }

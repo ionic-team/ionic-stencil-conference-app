@@ -1,5 +1,5 @@
-import { Config } from '@ionic/core';
-import { Component, Element, Listen, Prop, State , h } from '@stencil/core';
+import { Config, getMode } from '@ionic/core';
+import { Component, Element, Prop, State , h } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 
@@ -9,29 +9,43 @@ import { ConferenceData } from '../../providers/conference-data';
   styleUrl: 'page-schedule-filter.css',
 })
 export class PageScheduleFilter {
+  ios: boolean;
+
   @Element() el: any;
 
-  @State() tracks: {name: string, isChecked: boolean}[];
+  @State() tracks: {name: string, icon: string, isChecked: boolean}[] = [];
 
   @Prop({ context: 'config' }) config: Config;
 
   @Prop() excludedTracks: string[] = [];
 
   async componentWillLoad() {
+    this.ios = getMode() === 'ios';
+
     // passed in array of track names that should be excluded (unchecked)
     // TODO = this.navParams.data.excludedTracks;
     const excludedTrackNames = this.excludedTracks;
 
-    const trackNames = await ConferenceData.getTracks();
-    this.tracks = trackNames.map(trackName => ({
-      name: trackName,
-      isChecked: (excludedTrackNames.indexOf(trackName) === -1)
+    const tracks = await ConferenceData.getTracks();
+
+    this.tracks = tracks.map(track => ({
+      name: track.name,
+      icon: track.icon,
+      isChecked: (excludedTrackNames.indexOf(track.name) === -1)
     }));
   }
 
   dismiss(data?: any) {
     // dismiss this modal and pass back data
     (this.el.closest('ion-modal') as any).dismiss(data);
+  }
+
+  selectAll(check: boolean) {
+    // set all to checked or unchecked
+    this.tracks.forEach(track => {
+      track.isChecked = check;
+    });
+    this.el.forceUpdate();
   }
 
   applyFilters() {
@@ -48,18 +62,23 @@ export class PageScheduleFilter {
     this.el.forceUpdate();
   }
 
-  @Listen('ionChange')
-  onToggleChanged(ev: CustomEvent) {
+  checkboxChanged(ev: CustomEvent) {
     const track = this.tracks.find(({ name }) => name === (ev.target as any).name);
     track.isChecked = (ev.target as any).checked;
   }
 
   render() {
     return [
-      <ion-header>
+      <ion-header translucent={true}>
         <ion-toolbar>
-          <ion-buttons slot="primary">
-            <ion-button onClick={() => this.dismiss()}>Cancel</ion-button>
+
+          <ion-buttons slot="start">
+            { this.ios &&
+              <ion-button onClick={() => this.dismiss()}>Cancel</ion-button>
+            }
+            { !this.ios &&
+              <ion-button onClick={() => this.selectAll(false)}>Reset</ion-button>
+            }
           </ion-buttons>
 
           <ion-title>
@@ -72,27 +91,31 @@ export class PageScheduleFilter {
         </ion-toolbar>
       </ion-header>,
 
-      <ion-content class="outer-content">
-        <ion-list>
+      <ion-content>
+        <ion-list lines={ this.ios ? 'inset' : 'full'}>
           <ion-list-header>Tracks</ion-list-header>
 
           {this.tracks.map(track =>
             <ion-item class={{ [`item-track-${track.name.toLowerCase()}`]: true, 'item-track': true }}>
-              <span slot="start" class="dot"></span>
+              { this.ios && <ion-icon slot="start" name={track.icon} color="medium"></ion-icon> }
               <ion-label>{track.name}</ion-label>
-              <ion-toggle checked={track.isChecked} color="success" name={track.name}></ion-toggle>
+              <ion-checkbox checked={track.isChecked} color="primary" name={track.name} onIonChange={(ev) => this.checkboxChanged(ev)}></ion-checkbox>
             </ion-item>
           )}
         </ion-list>
+      </ion-content>,
 
-        <ion-list>
-          <ion-item onClick={() => this.resetFilters()} detail-none>
-            <ion-label color="danger">
-              Reset All Filters
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
+      this.ios &&
+        <ion-footer translucent={true}>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button onClick={() => this.selectAll(false)}>Deselect All</ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button onClick={() => this.selectAll(true)}>Select All</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-footer>
     ];
   }
 }
