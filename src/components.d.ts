@@ -8,6 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AppRoot {
     }
+    interface ComponentMenu {
+        "loggedIn": boolean;
+    }
     interface PageAbout {
     }
     interface PageAboutPopover {
@@ -47,6 +50,12 @@ declare global {
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
+    };
+    interface HTMLComponentMenuElement extends Components.ComponentMenu, HTMLStencilElement {
+    }
+    var HTMLComponentMenuElement: {
+        prototype: HTMLComponentMenuElement;
+        new (): HTMLComponentMenuElement;
     };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
@@ -134,6 +143,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
+        "component-menu": HTMLComponentMenuElement;
         "page-about": HTMLPageAboutElement;
         "page-about-popover": HTMLPageAboutPopoverElement;
         "page-account": HTMLPageAccountElement;
@@ -152,6 +162,9 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AppRoot {
+    }
+    interface ComponentMenu {
+        "loggedIn"?: boolean;
     }
     interface PageAbout {
     }
@@ -189,6 +202,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
+        "component-menu": ComponentMenu;
         "page-about": PageAbout;
         "page-about-popover": PageAboutPopover;
         "page-account": PageAccount;
@@ -210,6 +224,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "component-menu": LocalJSX.ComponentMenu & JSXBase.HTMLAttributes<HTMLComponentMenuElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-about-popover": LocalJSX.PageAboutPopover & JSXBase.HTMLAttributes<HTMLPageAboutPopoverElement>;
             "page-account": LocalJSX.PageAccount & JSXBase.HTMLAttributes<HTMLPageAccountElement>;
