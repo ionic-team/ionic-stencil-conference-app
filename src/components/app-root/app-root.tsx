@@ -1,6 +1,6 @@
 import '@ionic/core';
 
-import { Component, Element, Listen, Prop, State, h } from '@stencil/core';
+import { Component, Element, forceUpdate, Listen, Prop, State, h } from '@stencil/core';
 import { UserData } from '../../providers/user-data';
 import { Plugins } from '@capacitor/core';
 
@@ -46,7 +46,7 @@ export class AppRoot {
 
   @Listen('ionRouteWillChange')
   routeChanged() {
-    this.el.forceUpdate();
+    forceUpdate(this.el);
   }
 
   async componentWillLoad() {

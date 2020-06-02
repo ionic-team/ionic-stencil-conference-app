@@ -1,5 +1,5 @@
 import { Config, getMode } from '@ionic/core';
-import { Component, Element, Prop, State , h } from '@stencil/core';
+import { Component, Element, forceUpdate, Prop, State , h } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 
@@ -45,7 +45,7 @@ export class PageScheduleFilter {
     this.tracks.forEach(track => {
       track.isChecked = check;
     });
-    this.el.forceUpdate();
+    forceUpdate(this.el);
   }
 
   applyFilters() {
@@ -59,7 +59,7 @@ export class PageScheduleFilter {
     this.tracks.forEach(track => {
       track.isChecked = true;
     });
-    this.el.forceUpdate();
+    forceUpdate(this.el);
   }
 
   checkboxChanged(ev: CustomEvent) {

@@ -1,6 +1,6 @@
 import { Config, alertController, getMode, loadingController, modalController, toastController } from '@ionic/core';
 
-import { Component, Element, Listen, Prop, State , h } from '@stencil/core';
+import { Component, Element, forceUpdate, Listen, Prop, State , h } from '@stencil/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
@@ -66,12 +66,11 @@ export class PageSchedule {
   }
 
   async updateSchedule() {
-
     const data = await ConferenceData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment);
     this.shownSessions = data.shownSessions;
     this.groups = data.groups;
 
-    this.el.forceUpdate();
+    forceUpdate(this.el);
   }
 
   async presentFilter() {
